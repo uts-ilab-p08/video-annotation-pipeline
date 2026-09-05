@@ -1,0 +1,5 @@
+- { meta: "2018-03-11.11-20-01.11-25-01.school.G424" }
+- { meta: { team: "Kitware" } }
+- { meta: "vehicle_turns_right 2 instances" }
+- { act: { act2: {vehicle_turns_right: 1.0}, id2: 1319491486794687826, timespan: [{tsr0: [4549, 4699]}], src_status: janitor, actors: [{id1: 952645691032085107, timespan: [{tsr0: [4549, 4699]}]}] } }
+- { act: { act2: {vehicle_turns_right: 1.0}, id2: 4295476838658221854, timespan: [{tsr0: [6039, 6139]}], src_status: janitor, actors: [{id1: 4981600583008297265, timespan: [{tsr0: [6039, 6139]}]}] } }

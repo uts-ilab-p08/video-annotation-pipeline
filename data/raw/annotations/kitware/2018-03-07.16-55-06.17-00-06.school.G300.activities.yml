@@ -1,0 +1,2 @@
+- {'act': {'act2': {'vehicle_starts': 1.0}, 'actors': [{'id1': 2, 'timespan': [{'tsr0': [6126, 6219]}]}], 'id2': 1, 'src_status': 'good', 'timespan': [{'tsr0': [6126, 6219]}]}}
+- {'act': {'act2': {'vehicle_stops': 1.0}, 'actors': [{'id1': 1, 'timespan': [{'tsr0': [5526, 5602]}]}], 'id2': 0, 'src_status': 'good', 'timespan': [{'tsr0': [5526, 5602]}]}}

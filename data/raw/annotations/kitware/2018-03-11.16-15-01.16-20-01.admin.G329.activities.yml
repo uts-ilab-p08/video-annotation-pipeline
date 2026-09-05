@@ -1,0 +1,12 @@
+- { meta: "2018-03-11.16-15-01.16-20-01.admin.G329" }
+- { meta: { team: "Kitware" } }
+- { meta: "person_enters_scene_through_structure 3 instances" }
+- { meta: "person_opens_facility_door 1 instances" }
+- { meta: "person_exits_scene_through_structure 3 instances" }
+- { act: { act2: {person_enters_scene_through_structure: 1.0}, id2: 7750501543602628187, timespan: [{tsr0: [1173, 1217]}], src_status: janitor, actors: [{id1: 8717521112810006484, timespan: [{tsr0: [1173, 1217]}]}] } }
+- { act: { act2: {person_opens_facility_door: 1.0}, id2: 1327661754087776680, timespan: [{tsr0: [5563, 5623]}], src_status: janitor, actors: [{id1: 6346174332712559449, timespan: [{tsr0: [5563, 5623]}]}] } }
+- { act: { act2: {person_exits_scene_through_structure: 1.0}, id2: 7740437977196504799, timespan: [{tsr0: [5563, 5626]}], src_status: janitor, actors: [{id1: 6608673067117749916, timespan: [{tsr0: [5563, 5626]}]}] } }
+- { act: { act2: {person_exits_scene_through_structure: 1.0}, id2: 157061570868519848, timespan: [{tsr0: [5618, 5658]}], src_status: janitor, actors: [{id1: 2476941867989442893, timespan: [{tsr0: [5618, 5658]}]}] } }
+- { act: { act2: {person_enters_scene_through_structure: 1.0}, id2: 510137312735897137, timespan: [{tsr0: [5342, 5412]}], src_status: janitor, actors: [{id1: 7449623562065716104, timespan: [{tsr0: [5342, 5412]}]}] } }
+- { act: { act2: {person_enters_scene_through_structure: 1.0}, id2: 6923062211743294386, timespan: [{tsr0: [5389, 5422]}], src_status: janitor, actors: [{id1: 4154782033475839482, timespan: [{tsr0: [5389, 5422]}]}] } }
+- { act: { act2: {person_exits_scene_through_structure: 1.0}, id2: 2001294224138674748, timespan: [{tsr0: [1335, 1405]}], src_status: janitor, actors: [{id1: 2591593157767308550, timespan: [{tsr0: [1335, 1405]}]}] } }

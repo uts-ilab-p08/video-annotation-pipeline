@@ -1,0 +1,4 @@
+- { meta: "2018-03-11.16-25-01.16-30-01.bus.G506" }
+- { meta: { team: "Kitware" } }
+- { meta: "vehicle_turns_right 1 instances" }
+- { act: { act2: {vehicle_turns_right: 1.0}, id2: 6648456216642495332, timespan: [{tsr0: [1657, 1778]}], src_status: janitor, actors: [{id1: 2377634923895137423, timespan: [{tsr0: [1657, 1778]}]}] } }

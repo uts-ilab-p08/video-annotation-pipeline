@@ -1,0 +1,6 @@
+- { meta: "2018-03-11.16-35-04.16-40-04.school.G300" }
+- { meta: { team: "Kitware" } }
+- { types: { id1: 1658071610686481203, cset3: { vehicle: 1.0 } } }
+- { types: { id1: 3874398619815322750, cset3: { vehicle: 1.0 } } }
+- { types: { id1: 1470387541409735445, cset3: { person: 1.0 } } }
+- { types: { id1: 8175230385304217019, cset3: { person: 1.0 } } }

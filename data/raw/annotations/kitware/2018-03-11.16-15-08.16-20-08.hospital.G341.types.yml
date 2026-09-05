@@ -1,0 +1,17 @@
+- { meta: "2018-03-11.16-15-08.16-20-08.hospital.G341" }
+- { meta: { team: "Kitware" } }
+- { types: { id1: 8493164944071729684, cset3: { person: 1.0 } } }
+- { types: { id1: 3779755058162672570, cset3: { person: 1.0 } } }
+- { types: { id1: 9178017405563576888, cset3: { person: 1.0 } } }
+- { types: { id1: 1467138060132722322, cset3: { person: 1.0 } } }
+- { types: { id1: 6753053330297856445, cset3: { person: 1.0 } } }
+- { types: { id1: 8552001981492208375, cset3: { person: 1.0 } } }
+- { types: { id1: 9021580600806712596, cset3: { person: 1.0 } } }
+- { types: { id1: 3533752460764914947, cset3: { person: 1.0 } } }
+- { types: { id1: 4427698299842700605, cset3: { person: 1.0 } } }
+- { types: { id1: 1351431599498404184, cset3: { person: 1.0 } } }
+- { types: { id1: 6279675485795951286, cset3: { vehicle: 1.0 } } }
+- { types: { id1: 5800906362443014274, cset3: { vehicle: 1.0 } } }
+- { types: { id1: 5888007503177949348, cset3: { vehicle: 1.0 } } }
+- { types: { id1: 3707993874494171083, cset3: { vehicle: 1.0 } } }
+- { types: { id1: 3113580197342521287, cset3: { person: 1.0 } } }

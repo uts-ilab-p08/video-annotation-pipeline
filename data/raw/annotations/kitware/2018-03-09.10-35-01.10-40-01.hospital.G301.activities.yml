@@ -1,0 +1,1 @@
+- {'act': {'act2': {'person_talks_to_person': 1.0}, 'actors': [{'id1': 2, 'timespan': [{'tsr0': [6724, 7023]}]}, {'id1': 3, 'timespan': [{'tsr0': [6725, 7167]}]}, {'id1': 1, 'timespan': [{'tsr0': [6724, 7167]}]}], 'id2': 0, 'src_status': 'good', 'timespan': [{'tsr0': [6724, 7167]}]}}

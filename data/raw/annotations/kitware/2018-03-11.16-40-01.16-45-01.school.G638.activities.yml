@@ -1,0 +1,15 @@
+- { meta: "2018-03-11.16-40-01.16-45-01.school.G638" }
+- { meta: { team: "Kitware" } }
+- { meta: "person_talks_to_person 2 instances" }
+- { meta: "person_opens_vehicle_door 1 instances" }
+- { meta: "person_enters_vehicle 1 instances" }
+- { meta: "person_closes_vehicle_door 1 instances" }
+- { meta: "vehicle_reverses 1 instances" }
+- { meta: "vehicle_starts 1 instances" }
+- { act: { act2: {person_talks_to_person: 1.0}, id2: 2923471074063131017, timespan: [{tsr0: [0, 359]}], src_status: janitor, actors: [{id1: 731385131605598849, timespan: [{tsr0: [0, 359]}]}, {id1: 4197159059622175090, timespan: [{tsr0: [0, 359]}]}] } }
+- { act: { act2: {person_talks_to_person: 1.0}, id2: 3570194113466934820, timespan: [{tsr0: [844, 1224]}], src_status: janitor, actors: [{id1: 4029299711263678716, timespan: [{tsr0: [844, 1224]}]}, {id1: 6579683528053301451, timespan: [{tsr0: [844, 1224]}]}] } }
+- { act: { act2: {person_opens_vehicle_door: 1.0}, id2: 8396238062828594700, timespan: [{tsr0: [1989, 2093]}], src_status: janitor, actors: [{id1: 6164164382424375804, timespan: [{tsr0: [1989, 2093]}]}, {id1: 6673633119891104555, timespan: [{tsr0: [1989, 2093]}]}] } }
+- { act: { act2: {person_enters_vehicle: 1.0}, id2: 3117306675220260692, timespan: [{tsr0: [1989, 2269]}], src_status: janitor, actors: [{id1: 5338999230305116345, timespan: [{tsr0: [1989, 2269]}]}, {id1: 3849363643786372262, timespan: [{tsr0: [1989, 2263]}]}] } }
+- { act: { act2: {person_closes_vehicle_door: 1.0}, id2: 8465695115099906563, timespan: [{tsr0: [2209, 2269]}], src_status: janitor, actors: [{id1: 5409098542488035420, timespan: [{tsr0: [2209, 2269]}]}, {id1: 6120928863526168401, timespan: [{tsr0: [2209, 2263]}]}] } }
+- { act: { act2: {vehicle_reverses: 1.0}, id2: 7988106653431177870, timespan: [{tsr0: [3500, 3854]}], src_status: janitor, actors: [{id1: 9151213940290953978, timespan: [{tsr0: [3500, 3854]}]}] } }
+- { act: { act2: {vehicle_starts: 1.0}, id2: 259182973969474495, timespan: [{tsr0: [3951, 4074]}], src_status: janitor, actors: [{id1: 7726714308886733978, timespan: [{tsr0: [3951, 4074]}]}] } }

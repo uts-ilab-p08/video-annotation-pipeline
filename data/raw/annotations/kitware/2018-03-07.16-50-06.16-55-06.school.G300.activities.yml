@@ -1,0 +1,21 @@
+- {'act': {'act2': {'person_enters_scene_through_structure': 1.0}, 'actors': [{'id1': 1, 'timespan': [{'tsr0': [0, 39]}]}], 'id2': 0, 'src_status': 'good', 'timespan': [{'tsr0': [0, 39]}]}}
+- {'act': {'act2': {'person_enters_scene_through_structure': 1.0}, 'actors': [{'id1': 2, 'timespan': [{'tsr0': [0, 79]}]}], 'id2': 1, 'src_status': 'good', 'timespan': [{'tsr0': [0, 79]}]}}
+- {'act': {'act2': {'person_enters_scene_through_structure': 1.0}, 'actors': [{'id1': 3, 'timespan': [{'tsr0': [22, 70]}]}], 'id2': 2, 'src_status': 'good', 'timespan': [{'tsr0': [22, 70]}]}}
+- {'act': {'act2': {'person_enters_scene_through_structure': 1.0}, 'actors': [{'id1': 4, 'timespan': [{'tsr0': [62, 149]}]}], 'id2': 3, 'src_status': 'good', 'timespan': [{'tsr0': [62, 149]}]}}
+- {'act': {'act2': {'person_enters_scene_through_structure': 1.0}, 'actors': [{'id1': 5, 'timespan': [{'tsr0': [60, 124]}]}], 'id2': 4, 'src_status': 'good', 'timespan': [{'tsr0': [60, 124]}]}}
+- {'act': {'act2': {'person_enters_scene_through_structure': 1.0}, 'actors': [{'id1': 6, 'timespan': [{'tsr0': [55, 159]}]}], 'id2': 5, 'src_status': 'good', 'timespan': [{'tsr0': [55, 159]}]}}
+- {'act': {'act2': {'person_enters_scene_through_structure': 1.0}, 'actors': [{'id1': 7, 'timespan': [{'tsr0': [120, 179]}]}], 'id2': 6, 'src_status': 'good', 'timespan': [{'tsr0': [120, 179]}]}}
+- {'act': {'act2': {'person_enters_scene_through_structure': 1.0}, 'actors': [{'id1': 8, 'timespan': [{'tsr0': [133, 192]}]}], 'id2': 7, 'src_status': 'good', 'timespan': [{'tsr0': [133, 192]}]}}
+- {'act': {'act2': {'person_enters_scene_through_structure': 1.0}, 'actors': [{'id1': 9, 'timespan': [{'tsr0': [120, 254]}]}], 'id2': 8, 'src_status': 'good', 'timespan': [{'tsr0': [120, 254]}]}}
+- {'act': {'act2': {'person_enters_scene_through_structure': 1.0}, 'actors': [{'id1': 10, 'timespan': [{'tsr0': [172, 247]}]}], 'id2': 9, 'src_status': 'good', 'timespan': [{'tsr0': [172, 247]}]}}
+- {'act': {'act2': {'person_enters_scene_through_structure': 1.0}, 'actors': [{'id1': 11, 'timespan': [{'tsr0': [200, 301]}]}], 'id2': 10, 'src_status': 'good', 'timespan': [{'tsr0': [200, 301]}]}}
+- {'act': {'act2': {'person_enters_scene_through_structure': 1.0}, 'actors': [{'id1': 12, 'timespan': [{'tsr0': [216, 274]}]}], 'id2': 11, 'src_status': 'good', 'timespan': [{'tsr0': [216, 274]}]}}
+- {'act': {'act2': {'person_enters_scene_through_structure': 1.0}, 'actors': [{'id1': 13, 'timespan': [{'tsr0': [253, 337]}]}], 'id2': 12, 'src_status': 'good', 'timespan': [{'tsr0': [253, 337]}]}}
+- {'act': {'act2': {'person_enters_scene_through_structure': 1.0}, 'actors': [{'id1': 14, 'timespan': [{'tsr0': [268, 391]}]}], 'id2': 13, 'src_status': 'good', 'timespan': [{'tsr0': [268, 391]}]}}
+- {'act': {'act2': {'person_enters_scene_through_structure': 1.0}, 'actors': [{'id1': 15, 'timespan': [{'tsr0': [270, 349]}]}], 'id2': 14, 'src_status': 'good', 'timespan': [{'tsr0': [270, 349]}]}}
+- {'act': {'act2': {'person_enters_scene_through_structure': 1.0}, 'actors': [{'id1': 16, 'timespan': [{'tsr0': [316, 383]}]}], 'id2': 15, 'src_status': 'good', 'timespan': [{'tsr0': [316, 383]}]}}
+- {'act': {'act2': {'person_enters_scene_through_structure': 1.0}, 'actors': [{'id1': 17, 'timespan': [{'tsr0': [366, 419]}]}], 'id2': 16, 'src_status': 'good', 'timespan': [{'tsr0': [366, 419]}]}}
+- {'act': {'act2': {'person_enters_scene_through_structure': 1.0}, 'actors': [{'id1': 18, 'timespan': [{'tsr0': [5309, 5419]}]}], 'id2': 17, 'src_status': 'good', 'timespan': [{'tsr0': [5309, 5419]}]}}
+- {'act': {'act2': {'person_talks_to_person': 1.0}, 'actors': [{'id1': 20, 'timespan': [{'tsr0': [249, 545]}]}, {'id1': 21, 'timespan': [{'tsr0': [249, 545]}]}], 'id2': 19, 'src_status': 'good', 'timespan': [{'tsr0': [249, 545]}]}}
+- {'act': {'act2': {'person_talks_to_person': 1.0}, 'actors': [{'id1': 23, 'timespan': [{'tsr0': [571, 1132]}]}, {'id1': 24, 'timespan': [{'tsr0': [571, 1132]}]}], 'id2': 20, 'src_status': 'good', 'timespan': [{'tsr0': [571, 1132]}]}}
+- {'act': {'act2': {'person_texts_on_phone': 1.0}, 'actors': [{'id1': 19, 'timespan': [{'tsr0': [378, 511]}]}], 'id2': 18, 'src_status': 'good', 'timespan': [{'tsr0': [378, 511]}]}}

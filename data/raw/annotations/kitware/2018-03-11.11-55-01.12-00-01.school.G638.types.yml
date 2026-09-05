@@ -1,0 +1,10 @@
+- { meta: "2018-03-11.11-55-01.12-00-01.school.G638" }
+- { meta: { team: "Kitware" } }
+- { types: { id1: 3423748857843163729, cset3: { person: 1.0 } } }
+- { types: { id1: 4107024081919157508, cset3: { person: 1.0 } } }
+- { types: { id1: 3398587960840790673, cset3: { person: 1.0 } } }
+- { types: { id1: 6918519922034844814, cset3: { person: 1.0 } } }
+- { types: { id1: 5361579779934299287, cset3: { person: 1.0 } } }
+- { types: { id1: 5880451107419432584, cset3: { vehicle: 1.0 } } }
+- { types: { id1: 8792800353758356445, cset3: { vehicle: 1.0 } } }
+- { types: { id1: 7341964269388964012, cset3: { person: 1.0 } } }

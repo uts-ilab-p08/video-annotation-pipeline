@@ -1,0 +1,9 @@
+- { meta: "2018-03-11.16-40-01.16-45-01.school.G420" }
+- { meta: { team: "Kitware" } }
+- { meta: "person_exits_scene_through_structure 3 instances" }
+- { meta: "person_opens_facility_door 2 instances" }
+- { act: { act2: {person_exits_scene_through_structure: 1.0}, id2: 7167526619886428848, timespan: [{tsr0: [64, 134]}], src_status: janitor, actors: [{id1: 6914573596984942864, timespan: [{tsr0: [64, 134]}]}] } }
+- { act: { act2: {person_opens_facility_door: 1.0}, id2: 8750426458695541775, timespan: [{tsr0: [4106, 4199]}], src_status: janitor, actors: [{id1: 5051717896829085449, timespan: [{tsr0: [4106, 4199]}]}] } }
+- { act: { act2: {person_exits_scene_through_structure: 1.0}, id2: 482528888492368885, timespan: [{tsr0: [4106, 4215]}], src_status: janitor, actors: [{id1: 2024415957152572914, timespan: [{tsr0: [4106, 4215]}]}] } }
+- { act: { act2: {person_opens_facility_door: 1.0}, id2: 2753926887616127722, timespan: [{tsr0: [8660, 8744]}], src_status: janitor, actors: [{id1: 4781746631871308287, timespan: [{tsr0: [8660, 8744]}]}] } }
+- { act: { act2: {person_exits_scene_through_structure: 1.0}, id2: 8890400397608626156, timespan: [{tsr0: [8660, 8754]}], src_status: janitor, actors: [{id1: 7063910431799386182, timespan: [{tsr0: [8660, 8754]}]}] } }

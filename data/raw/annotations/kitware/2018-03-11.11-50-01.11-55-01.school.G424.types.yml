@@ -1,0 +1,32 @@
+- { meta: "2018-03-11.11-50-01.11-55-01.school.G424" }
+- { meta: { team: "Kitware" } }
+- { types: { id1: 6307629893211005159, cset3: { vehicle: 1.0 } } }
+- { types: { id1: 2548469239252001389, cset3: { person: 1.0 } } }
+- { types: { id1: 7621445210501294058, cset3: { vehicle: 1.0 } } }
+- { types: { id1: 4106737042087290862, cset3: { person: 1.0 } } }
+- { types: { id1: 4995027774555169618, cset3: { bag: 1.0 } } }
+- { types: { id1: 299841551061067760, cset3: { vehicle: 1.0 } } }
+- { types: { id1: 7426857522193179286, cset3: { person: 1.0 } } }
+- { types: { id1: 3480199223368196448, cset3: { vehicle: 1.0 } } }
+- { types: { id1: 8486850414144365703, cset3: { vehicle: 1.0 } } }
+- { types: { id1: 3129228803826820379, cset3: { person: 1.0 } } }
+- { types: { id1: 4170423797600528381, cset3: { vehicle: 1.0 } } }
+- { types: { id1: 446472889576169945, cset3: { person: 1.0 } } }
+- { types: { id1: 6334428539857184403, cset3: { vehicle: 1.0 } } }
+- { types: { id1: 4925443684980236758, cset3: { vehicle: 1.0 } } }
+- { types: { id1: 9049661959437297560, cset3: { person: 1.0 } } }
+- { types: { id1: 3951671579718133321, cset3: { person: 1.0 } } }
+- { types: { id1: 689182863871910786, cset3: { vehicle: 1.0 } } }
+- { types: { id1: 7295545095754294888, cset3: { vehicle: 1.0 } } }
+- { types: { id1: 1748606610977694294, cset3: { person: 1.0 } } }
+- { types: { id1: 905498244561971108, cset3: { vehicle: 1.0 } } }
+- { types: { id1: 1718730575698960546, cset3: { person: 1.0 } } }
+- { types: { id1: 3008134860576399578, cset3: { vehicle: 1.0 } } }
+- { types: { id1: 4353036515526256163, cset3: { vehicle: 1.0 } } }
+- { types: { id1: 2211401762099307622, cset3: { vehicle: 1.0 } } }
+- { types: { id1: 9043955825293436623, cset3: { vehicle: 1.0 } } }
+- { types: { id1: 6675828170718880426, cset3: { vehicle: 1.0 } } }
+- { types: { id1: 6653220631066813825, cset3: { person: 1.0 } } }
+- { types: { id1: 7129026122218546704, cset3: { person: 1.0 } } }
+- { types: { id1: 3911967733174281073, cset3: { person: 1.0 } } }
+- { types: { id1: 2480647809840129161, cset3: { bag: 1.0 } } }

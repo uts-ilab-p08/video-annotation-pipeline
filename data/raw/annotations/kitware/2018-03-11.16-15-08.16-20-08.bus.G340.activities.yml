@@ -1,0 +1,4 @@
+- { meta: "2018-03-11.16-15-08.16-20-08.bus.G340" }
+- { meta: { team: "Kitware" } }
+- { meta: "person_talks_to_person 1 instances" }
+- { act: { act2: {person_talks_to_person: 1.0}, id2: 3209755483616452704, timespan: [{tsr0: [5639, 7102]}], src_status: janitor, actors: [{id1: 3065280065461624997, timespan: [{tsr0: [5639, 7102]}]}, {id1: 8413632956397855959, timespan: [{tsr0: [5639, 7102]}]}] } }

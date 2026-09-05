@@ -1,0 +1,5 @@
+- { meta: "2018-03-11.16-40-08.16-45-08.bus.G340" }
+- { meta: { team: "Kitware" } }
+- { meta: "person_talks_to_person 2 instances" }
+- { act: { act2: {person_talks_to_person: 1.0}, id2: 5903885446556526331, timespan: [{tsr0: [70, 816]}], src_status: janitor, actors: [{id1: 5540203507113698099, timespan: [{tsr0: [70, 816]}]}, {id1: 8622363940322091311, timespan: [{tsr0: [70, 816]}]}] } }
+- { act: { act2: {person_talks_to_person: 1.0}, id2: 4286430538595248118, timespan: [{tsr0: [2113, 3791]}], src_status: janitor, actors: [{id1: 2710316875344191747, timespan: [{tsr0: [2113, 3791]}]}, {id1: 3061707283309667644, timespan: [{tsr0: [2113, 3791]}]}] } }

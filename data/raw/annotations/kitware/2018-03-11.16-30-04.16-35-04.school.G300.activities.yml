@@ -1,0 +1,6 @@
+- { meta: "2018-03-11.16-30-04.16-35-04.school.G300" }
+- { meta: { team: "Kitware" } }
+- { meta: "vehicle_stops 1 instances" }
+- { meta: "person_exits_vehicle 1 instances" }
+- { act: { act2: {vehicle_stops: 1.0}, id2: 7231271568983696923, timespan: [{tsr0: [0, 92]}], src_status: janitor, actors: [{id1: 2599721038327325046, timespan: [{tsr0: [0, 92]}]}] } }
+- { act: { act2: {person_exits_vehicle: 1.0}, id2: 3820478892691333885, timespan: [{tsr0: [316, 433]}], src_status: janitor, actors: [{id1: 5191458726604809955, timespan: [{tsr0: [316, 433]}]}, {id1: 2941913820279580330, timespan: [{tsr0: [352, 433]}]}] } }

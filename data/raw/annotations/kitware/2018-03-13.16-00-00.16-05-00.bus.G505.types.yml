@@ -1,0 +1,4 @@
+- {'types': {'cset3': {'person': 1.0}, 'id1': 1}}
+- {'types': {'cset3': {'person': 1.0}, 'id1': 2}}
+- {'types': {'cset3': {'vehicle': 1.0}, 'id1': 5}}
+- {'types': {'cset3': {'vehicle': 1.0}, 'id1': 4}}

@@ -1,0 +1,14 @@
+- { meta: "2018-03-11.11-25-00.11-30-01.school.G421" }
+- { meta: { team: "Kitware" } }
+- { meta: "person_enters_scene_through_structure 6 instances" }
+- { meta: "person_opens_facility_door 2 instances" }
+- { meta: "person_exits_scene_through_structure 1 instances" }
+- { act: { act2: {person_enters_scene_through_structure: 1.0}, id2: 3315895014365767498, timespan: [{tsr0: [10, 72]}], src_status: janitor, actors: [{id1: 1367451520919019547, timespan: [{tsr0: [10, 72]}]}] } }
+- { act: { act2: {person_enters_scene_through_structure: 1.0}, id2: 2787498674459451718, timespan: [{tsr0: [59, 99]}], src_status: janitor, actors: [{id1: 8591739826100609747, timespan: [{tsr0: [59, 99]}]}] } }
+- { act: { act2: {person_enters_scene_through_structure: 1.0}, id2: 4942991852640018676, timespan: [{tsr0: [70, 126]}], src_status: janitor, actors: [{id1: 4762813269243896563, timespan: [{tsr0: [70, 126]}]}] } }
+- { act: { act2: {person_enters_scene_through_structure: 1.0}, id2: 2687660413943522719, timespan: [{tsr0: [107, 157]}], src_status: janitor, actors: [{id1: 7417053294780884607, timespan: [{tsr0: [107, 157]}]}] } }
+- { act: { act2: {person_opens_facility_door: 1.0}, id2: 8871977946049685172, timespan: [{tsr0: [6937, 7019]}], src_status: janitor, actors: [{id1: 3386249036758427530, timespan: [{tsr0: [6937, 7019]}]}] } }
+- { act: { act2: {person_exits_scene_through_structure: 1.0}, id2: 5944296340028793605, timespan: [{tsr0: [6965, 7020]}], src_status: janitor, actors: [{id1: 3414988050908947645, timespan: [{tsr0: [6965, 7020]}]}] } }
+- { act: { act2: {person_opens_facility_door: 1.0}, id2: 4066963918643306554, timespan: [{tsr0: [7267, 7293]}], src_status: janitor, actors: [{id1: 6311807087493424782, timespan: [{tsr0: [7267, 7293]}]}] } }
+- { act: { act2: {person_enters_scene_through_structure: 1.0}, id2: 1434854980721549618, timespan: [{tsr0: [7267, 7342]}], src_status: janitor, actors: [{id1: 7451646300638257531, timespan: [{tsr0: [7267, 7342]}]}] } }
+- { act: { act2: {person_enters_scene_through_structure: 1.0}, id2: 7842760303850365494, timespan: [{tsr0: [7895, 7945]}], src_status: janitor, actors: [{id1: 4581689958918038751, timespan: [{tsr0: [7895, 7945]}]}] } }

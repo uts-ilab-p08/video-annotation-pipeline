@@ -1,0 +1,10 @@
+- {'act': {'act2': {'person_talks_to_person': 1.0}, 'actors': [{'id1': 13, 'timespan': [{'tsr0': [246, 425]}]}, {'id1': 12, 'timespan': [{'tsr0': [246, 382]}]}, {'id1': 14, 'timespan': [{'tsr0': [308, 425]}]}], 'id2': 11, 'src_status': 'good', 'timespan': [{'tsr0': [246, 425]}]}}
+- {'act': {'act2': {'person_enters_scene_through_structure': 1.0}, 'actors': [{'id1': 2, 'timespan': [{'tsr0': [245, 332]}]}], 'id2': 1, 'src_status': 'good', 'timespan': [{'tsr0': [245, 332]}]}}
+- {'act': {'act2': {'person_enters_scene_through_structure': 1.0}, 'actors': [{'id1': 4, 'timespan': [{'tsr0': [298, 370]}]}], 'id2': 3, 'src_status': 'good', 'timespan': [{'tsr0': [298, 370]}]}}
+- {'act': {'act2': {'person_enters_scene_through_structure': 1.0}, 'actors': [{'id1': 5, 'timespan': [{'tsr0': [329, 409]}]}], 'id2': 4, 'src_status': 'good', 'timespan': [{'tsr0': [329, 409]}]}}
+- {'act': {'act2': {'person_enters_scene_through_structure': 1.0}, 'actors': [{'id1': 8, 'timespan': [{'tsr0': [1181, 1244]}]}], 'id2': 7, 'src_status': 'good', 'timespan': [{'tsr0': [1181, 1244]}]}}
+- {'act': {'act2': {'person_enters_scene_through_structure': 1.0}, 'actors': [{'id1': 10, 'timespan': [{'tsr0': [1991, 2074]}]}], 'id2': 9, 'src_status': 'good', 'timespan': [{'tsr0': [1991, 2074]}]}}
+- {'act': {'act2': {'person_enters_scene_through_structure': 1.0}, 'actors': [{'id1': 11, 'timespan': [{'tsr0': [2032, 2102]}]}], 'id2': 10, 'src_status': 'good', 'timespan': [{'tsr0': [2032, 2102]}]}}
+- {'act': {'act2': {'person_opens_facility_door': 1.0}, 'actors': [{'id1': 1, 'timespan': [{'tsr0': [245, 260]}]}], 'id2': 0, 'src_status': 'good', 'timespan': [{'tsr0': [245, 260]}]}}
+- {'act': {'act2': {'person_opens_facility_door': 1.0}, 'actors': [{'id1': 7, 'timespan': [{'tsr0': [1181, 1191]}]}], 'id2': 6, 'src_status': 'good', 'timespan': [{'tsr0': [1181, 1191]}]}}
+- {'act': {'act2': {'person_opens_facility_door': 1.0}, 'actors': [{'id1': 9, 'timespan': [{'tsr0': [1991, 2009]}]}], 'id2': 8, 'src_status': 'good', 'timespan': [{'tsr0': [1991, 2009]}]}}

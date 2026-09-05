@@ -1,0 +1,22 @@
+- { meta: "2018-03-11.16-10-01.16-15-01.bus.G506" }
+- { meta: { team: "Kitware" } }
+- { meta: "vehicle_turns_right 1 instances" }
+- { meta: "vehicle_starts 2 instances" }
+- { meta: "vehicle_stops 1 instances" }
+- { meta: "vehicle_turns_left 3 instances" }
+- { meta: "person_opens_vehicle_door 2 instances" }
+- { meta: "person_enters_vehicle 1 instances" }
+- { meta: "person_talks_to_person 1 instances" }
+- { meta: "person_closes_vehicle_door 1 instances" }
+- { act: { act2: {vehicle_turns_right: 1.0}, id2: 593932969885148124, timespan: [{tsr0: [1615, 1721]}], src_status: janitor, actors: [{id1: 7952439252392519400, timespan: [{tsr0: [1615, 1721]}]}] } }
+- { act: { act2: {vehicle_starts: 1.0}, id2: 1570703190886392087, timespan: [{tsr0: [3920, 3961]}], src_status: janitor, actors: [{id1: 307966576592200123, timespan: [{tsr0: [3920, 3961]}]}] } }
+- { act: { act2: {vehicle_stops: 1.0}, id2: 3341956915254338057, timespan: [{tsr0: [3962, 4024]}], src_status: janitor, actors: [{id1: 6178298372142080816, timespan: [{tsr0: [3962, 4024]}]}] } }
+- { act: { act2: {vehicle_turns_left: 1.0}, id2: 2516818441033459386, timespan: [{tsr0: [4122, 4306]}], src_status: janitor, actors: [{id1: 6481988360665769749, timespan: [{tsr0: [4122, 4306]}]}] } }
+- { act: { act2: {vehicle_turns_left: 1.0}, id2: 7872968534753846982, timespan: [{tsr0: [5318, 5466]}], src_status: janitor, actors: [{id1: 4013856630793118567, timespan: [{tsr0: [5318, 5466]}]}] } }
+- { act: { act2: {vehicle_turns_left: 1.0}, id2: 1758728368893175046, timespan: [{tsr0: [5972, 6136]}], src_status: janitor, actors: [{id1: 6782335638377080418, timespan: [{tsr0: [5972, 6136]}]}] } }
+- { act: { act2: {person_opens_vehicle_door: 1.0}, id2: 2898794724675297581, timespan: [{tsr0: [3573, 3634]}], src_status: janitor, actors: [{id1: 3494574736852198354, timespan: [{tsr0: [3573, 3634]}]}, {id1: 5541430731293959851, timespan: [{tsr0: [3573, 3632]}]}] } }
+- { act: { act2: {person_enters_vehicle: 1.0}, id2: 2300725262489395301, timespan: [{tsr0: [3554, 3650]}], src_status: janitor, actors: [{id1: 1439849316115948799, timespan: [{tsr0: [3554, 3650]}]}, {id1: 5310863433211651409, timespan: [{tsr0: [3554, 3632]}]}] } }
+- { act: { act2: {person_talks_to_person: 1.0}, id2: 8992657225624757203, timespan: [{tsr0: [5485, 6004]}], src_status: janitor, actors: [{id1: 443530090055540979, timespan: [{tsr0: [5485, 6004]}]}, {id1: 1641344085511906287, timespan: [{tsr0: [5485, 6004]}]}] } }
+- { act: { act2: {person_opens_vehicle_door: 1.0}, id2: 4217872957837485830, timespan: [{tsr0: [3474, 3528]}], src_status: gladiator2, actors: [{id1: 5535148977400554515, timespan: [{tsr0: [3474, 3528]}]}, {id1: 3524841419664566219, timespan: [{tsr0: [3474, 3528]}]}] } }
+- { act: { act2: {person_closes_vehicle_door: 1.0}, id2: 3171473536649535544, timespan: [{tsr0: [3510, 3583]}], src_status: gladiator2, actors: [{id1: 1330953193598166357, timespan: [{tsr0: [3510, 3583]}]}, {id1: 1838350985673679106, timespan: [{tsr0: [3510, 3583]}]}] } }
+- { act: { act2: {vehicle_starts: 1.0}, id2: 27571247812814709, timespan: [{tsr0: [4122, 4269]}], src_status: gladiator2, actors: [{id1: 783609768033396641, timespan: [{tsr0: [4122, 4269]}]}] } }

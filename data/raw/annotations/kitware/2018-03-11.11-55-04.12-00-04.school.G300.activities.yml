@@ -1,0 +1,4 @@
+- { meta: "2018-03-11.11-55-04.12-00-04.school.G300" }
+- { meta: { team: "Kitware" } }
+- { meta: "person_texts_on_phone 1 instances" }
+- { act: { act2: {person_texts_on_phone: 1.0}, id2: 2697360527451072238, timespan: [{tsr0: [1000, 1059]}], src_status: janitor, actors: [{id1: 3510758794728677930, timespan: [{tsr0: [1000, 1059]}]}] } }

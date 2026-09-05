@@ -1,0 +1,7 @@
+- { meta: "2018-03-11.16-15-01.16-20-01.bus.G506" }
+- { meta: { team: "Kitware" } }
+- { types: { id1: 5539199715679643293, cset3: { person: 1.0 } } }
+- { types: { id1: 265039523276136757, cset3: { person: 1.0 } } }
+- { types: { id1: 3610794466877480960, cset3: { vehicle: 1.0 } } }
+- { types: { id1: 6046174380797993801, cset3: { person: 1.0 } } }
+- { types: { id1: 3733055852070348005, cset3: { person: 1.0 } } }

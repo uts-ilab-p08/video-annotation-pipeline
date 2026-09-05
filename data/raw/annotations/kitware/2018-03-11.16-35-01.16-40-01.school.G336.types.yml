@@ -1,0 +1,25 @@
+- { meta: "2018-03-11.16-35-01.16-40-01.school.G336" }
+- { meta: { team: "Kitware" } }
+- { types: { id1: 9008316316914033717, cset3: { vehicle: 1.0 } } }
+- { types: { id1: 2110228361535890688, cset3: { vehicle: 1.0 } } }
+- { types: { id1: 4616243951919571847, cset3: { person: 1.0 } } }
+- { types: { id1: 9015316354913575386, cset3: { person: 1.0 } } }
+- { types: { id1: 7080943855747343195, cset3: { person: 1.0 } } }
+- { types: { id1: 2299514663455269794, cset3: { person: 1.0 } } }
+- { types: { id1: 3168539266334336337, cset3: { person: 1.0 } } }
+- { types: { id1: 6077478933939528310, cset3: { person: 1.0 } } }
+- { types: { id1: 8578804207483494897, cset3: { vehicle: 1.0 } } }
+- { types: { id1: 1335534985983172787, cset3: { person: 1.0 } } }
+- { types: { id1: 14060038771975756, cset3: { vehicle: 1.0 } } }
+- { types: { id1: 3538096482551408632, cset3: { vehicle: 1.0 } } }
+- { types: { id1: 872101617729513181, cset3: { person: 1.0 } } }
+- { types: { id1: 9169464824616691045, cset3: { person: 1.0 } } }
+- { types: { id1: 8091153595382801096, cset3: { vehicle: 1.0 } } }
+- { types: { id1: 6269744103507797225, cset3: { vehicle: 1.0 } } }
+- { types: { id1: 7099150229786272326, cset3: { person: 1.0 } } }
+- { types: { id1: 6326378439867179915, cset3: { vehicle: 1.0 } } }
+- { types: { id1: 2794153665592108834, cset3: { person: 1.0 } } }
+- { types: { id1: 7112655945788761498, cset3: { person: 1.0 } } }
+- { types: { id1: 1706626888350900823, cset3: { person: 1.0 } } }
+- { types: { id1: 1096550922019218027, cset3: { vehicle: 1.0 } } }
+- { types: { id1: 1153606467571196445, cset3: { vehicle: 1.0 } } }

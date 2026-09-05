@@ -1,0 +1,14 @@
+- { meta: "2018-03-11.11-30-00.11-35-00.school.G328" }
+- { meta: { team: "Kitware" } }
+- { meta: "person_enters_scene_through_structure 5 instances" }
+- { meta: "person_opens_facility_door 2 instances" }
+- { meta: "person_talks_to_person 2 instances" }
+- { act: { act2: {person_enters_scene_through_structure: 1.0}, id2: 8390904714007291442, timespan: [{tsr0: [0, 52]}], src_status: janitor, actors: [{id1: 7498686448122111705, timespan: [{tsr0: [0, 52]}]}] } }
+- { act: { act2: {person_enters_scene_through_structure: 1.0}, id2: 710726038248761206, timespan: [{tsr0: [257, 315]}], src_status: janitor, actors: [{id1: 2893465509251491792, timespan: [{tsr0: [257, 315]}]}] } }
+- { act: { act2: {person_enters_scene_through_structure: 1.0}, id2: 7607716199727408700, timespan: [{tsr0: [283, 356]}], src_status: janitor, actors: [{id1: 3100535971858063422, timespan: [{tsr0: [283, 356]}]}] } }
+- { act: { act2: {person_opens_facility_door: 1.0}, id2: 3970860681793807525, timespan: [{tsr0: [732, 794]}], src_status: janitor, actors: [{id1: 676196654916543202, timespan: [{tsr0: [732, 794]}]}] } }
+- { act: { act2: {person_enters_scene_through_structure: 1.0}, id2: 1425177496864629966, timespan: [{tsr0: [732, 814]}], src_status: janitor, actors: [{id1: 5860004528209241524, timespan: [{tsr0: [732, 814]}]}] } }
+- { act: { act2: {person_talks_to_person: 1.0}, id2: 5796193514686456570, timespan: [{tsr0: [467, 2278]}], src_status: janitor, actors: [{id1: 3624050090806224368, timespan: [{tsr0: [467, 2278]}]}, {id1: 605269270424920483, timespan: [{tsr0: [467, 2278]}]}] } }
+- { act: { act2: {person_talks_to_person: 1.0}, id2: 4399519033445459598, timespan: [{tsr0: [559, 2829]}], src_status: janitor, actors: [{id1: 3181384559346622534, timespan: [{tsr0: [559, 2829]}]}, {id1: 6277375832081343809, timespan: [{tsr0: [559, 2829]}]}] } }
+- { act: { act2: {person_opens_facility_door: 1.0}, id2: 8956592039225370255, timespan: [{tsr0: [257, 297]}], src_status: gladiator2, actors: [{id1: 5345900449071441087, timespan: [{tsr0: [257, 297]}]}] } }
+- { act: { act2: {person_enters_scene_through_structure: 1.0}, id2: 2541860595379742255, timespan: [{tsr0: [907, 960]}], src_status: gladiator2, actors: [{id1: 4167168442102391611, timespan: [{tsr0: [907, 960]}]}] } }

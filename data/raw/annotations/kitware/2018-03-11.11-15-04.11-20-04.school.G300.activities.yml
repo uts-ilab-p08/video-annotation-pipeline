@@ -1,0 +1,35 @@
+- { meta: "2018-03-11.11-15-04.11-20-04.school.G300" }
+- { meta: { team: "Kitware" } }
+- { meta: "person_talks_to_person 2 instances" }
+- { meta: "person_talks_on_phone 2 instances" }
+- { meta: "person_opens_vehicle_door 3 instances" }
+- { meta: "person_enters_vehicle 3 instances" }
+- { meta: "person_opens_trunk 1 instances" }
+- { meta: "person_closes_vehicle_door 3 instances" }
+- { meta: "person_closes_trunk 1 instances" }
+- { meta: "vehicle_reverses 1 instances" }
+- { meta: "vehicle_starts 1 instances" }
+- { meta: "person_texts_on_phone 1 instances" }
+- { meta: "person_loads_vehicle 1 instances" }
+- { meta: "person_transfers_object 2 instances" }
+- { act: { act2: {person_talks_to_person: 1.0}, id2: 1018182209418994824, timespan: [{tsr0: [1657, 2352]}], src_status: janitor, actors: [{id1: 6880564530272249634, timespan: [{tsr0: [1657, 2352]}]}, {id1: 269221205578622187, timespan: [{tsr0: [1657, 2352]}]}] } }
+- { act: { act2: {person_talks_to_person: 1.0}, id2: 3925821409403217867, timespan: [{tsr0: [1893, 2305]}], src_status: janitor, actors: [{id1: 5865283946126518142, timespan: [{tsr0: [1893, 2305]}]}, {id1: 3958114663788259115, timespan: [{tsr0: [1893, 2305]}]}] } }
+- { act: { act2: {person_talks_on_phone: 1.0}, id2: 3754252132815676581, timespan: [{tsr0: [1806, 2196]}], src_status: janitor, actors: [{id1: 416932250911908219, timespan: [{tsr0: [1806, 2196]}]}] } }
+- { act: { act2: {person_opens_vehicle_door: 1.0}, id2: 3282938525857587976, timespan: [{tsr0: [4789, 4862]}], src_status: janitor, actors: [{id1: 4820496049008485346, timespan: [{tsr0: [4789, 4862]}]}, {id1: 5060317445456241882, timespan: [{tsr0: [4789, 4862]}]}] } }
+- { act: { act2: {person_enters_vehicle: 1.0}, id2: 7669420061519357608, timespan: [{tsr0: [4789, 5002]}], src_status: janitor, actors: [{id1: 707198096344162510, timespan: [{tsr0: [4789, 5002]}]}, {id1: 3517893131799798044, timespan: [{tsr0: [4789, 4923]}]}] } }
+- { act: { act2: {person_opens_trunk: 1.0}, id2: 6634347181470195942, timespan: [{tsr0: [4745, 5087]}], src_status: janitor, actors: [{id1: 36926811879088559, timespan: [{tsr0: [4745, 5087]}]}, {id1: 4683329079917421976, timespan: [{tsr0: [4745, 5087]}]}] } }
+- { act: { act2: {person_closes_vehicle_door: 1.0}, id2: 3417875583527330812, timespan: [{tsr0: [4889, 5002]}], src_status: janitor, actors: [{id1: 5113014347946107813, timespan: [{tsr0: [4889, 5002]}]}, {id1: 8306067617136813272, timespan: [{tsr0: [4889, 4923]}]}] } }
+- { act: { act2: {person_closes_trunk: 1.0}, id2: 9053531897690792224, timespan: [{tsr0: [5069, 5134]}], src_status: janitor, actors: [{id1: 4071194165520180553, timespan: [{tsr0: [5069, 5134]}]}, {id1: 3609553833773704829, timespan: [{tsr0: [5069, 5134]}]}] } }
+- { act: { act2: {person_opens_vehicle_door: 1.0}, id2: 1404376313197209372, timespan: [{tsr0: [5176, 5243]}], src_status: janitor, actors: [{id1: 8629767059949692671, timespan: [{tsr0: [5176, 5243]}]}, {id1: 4882033364075782575, timespan: [{tsr0: [5176, 5243]}]}] } }
+- { act: { act2: {person_closes_vehicle_door: 1.0}, id2: 736242143738700625, timespan: [{tsr0: [5260, 5338]}], src_status: janitor, actors: [{id1: 4639073988825392306, timespan: [{tsr0: [5260, 5338]}]}, {id1: 8300045670221587574, timespan: [{tsr0: [5260, 5293]}]}] } }
+- { act: { act2: {person_closes_vehicle_door: 1.0}, id2: 3815448863665431421, timespan: [{tsr0: [5271, 5342]}], src_status: janitor, actors: [{id1: 2763018708114645067, timespan: [{tsr0: [5271, 5330]}]}, {id1: 7589930836518872797, timespan: [{tsr0: [5271, 5342]}]}] } }
+- { act: { act2: {person_enters_vehicle: 1.0}, id2: 1366987867241719673, timespan: [{tsr0: [5176, 5338]}], src_status: janitor, actors: [{id1: 2311603460359431838, timespan: [{tsr0: [5176, 5338]}]}, {id1: 1773563774604714968, timespan: [{tsr0: [5176, 5293]}]}] } }
+- { act: { act2: {person_enters_vehicle: 1.0}, id2: 3533836599921877045, timespan: [{tsr0: [5202, 5342]}], src_status: janitor, actors: [{id1: 2765409259438252534, timespan: [{tsr0: [5202, 5330]}]}, {id1: 2278645154385305915, timespan: [{tsr0: [5202, 5342]}]}] } }
+- { act: { act2: {vehicle_reverses: 1.0}, id2: 995809645386475231, timespan: [{tsr0: [5736, 6011]}], src_status: janitor, actors: [{id1: 8059400708085393344, timespan: [{tsr0: [5736, 6011]}]}] } }
+- { act: { act2: {vehicle_starts: 1.0}, id2: 4223367634430730749, timespan: [{tsr0: [6057, 6154]}], src_status: janitor, actors: [{id1: 7190664661510136579, timespan: [{tsr0: [6057, 6154]}]}] } }
+- { act: { act2: {person_texts_on_phone: 1.0}, id2: 238233903142512416, timespan: [{tsr0: [379, 1626]}], src_status: janitor, actors: [{id1: 6857754883350799486, timespan: [{tsr0: [379, 1626]}]}] } }
+- { act: { act2: {person_talks_on_phone: 1.0}, id2: 121701259684521048, timespan: [{tsr0: [1632, 1747]}], src_status: janitor, actors: [{id1: 7714235743098053652, timespan: [{tsr0: [1632, 1747]}]}] } }
+- { act: { act2: {person_loads_vehicle: 1.0}, id2: 8140471204358529175, timespan: [{tsr0: [5023, 5089]}], src_status: janitor, actors: [{id1: 4311912498779627961, timespan: [{tsr0: [5023, 5089]}]}, {id1: 6022708813324199573, timespan: [{tsr0: [5023, 5089]}]}, {id1: 553914351259723063, timespan: [{tsr0: [5023, 5089]}]}] } }
+- { act: { act2: {person_transfers_object: 1.0}, id2: 7658869775556027585, timespan: [{tsr0: [2036, 2106]}], src_status: janitor, actors: [{id1: 6145595044193149792, timespan: [{tsr0: [2036, 2106]}]}, {id1: 4094408595326575609, timespan: [{tsr0: [2036, 2106]}]}, {id1: 6047709913562096153, timespan: [{tsr0: [2036, 2106]}]}] } }
+- { act: { act2: {person_transfers_object: 1.0}, id2: 3828392581866038575, timespan: [{tsr0: [2222, 2285]}], src_status: janitor, actors: [{id1: 9174995700383228611, timespan: [{tsr0: [2222, 2285]}]}, {id1: 3556866753952360257, timespan: [{tsr0: [2222, 2285]}]}, {id1: 7806783515536335698, timespan: [{tsr0: [2222, 2285]}]}] } }
+- { act: { act2: {person_opens_vehicle_door: 1.0}, id2: 8304372351692088701, timespan: [{tsr0: [5202, 5272]}], src_status: gladiator2, actors: [{id1: 3948832251920850949, timespan: [{tsr0: [5202, 5272]}]}, {id1: 8656289866857784553, timespan: [{tsr0: [5202, 5272]}]}] } }

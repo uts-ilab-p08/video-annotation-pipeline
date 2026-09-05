@@ -1,0 +1,5 @@
+- { meta: "2018-03-11.11-45-08.11-50-08.hospital.G436" }
+- { meta: { team: "Kitware" } }
+- { types: { id1: 7888494892384199624, cset3: { person: 1.0 } } }
+- { types: { id1: 8586700688045024482, cset3: { person: 1.0 } } }
+- { types: { id1: 7090608243119498939, cset3: { person: 1.0 } } }

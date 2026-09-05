@@ -1,0 +1,11 @@
+- {'act': {'act2': {'person_enters_scene_through_structure': 1.0}, 'actors': [{'id1': 1, 'timespan': [{'tsr0': [1574, 2109]}]}], 'id2': 0, 'src_status': 'good', 'timespan': [{'tsr0': [1574, 2109]}]}}
+- {'act': {'act2': {'person_enters_scene_through_structure': 1.0}, 'actors': [{'id1': 4, 'timespan': [{'tsr0': [1535, 2018]}]}], 'id2': 3, 'src_status': 'good', 'timespan': [{'tsr0': [1535, 2018]}]}}
+- {'act': {'act2': {'person_enters_scene_through_structure': 1.0}, 'actors': [{'id1': 7, 'timespan': [{'tsr0': [2157, 2545]}]}], 'id2': 6, 'src_status': 'good', 'timespan': [{'tsr0': [2157, 2545]}]}}
+- {'act': {'act2': {'person_exits_scene_through_structure': 1.0}, 'actors': [{'id1': 11, 'timespan': [{'tsr0': [3216, 3783]}]}], 'id2': 9, 'src_status': 'good', 'timespan': [{'tsr0': [3216, 3783]}]}}
+- {'act': {'act2': {'person_exits_scene_through_structure': 1.0}, 'actors': [{'id1': 28, 'timespan': [{'tsr0': [3223, 3799]}]}], 'id2': 26, 'src_status': 'good', 'timespan': [{'tsr0': [3223, 3799]}]}}
+- {'act': {'act2': {'person_exits_scene_through_structure': 1.0}, 'actors': [{'id1': 18, 'timespan': [{'tsr0': [3987, 4469]}]}], 'id2': 27, 'src_status': 'good', 'timespan': [{'tsr0': [3987, 4469]}]}}
+- {'act': {'act2': {'person_exits_scene_through_structure': 1.0}, 'actors': [{'id1': 14, 'timespan': [{'tsr0': [5398, 5948]}]}], 'id2': 28, 'src_status': 'good', 'timespan': [{'tsr0': [5398, 5948]}]}}
+- {'act': {'act2': {'person_exits_scene_through_structure': 1.0}, 'actors': [{'id1': 15, 'timespan': [{'tsr0': [5322, 5915]}]}], 'id2': 29, 'src_status': 'good', 'timespan': [{'tsr0': [5322, 5915]}]}}
+- {'act': {'act2': {'person_talks_to_person': 1.0}, 'actors': [{'id1': 25, 'timespan': [{'tsr0': [3240, 3986]}]}, {'id1': 26, 'timespan': [{'tsr0': [3240, 3986]}]}], 'id2': 24, 'src_status': 'good', 'timespan': [{'tsr0': [3240, 3986]}]}}
+- {'act': {'act2': {'person_talks_to_person': 1.0}, 'actors': [{'id1': 29, 'timespan': [{'tsr0': [5398, 6130]}]}, {'id1': 30, 'timespan': [{'tsr0': [5398, 6130]}]}], 'id2': 31, 'src_status': 'good', 'timespan': [{'tsr0': [5398, 6130]}]}}
+- {'act': {'act2': {'person_talks_to_person': 1.0}, 'actors': [{'id1': 32, 'timespan': [{'tsr0': [1398, 2018]}]}, {'id1': 31, 'timespan': [{'tsr0': [1398, 2018]}]}], 'id2': 32, 'src_status': 'good', 'timespan': [{'tsr0': [1398, 2018]}]}}

@@ -1,0 +1,16 @@
+- { meta: "2018-03-11.16-25-01.16-30-01.school.G328" }
+- { meta: { team: "Kitware" } }
+- { meta: "person_exits_scene_through_structure 4 instances" }
+- { meta: "vehicle_stops 2 instances" }
+- { meta: "vehicle_starts 2 instances" }
+- { meta: "vehicle_turns_right 2 instances" }
+- { act: { act2: {person_exits_scene_through_structure: 1.0}, id2: 7892329969986578243, timespan: [{tsr0: [3754, 3789]}], src_status: janitor, actors: [{id1: 1400662918896755221, timespan: [{tsr0: [3754, 3789]}]}] } }
+- { act: { act2: {person_exits_scene_through_structure: 1.0}, id2: 6018974150082142910, timespan: [{tsr0: [4276, 4312]}], src_status: janitor, actors: [{id1: 2763484351251227519, timespan: [{tsr0: [4276, 4312]}]}] } }
+- { act: { act2: {person_exits_scene_through_structure: 1.0}, id2: 4094952590042375086, timespan: [{tsr0: [4304, 4343]}], src_status: janitor, actors: [{id1: 1282580683311949500, timespan: [{tsr0: [4304, 4343]}]}] } }
+- { act: { act2: {person_exits_scene_through_structure: 1.0}, id2: 264919653284749979, timespan: [{tsr0: [4340, 4375]}], src_status: janitor, actors: [{id1: 2805943740900025775, timespan: [{tsr0: [4340, 4375]}]}] } }
+- { act: { act2: {vehicle_stops: 1.0}, id2: 8857409755661641256, timespan: [{tsr0: [4239, 4336]}], src_status: janitor, actors: [{id1: 138395974496822275, timespan: [{tsr0: [4239, 4336]}]}] } }
+- { act: { act2: {vehicle_starts: 1.0}, id2: 8623728819420864770, timespan: [{tsr0: [4425, 4530]}], src_status: janitor, actors: [{id1: 1300654769798620325, timespan: [{tsr0: [4425, 4530]}]}] } }
+- { act: { act2: {vehicle_stops: 1.0}, id2: 1852426609700054524, timespan: [{tsr0: [7421, 7544]}], src_status: janitor, actors: [{id1: 8701365313678747005, timespan: [{tsr0: [7421, 7544]}]}] } }
+- { act: { act2: {vehicle_starts: 1.0}, id2: 1714728352199616049, timespan: [{tsr0: [7594, 7696]}], src_status: janitor, actors: [{id1: 5989691382567216145, timespan: [{tsr0: [7594, 7696]}]}] } }
+- { act: { act2: {vehicle_turns_right: 1.0}, id2: 5663222507224605224, timespan: [{tsr0: [3667, 3869]}], src_status: janitor, actors: [{id1: 3023186089259049662, timespan: [{tsr0: [3667, 3869]}]}] } }
+- { act: { act2: {vehicle_turns_right: 1.0}, id2: 7660879108623475587, timespan: [{tsr0: [7021, 7194]}], src_status: janitor, actors: [{id1: 9146848964922384542, timespan: [{tsr0: [7021, 7194]}]}] } }

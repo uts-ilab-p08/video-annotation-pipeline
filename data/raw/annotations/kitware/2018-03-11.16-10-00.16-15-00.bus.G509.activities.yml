@@ -1,0 +1,4 @@
+- { meta: "2018-03-11.16-10-00.16-15-00.bus.G509" }
+- { meta: { team: "Kitware" } }
+- { meta: "person_exits_scene_through_structure 1 instances" }
+- { act: { act2: {person_exits_scene_through_structure: 1.0}, id2: 484178495213085703, timespan: [{tsr0: [5613, 5683]}], src_status: janitor, actors: [{id1: 3638703214365484824, timespan: [{tsr0: [5613, 5683]}]}] } }

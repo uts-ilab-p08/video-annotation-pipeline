@@ -1,0 +1,23 @@
+- { meta: "2018-03-11.11-55-00.12-00-00.school.G423" }
+- { meta: { team: "Kitware" } }
+- { meta: "person_texts_on_phone 2 instances" }
+- { meta: "person_talks_to_person 3 instances" }
+- { meta: "person_enters_scene_through_structure 6 instances" }
+- { meta: "person_exits_scene_through_structure 6 instances" }
+- { act: { act2: {person_texts_on_phone: 1.0}, id2: 5619077141313397595, timespan: [{tsr0: [129, 262]}], src_status: janitor, actors: [{id1: 1375108383282898346, timespan: [{tsr0: [129, 262]}]}] } }
+- { act: { act2: {person_talks_to_person: 1.0}, id2: 222431128450738067, timespan: [{tsr0: [0, 1799]}], src_status: janitor, actors: [{id1: 2123351694007608740, timespan: [{tsr0: [0, 1799]}]}, {id1: 7911294075591303658, timespan: [{tsr0: [0, 1799]}]}] } }
+- { act: { act2: {person_texts_on_phone: 1.0}, id2: 7470792138751747265, timespan: [{tsr0: [736, 1014]}], src_status: janitor, actors: [{id1: 5158189848160608881, timespan: [{tsr0: [736, 1014]}]}] } }
+- { act: { act2: {person_talks_to_person: 1.0}, id2: 3931262018944214037, timespan: [{tsr0: [86, 252]}], src_status: janitor, actors: [{id1: 3763900962662163104, timespan: [{tsr0: [86, 252]}]}, {id1: 407165736469472992, timespan: [{tsr0: [86, 252]}]}] } }
+- { act: { act2: {person_enters_scene_through_structure: 1.0}, id2: 7016487555497010673, timespan: [{tsr0: [75, 122]}], src_status: janitor, actors: [{id1: 2470140612230881620, timespan: [{tsr0: [75, 122]}]}] } }
+- { act: { act2: {person_enters_scene_through_structure: 1.0}, id2: 8985152539485643357, timespan: [{tsr0: [87, 141]}], src_status: janitor, actors: [{id1: 3227422552215168559, timespan: [{tsr0: [87, 141]}]}] } }
+- { act: { act2: {person_enters_scene_through_structure: 1.0}, id2: 1986364780562097538, timespan: [{tsr0: [736, 779]}], src_status: janitor, actors: [{id1: 3783344112542490812, timespan: [{tsr0: [736, 779]}]}] } }
+- { act: { act2: {person_enters_scene_through_structure: 1.0}, id2: 2657431494700344001, timespan: [{tsr0: [1493, 1539]}], src_status: janitor, actors: [{id1: 6644959497322832871, timespan: [{tsr0: [1493, 1539]}]}] } }
+- { act: { act2: {person_enters_scene_through_structure: 1.0}, id2: 5495097911254327503, timespan: [{tsr0: [2817, 2863]}], src_status: janitor, actors: [{id1: 6472728227303466481, timespan: [{tsr0: [2817, 2863]}]}] } }
+- { act: { act2: {person_enters_scene_through_structure: 1.0}, id2: 6941633020551831684, timespan: [{tsr0: [3138, 3180]}], src_status: janitor, actors: [{id1: 5917660778638714106, timespan: [{tsr0: [3138, 3180]}]}] } }
+- { act: { act2: {person_talks_to_person: 1.0}, id2: 7369079526759866988, timespan: [{tsr0: [2843, 3333]}], src_status: janitor, actors: [{id1: 2668427766248121317, timespan: [{tsr0: [2843, 3333]}]}, {id1: 3148496503893468834, timespan: [{tsr0: [2843, 3284]}]}] } }
+- { act: { act2: {person_exits_scene_through_structure: 1.0}, id2: 2027298797938156196, timespan: [{tsr0: [3248, 3288]}], src_status: janitor, actors: [{id1: 5364842322350843102, timespan: [{tsr0: [3248, 3288]}]}] } }
+- { act: { act2: {person_exits_scene_through_structure: 1.0}, id2: 20368216933738445, timespan: [{tsr0: [3300, 3333]}], src_status: janitor, actors: [{id1: 3003274902761250819, timespan: [{tsr0: [3300, 3333]}]}] } }
+- { act: { act2: {person_exits_scene_through_structure: 1.0}, id2: 5772888672465396114, timespan: [{tsr0: [3319, 3360]}], src_status: janitor, actors: [{id1: 5981726809358444241, timespan: [{tsr0: [3319, 3360]}]}] } }
+- { act: { act2: {person_exits_scene_through_structure: 1.0}, id2: 7178175816242602581, timespan: [{tsr0: [6741, 6781]}], src_status: janitor, actors: [{id1: 1912299254081266829, timespan: [{tsr0: [6741, 6781]}]}] } }
+- { act: { act2: {person_exits_scene_through_structure: 1.0}, id2: 4124895217856094556, timespan: [{tsr0: [3698, 3747]}], src_status: janitor, actors: [{id1: 9082206113274405583, timespan: [{tsr0: [3698, 3747]}]}] } }
+- { act: { act2: {person_exits_scene_through_structure: 1.0}, id2: 4333889020539773336, timespan: [{tsr0: [3353, 3396]}], src_status: gladiator2, actors: [{id1: 6958019962392094694, timespan: [{tsr0: [3353, 3396]}]}] } }

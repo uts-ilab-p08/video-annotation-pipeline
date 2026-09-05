@@ -1,0 +1,36 @@
+- { meta: "2018-03-11.11-20-08.11-25-08.hospital.G436" }
+- { meta: { team: "Kitware" } }
+- { types: { id1: 7527926598228124175, cset3: { vehicle: 1.0 } } }
+- { types: { id1: 5682563332753172410, cset3: { person: 1.0 } } }
+- { types: { id1: 9201784917862588704, cset3: { vehicle: 1.0 } } }
+- { types: { id1: 4203015014628664399, cset3: { person: 1.0 } } }
+- { types: { id1: 8282049338674782799, cset3: { vehicle: 1.0 } } }
+- { types: { id1: 5942656428783051599, cset3: { person: 1.0 } } }
+- { types: { id1: 4600000080273056074, cset3: { vehicle: 1.0 } } }
+- { types: { id1: 472823665206797487, cset3: { vehicle: 1.0 } } }
+- { types: { id1: 6710903050697057746, cset3: { vehicle: 1.0 } } }
+- { types: { id1: 4088374981888517263, cset3: { person: 1.0 } } }
+- { types: { id1: 5634296777055840171, cset3: { person: 1.0 } } }
+- { types: { id1: 628582815765865360, cset3: { vehicle: 1.0 } } }
+- { types: { id1: 3972659226626630702, cset3: { vehicle: 1.0 } } }
+- { types: { id1: 704405139600811071, cset3: { vehicle: 1.0 } } }
+- { types: { id1: 41447583612444804, cset3: { vehicle: 1.0 } } }
+- { types: { id1: 5351107404982559910, cset3: { vehicle: 1.0 } } }
+- { types: { id1: 2711013755767431597, cset3: { person: 1.0 } } }
+- { types: { id1: 7570584542909671168, cset3: { vehicle: 1.0 } } }
+- { types: { id1: 7579866118314762483, cset3: { person: 1.0 } } }
+- { types: { id1: 5602520598553141895, cset3: { vehicle: 1.0 } } }
+- { types: { id1: 108002357844287988, cset3: { person: 1.0 } } }
+- { types: { id1: 741737486192387379, cset3: { vehicle: 1.0 } } }
+- { types: { id1: 5874489168149882092, cset3: { person: 1.0 } } }
+- { types: { id1: 6187562809239053958, cset3: { vehicle: 1.0 } } }
+- { types: { id1: 3960522986733217712, cset3: { person: 1.0 } } }
+- { types: { id1: 3013363413961089077, cset3: { vehicle: 1.0 } } }
+- { types: { id1: 7718205728753132172, cset3: { person: 1.0 } } }
+- { types: { id1: 4100936368416433771, cset3: { vehicle: 1.0 } } }
+- { types: { id1: 8964971106743001297, cset3: { person: 1.0 } } }
+- { types: { id1: 8279033999720261292, cset3: { vehicle: 1.0 } } }
+- { types: { id1: 7347669253431469063, cset3: { person: 1.0 } } }
+- { types: { id1: 7742023292995346926, cset3: { person: 1.0 } } }
+- { types: { id1: 297407726540400476, cset3: { person: 1.0 } } }
+- { types: { id1: 1421093011685254659, cset3: { vehicle: 1.0 } } }

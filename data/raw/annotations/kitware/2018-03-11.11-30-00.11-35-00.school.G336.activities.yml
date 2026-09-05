@@ -1,0 +1,15 @@
+- { meta: "2018-03-11.11-30-00.11-35-00.school.G336" }
+- { meta: { team: "Kitware" } }
+- { meta: "person_opens_trunk 1 instances" }
+- { meta: "person_closes_trunk 1 instances" }
+- { meta: "person_unloads_vehicle 1 instances" }
+- { meta: "vehicle_turns_left 6 instances" }
+- { act: { act2: {person_opens_trunk: 1.0}, id2: 3308984572065227200, timespan: [{tsr0: [217, 305]}], src_status: janitor, actors: [{id1: 1684643033740714522, timespan: [{tsr0: [217, 305]}]}, {id1: 8068940301997319340, timespan: [{tsr0: [217, 305]}]}] } }
+- { act: { act2: {person_closes_trunk: 1.0}, id2: 1627142204334515789, timespan: [{tsr0: [329, 385]}], src_status: janitor, actors: [{id1: 6549682272947249799, timespan: [{tsr0: [329, 385]}]}, {id1: 7397480633693742986, timespan: [{tsr0: [329, 385]}]}] } }
+- { act: { act2: {person_unloads_vehicle: 1.0}, id2: 4619917098885414, timespan: [{tsr0: [332, 385]}], src_status: janitor, actors: [{id1: 6875182911217672303, timespan: [{tsr0: [332, 385]}]}, {id1: 3958478969507390925, timespan: [{tsr0: [332, 385]}]}, {id1: 8299529851727127696, timespan: [{tsr0: [332, 385]}]}] } }
+- { act: { act2: {vehicle_turns_left: 1.0}, id2: 6078148330613350588, timespan: [{tsr0: [543, 789]}], src_status: janitor, actors: [{id1: 8179894169198535819, timespan: [{tsr0: [543, 789]}]}] } }
+- { act: { act2: {vehicle_turns_left: 1.0}, id2: 2702329355171045664, timespan: [{tsr0: [5417, 5614]}], src_status: janitor, actors: [{id1: 7681695910056632861, timespan: [{tsr0: [5417, 5614]}]}] } }
+- { act: { act2: {vehicle_turns_left: 1.0}, id2: 4752410918367896561, timespan: [{tsr0: [0, 109]}], src_status: janitor, actors: [{id1: 920438373491778773, timespan: [{tsr0: [0, 109]}]}] } }
+- { act: { act2: {vehicle_turns_left: 1.0}, id2: 5220118496553903275, timespan: [{tsr0: [2348, 2510]}], src_status: janitor, actors: [{id1: 1324310336537370926, timespan: [{tsr0: [2348, 2510]}]}] } }
+- { act: { act2: {vehicle_turns_left: 1.0}, id2: 9054230570309494701, timespan: [{tsr0: [5659, 5839]}], src_status: janitor, actors: [{id1: 7842095847663608647, timespan: [{tsr0: [5659, 5839]}]}] } }
+- { act: { act2: {vehicle_turns_left: 1.0}, id2: 2161437248058435497, timespan: [{tsr0: [8342, 8454]}], src_status: janitor, actors: [{id1: 3436180511297380586, timespan: [{tsr0: [8342, 8454]}]}] } }

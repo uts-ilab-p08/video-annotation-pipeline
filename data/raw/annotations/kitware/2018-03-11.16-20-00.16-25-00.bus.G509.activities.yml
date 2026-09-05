@@ -1,0 +1,6 @@
+- { meta: "2018-03-11.16-20-00.16-25-00.bus.G509" }
+- { meta: { team: "Kitware" } }
+- { meta: "person_enters_scene_through_structure 1 instances" }
+- { meta: "person_exits_scene_through_structure 1 instances" }
+- { act: { act2: {person_enters_scene_through_structure: 1.0}, id2: 8939598498013717838, timespan: [{tsr0: [2516, 2566]}], src_status: janitor, actors: [{id1: 621887831291077957, timespan: [{tsr0: [2516, 2566]}]}] } }
+- { act: { act2: {person_exits_scene_through_structure: 1.0}, id2: 9121097103596463532, timespan: [{tsr0: [2683, 2756]}], src_status: janitor, actors: [{id1: 3429468930577178721, timespan: [{tsr0: [2683, 2756]}]}] } }

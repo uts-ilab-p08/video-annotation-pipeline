@@ -1,0 +1,4 @@
+- { meta: "2018-03-11.11-45-08.11-50-08.hospital.G436" }
+- { meta: { team: "Kitware" } }
+- { meta: "person_talks_to_person 1 instances" }
+- { act: { act2: {person_talks_to_person: 1.0}, id2: 3256306083178259594, timespan: [{tsr0: [8634, 8999]}], src_status: janitor, actors: [{id1: 7888494892384199624, timespan: [{tsr0: [8634, 8999]}]}, {id1: 8586700688045024482, timespan: [{tsr0: [8634, 8999]}]}, {id1: 7090608243119498939, timespan: [{tsr0: [8737, 8999]}]}] } }

@@ -1,0 +1,37 @@
+- { meta: "2018-03-11.11-30-08.11-35-08.hospital.G436" }
+- { meta: { team: "Kitware" } }
+- { meta: "person_opens_trunk 1 instances" }
+- { meta: "person_closes_trunk 1 instances" }
+- { meta: "vehicle_turns_right 6 instances" }
+- { meta: "vehicle_turns_left 6 instances" }
+- { meta: "vehicle_makes_u_turn 2 instances" }
+- { meta: "vehicle_stops 2 instances" }
+- { meta: "person_opens_vehicle_door 2 instances" }
+- { meta: "person_exits_vehicle 2 instances" }
+- { meta: "person_closes_vehicle_door 2 instances" }
+- { meta: "person_talks_to_person 1 instances" }
+- { act: { act2: {person_opens_trunk: 1.0}, id2: 1045247347024634276, timespan: [{tsr0: [0, 100]}], src_status: janitor, actors: [{id1: 3424040840629495707, timespan: [{tsr0: [0, 100]}]}, {id1: 2872989431624967347, timespan: [{tsr0: [0, 100]}]}] } }
+- { act: { act2: {person_closes_trunk: 1.0}, id2: 6475548516994916668, timespan: [{tsr0: [107, 158]}], src_status: janitor, actors: [{id1: 4722473840998655369, timespan: [{tsr0: [107, 158]}]}, {id1: 2350447315032777206, timespan: [{tsr0: [107, 158]}]}] } }
+- { act: { act2: {vehicle_turns_right: 1.0}, id2: 1197866275796492679, timespan: [{tsr0: [338, 437]}], src_status: janitor, actors: [{id1: 5538596535069515885, timespan: [{tsr0: [338, 437]}]}] } }
+- { act: { act2: {vehicle_turns_right: 1.0}, id2: 3644024923123983400, timespan: [{tsr0: [1087, 1196]}], src_status: janitor, actors: [{id1: 6107899486177239638, timespan: [{tsr0: [1087, 1196]}]}] } }
+- { act: { act2: {vehicle_turns_left: 1.0}, id2: 4230565243912987763, timespan: [{tsr0: [1135, 1269]}], src_status: janitor, actors: [{id1: 6167608661076943996, timespan: [{tsr0: [1135, 1269]}]}] } }
+- { act: { act2: {vehicle_makes_u_turn: 1.0}, id2: 6478062006890505357, timespan: [{tsr0: [2143, 2351]}], src_status: janitor, actors: [{id1: 1883336545636689690, timespan: [{tsr0: [2143, 2351]}]}] } }
+- { act: { act2: {vehicle_turns_right: 1.0}, id2: 3207968064491365970, timespan: [{tsr0: [2698, 2832]}], src_status: janitor, actors: [{id1: 2512078645054022539, timespan: [{tsr0: [2698, 2832]}]}] } }
+- { act: { act2: {vehicle_turns_right: 1.0}, id2: 1558357381297348634, timespan: [{tsr0: [3121, 3245]}], src_status: janitor, actors: [{id1: 1779671974718383515, timespan: [{tsr0: [3121, 3245]}]}] } }
+- { act: { act2: {vehicle_turns_left: 1.0}, id2: 3218050497658693500, timespan: [{tsr0: [1662, 1725]}], src_status: janitor, actors: [{id1: 4352887089293762708, timespan: [{tsr0: [1662, 1725]}]}] } }
+- { act: { act2: {vehicle_turns_right: 1.0}, id2: 4382219495178609298, timespan: [{tsr0: [2502, 2615]}], src_status: janitor, actors: [{id1: 7352820167464134070, timespan: [{tsr0: [2502, 2615]}]}] } }
+- { act: { act2: {vehicle_turns_left: 1.0}, id2: 8211635743652062631, timespan: [{tsr0: [2628, 2801]}], src_status: janitor, actors: [{id1: 810804361147393137, timespan: [{tsr0: [2628, 2801]}]}] } }
+- { act: { act2: {vehicle_makes_u_turn: 1.0}, id2: 3361621308363351312, timespan: [{tsr0: [5413, 5767]}], src_status: janitor, actors: [{id1: 1595915211547027261, timespan: [{tsr0: [5413, 5767]}]}] } }
+- { act: { act2: {vehicle_stops: 1.0}, id2: 8315185962357958343, timespan: [{tsr0: [5669, 5769]}], src_status: janitor, actors: [{id1: 662095511859700165, timespan: [{tsr0: [5669, 5769]}]}] } }
+- { act: { act2: {vehicle_turns_right: 1.0}, id2: 34335164716426111, timespan: [{tsr0: [6060, 6183]}], src_status: janitor, actors: [{id1: 5019806664178246861, timespan: [{tsr0: [6060, 6183]}]}] } }
+- { act: { act2: {vehicle_turns_left: 1.0}, id2: 1928233095250157623, timespan: [{tsr0: [8130, 8369]}], src_status: janitor, actors: [{id1: 7026628023018856461, timespan: [{tsr0: [8130, 8369]}]}] } }
+- { act: { act2: {vehicle_stops: 1.0}, id2: 2122727680739288750, timespan: [{tsr0: [8339, 8406]}], src_status: janitor, actors: [{id1: 327781116206393000, timespan: [{tsr0: [8339, 8406]}]}] } }
+- { act: { act2: {person_opens_vehicle_door: 1.0}, id2: 5762806268929517496, timespan: [{tsr0: [8647, 8735]}], src_status: janitor, actors: [{id1: 4557606340991689730, timespan: [{tsr0: [8647, 8735]}]}, {id1: 427171434864255857, timespan: [{tsr0: [8709, 8735]}]}] } }
+- { act: { act2: {person_exits_vehicle: 1.0}, id2: 6201192839771170088, timespan: [{tsr0: [8647, 8783]}], src_status: janitor, actors: [{id1: 6579221778877719153, timespan: [{tsr0: [8709, 8783]}]}, {id1: 6255793826024400649, timespan: [{tsr0: [8647, 8783]}]}] } }
+- { act: { act2: {person_closes_vehicle_door: 1.0}, id2: 4351334228568253191, timespan: [{tsr0: [8800, 8863]}], src_status: janitor, actors: [{id1: 4112506060987213507, timespan: [{tsr0: [8800, 8863]}]}, {id1: 1095865603157435126, timespan: [{tsr0: [8800, 8863]}]}] } }
+- { act: { act2: {vehicle_turns_left: 1.0}, id2: 4007764234758398892, timespan: [{tsr0: [881, 1008]}], src_status: janitor, actors: [{id1: 4461490983996237414, timespan: [{tsr0: [881, 1008]}]}] } }
+- { act: { act2: {person_talks_to_person: 1.0}, id2: 137635688297505108, timespan: [{tsr0: [437, 2031]}], src_status: janitor, actors: [{id1: 3253032519001712591, timespan: [{tsr0: [437, 2031]}]}, {id1: 2558470676385931293, timespan: [{tsr0: [437, 2031]}]}] } }
+- { act: { act2: {person_opens_vehicle_door: 1.0}, id2: 8612662592961093949, timespan: [{tsr0: [6053, 6135]}], src_status: janitor, actors: [{id1: 2398436824430454324, timespan: [{tsr0: [6053, 6135]}]}, {id1: 3873980713161531976, timespan: [{tsr0: [6120, 6135]}]}] } }
+- { act: { act2: {person_exits_vehicle: 1.0}, id2: 1316897916944819919, timespan: [{tsr0: [6053, 6197]}], src_status: janitor, actors: [{id1: 6623827435840020874, timespan: [{tsr0: [6053, 6197]}]}, {id1: 743597224950342053, timespan: [{tsr0: [6120, 6197]}]}] } }
+- { act: { act2: {person_closes_vehicle_door: 1.0}, id2: 6499826887294821286, timespan: [{tsr0: [6150, 6199]}], src_status: janitor, actors: [{id1: 6595921534272840205, timespan: [{tsr0: [6150, 6199]}]}, {id1: 2034217114920756390, timespan: [{tsr0: [6150, 6199]}]}] } }
+- { act: { act2: {vehicle_turns_left: 1.0}, id2: 632141763249611153, timespan: [{tsr0: [8281, 8399]}], src_status: janitor, actors: [{id1: 4753930352399130937, timespan: [{tsr0: [8281, 8399]}]}] } }

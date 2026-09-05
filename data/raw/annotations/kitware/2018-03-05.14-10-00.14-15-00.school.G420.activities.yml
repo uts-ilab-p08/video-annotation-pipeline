@@ -1,0 +1,4 @@
+- {'act': {'act2': {'person_enters_scene_through_structure': 1.0}, 'actors': [{'id1': 2, 'timespan': [{'tsr0': [4858, 4931]}]}], 'id2': 1, 'src_status': 'good', 'timespan': [{'tsr0': [4858, 4931]}]}}
+- {'act': {'act2': {'person_opens_facility_door': 1.0}, 'actors': [{'id1': 1, 'timespan': [{'tsr0': [4795, 4868]}]}], 'id2': 0, 'src_status': 'good', 'timespan': [{'tsr0': [4795, 4868]}]}}
+- {'act': {'act2': {'person_talks_on_phone': 1.0}, 'actors': [{'id1': 4, 'timespan': [{'tsr0': [4878, 4958]}]}], 'id2': 3, 'src_status': 'good', 'timespan': [{'tsr0': [4878, 4958]}]}}
+- {'act': {'act2': {'person_texts_on_phone': 1.0}, 'actors': [{'id1': 5, 'timespan': [{'tsr0': [4961, 5159]}]}], 'id2': 4, 'src_status': 'good', 'timespan': [{'tsr0': [4961, 5159]}]}}

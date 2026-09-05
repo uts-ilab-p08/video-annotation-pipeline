@@ -1,0 +1,6 @@
+- {'act': {'act2': {'person_talks_to_person': 1.0}, 'actors': [{'id1': 1, 'timespan': [{'tsr0': [594, 1949]}]}, {'id1': 2, 'timespan': [{'tsr0': [594, 1949]}]}], 'id2': 0, 'src_status': 'good', 'timespan': [{'tsr0': [594, 1949]}]}}
+- {'act': {'act2': {'person_talks_to_person': 1.0}, 'actors': [{'id1': 3, 'timespan': [{'tsr0': [1197, 1407]}]}, {'id1': 4, 'timespan': [{'tsr0': [1197, 1407]}]}], 'id2': 1, 'src_status': 'good', 'timespan': [{'tsr0': [1197, 1407]}]}}
+- {'act': {'act2': {'person_exits_scene_through_structure': 1.0}, 'actors': [{'id1': 9, 'timespan': [{'tsr0': [1378, 1429]}]}], 'id2': 6, 'src_status': 'good', 'timespan': [{'tsr0': [1378, 1429]}]}}
+- {'act': {'act2': {'person_exits_scene_through_structure': 1.0}, 'actors': [{'id1': 10, 'timespan': [{'tsr0': [1442, 1539]}]}], 'id2': 7, 'src_status': 'good', 'timespan': [{'tsr0': [1442, 1539]}]}}
+- {'act': {'act2': {'person_exits_scene_through_structure': 1.0}, 'actors': [{'id1': 11, 'timespan': [{'tsr0': [1917, 1952]}]}], 'id2': 8, 'src_status': 'good', 'timespan': [{'tsr0': [1917, 1952]}]}}
+- {'act': {'act2': {'person_exits_scene_through_structure': 1.0}, 'actors': [{'id1': 12, 'timespan': [{'tsr0': [1993, 2034]}]}], 'id2': 9, 'src_status': 'good', 'timespan': [{'tsr0': [1993, 2034]}]}}

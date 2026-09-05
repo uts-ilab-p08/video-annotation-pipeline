@@ -1,0 +1,2 @@
+- {'act': {'act2': {'person_rides_bicycle': 1.0}, 'actors': [{'id1': 1, 'timespan': [{'tsr0': [8151, 8201]}]}, {'id1': 2, 'timespan': [{'tsr0': [8151, 8201]}]}], 'id2': 0, 'src_status': 'good', 'timespan': [{'tsr0': [8151, 8201]}]}}
+- {'act': {'act2': {'person_rides_bicycle': 1.0}, 'actors': [{'id1': 3, 'timespan': [{'tsr0': [8310, 8627]}]}, {'id1': 4, 'timespan': [{'tsr0': [8310, 8627]}]}], 'id2': 1, 'src_status': 'good', 'timespan': [{'tsr0': [8310, 8627]}]}}

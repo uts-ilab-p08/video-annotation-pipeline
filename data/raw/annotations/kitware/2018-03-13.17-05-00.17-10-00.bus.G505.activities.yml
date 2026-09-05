@@ -1,0 +1,13 @@
+- {'act': {'act2': {'vehicle_starts': 1.0}, 'actors': [{'id1': 11, 'timespan': [{'tsr0': [8283, 8336]}]}], 'id2': 8, 'src_status': 'good', 'timespan': [{'tsr0': [8283, 8336]}]}}
+- {'act': {'act2': {'vehicle_stops': 1.0}, 'actors': [{'id1': 9, 'timespan': [{'tsr0': [7849, 7934]}]}], 'id2': 6, 'src_status': 'good', 'timespan': [{'tsr0': [7849, 7934]}]}}
+- {'act': {'act2': {'vehicle_stops': 1.0}, 'actors': [{'id1': 10, 'timespan': [{'tsr0': [8186, 8281]}]}], 'id2': 7, 'src_status': 'good', 'timespan': [{'tsr0': [8186, 8281]}]}}
+- {'act': {'act2': {'vehicle_turns_left': 1.0}, 'actors': [{'id1': 3, 'timespan': [{'tsr0': [3460, 3573]}]}], 'id2': 2, 'src_status': 'good', 'timespan': [{'tsr0': [3460, 3573]}]}}
+- {'act': {'act2': {'vehicle_turns_left': 1.0}, 'actors': [{'id1': 8, 'timespan': [{'tsr0': [7631, 7695]}]}], 'id2': 5, 'src_status': 'good', 'timespan': [{'tsr0': [7631, 7695]}]}}
+- {'act': {'act2': {'vehicle_turns_left': 1.0}, 'actors': [{'id1': 15, 'timespan': [{'tsr0': [7701, 7771]}]}], 'id2': 12, 'src_status': 'good', 'timespan': [{'tsr0': [7701, 7771]}]}}
+- {'act': {'act2': {'vehicle_turns_right': 1.0}, 'actors': [{'id1': 1, 'timespan': [{'tsr0': [1626, 1728]}]}], 'id2': 0, 'src_status': 'good', 'timespan': [{'tsr0': [1626, 1728]}]}}
+- {'act': {'act2': {'vehicle_turns_right': 1.0}, 'actors': [{'id1': 2, 'timespan': [{'tsr0': [2455, 2580]}]}], 'id2': 1, 'src_status': 'good', 'timespan': [{'tsr0': [2455, 2580]}]}}
+- {'act': {'act2': {'vehicle_turns_right': 1.0}, 'actors': [{'id1': 4, 'timespan': [{'tsr0': [3584, 3671]}]}], 'id2': 3, 'src_status': 'good', 'timespan': [{'tsr0': [3584, 3671]}]}}
+- {'act': {'act2': {'vehicle_turns_right': 1.0}, 'actors': [{'id1': 12, 'timespan': [{'tsr0': [8412, 8488]}]}], 'id2': 9, 'src_status': 'good', 'timespan': [{'tsr0': [8412, 8488]}]}}
+- {'act': {'act2': {'vehicle_turns_right': 1.0}, 'actors': [{'id1': 13, 'timespan': [{'tsr0': [1720, 1798]}]}], 'id2': 10, 'src_status': 'good', 'timespan': [{'tsr0': [1720, 1798]}]}}
+- {'act': {'act2': {'vehicle_turns_right': 1.0}, 'actors': [{'id1': 14, 'timespan': [{'tsr0': [2577, 2651]}]}], 'id2': 11, 'src_status': 'good', 'timespan': [{'tsr0': [2577, 2651]}]}}
+- {'act': {'act2': {'person_talks_to_person': 1.0}, 'actors': [{'id1': 6, 'timespan': [{'tsr0': [5212, 5482]}]}, {'id1': 5, 'timespan': [{'tsr0': [5212, 5482]}]}], 'id2': 4, 'src_status': 'good', 'timespan': [{'tsr0': [5212, 5482]}]}}

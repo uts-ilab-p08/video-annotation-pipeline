@@ -1,0 +1,15 @@
+- { meta: "2018-03-11.14-20-08.14-25-08.hospital.G341" }
+- { meta: { team: "Kitware" } }
+- { meta: "person_texts_on_phone 1 instances" }
+- { meta: "person_talks_to_person 2 instances" }
+- { meta: "person_talks_on_phone 1 instances" }
+- { meta: "vehicle_turns_right 1 instances" }
+- { meta: "person_opens_facility_door 1 instances" }
+- { meta: "person_exits_scene_through_structure 1 instances" }
+- { act: { act2: {person_texts_on_phone: 1.0}, id2: 5340197384181163259, timespan: [{tsr0: [4211, 5651]}], src_status: janitor, actors: [{id1: 8542049999317771132, timespan: [{tsr0: [4211, 5651]}]}] } }
+- { act: { act2: {person_talks_to_person: 1.0}, id2: 4695832148980705150, timespan: [{tsr0: [3695, 3857]}], src_status: janitor, actors: [{id1: 2747134916676919855, timespan: [{tsr0: [3695, 3857]}]}, {id1: 6569119126592235092, timespan: [{tsr0: [3695, 3857]}]}] } }
+- { act: { act2: {person_talks_on_phone: 1.0}, id2: 5540370940073123914, timespan: [{tsr0: [7976, 8999]}], src_status: janitor, actors: [{id1: 7794518478545724127, timespan: [{tsr0: [7976, 8999]}]}] } }
+- { act: { act2: {vehicle_turns_right: 1.0}, id2: 9096563254258509750, timespan: [{tsr0: [8621, 8883]}], src_status: janitor, actors: [{id1: 4174713435889902398, timespan: [{tsr0: [8621, 8883]}]}] } }
+- { act: { act2: {person_talks_to_person: 1.0}, id2: 7913994795343683949, timespan: [{tsr0: [8102, 8999]}], src_status: gladiator2, actors: [{id1: 178724873430705206, timespan: [{tsr0: [8102, 8999]}]}, {id1: 2726643247189829394, timespan: [{tsr0: [8102, 8999]}]}, {id1: 3764892018688205599, timespan: [{tsr0: [8225, 8999]}]}, {id1: 2877467539109586242, timespan: [{tsr0: [8286, 8999]}]}] } }
+- { act: { act2: {person_opens_facility_door: 1.0}, id2: 8909985553213629626, timespan: [{tsr0: [8325, 8446]}], src_status: gladiator2, actors: [{id1: 8332491979020182721, timespan: [{tsr0: [8325, 8446]}]}] } }
+- { act: { act2: {person_exits_scene_through_structure: 1.0}, id2: 8995381193784370923, timespan: [{tsr0: [8325, 8446]}], src_status: gladiator2, actors: [{id1: 3329457656619049932, timespan: [{tsr0: [8325, 8446]}]}] } }

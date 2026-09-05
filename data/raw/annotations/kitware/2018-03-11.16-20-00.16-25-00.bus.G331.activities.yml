@@ -1,0 +1,6 @@
+- { meta: "2018-03-11.16-20-00.16-25-00.bus.G331" }
+- { meta: { team: "Kitware" } }
+- { meta: "person_texts_on_phone 3 instances" }
+- { act: { act2: {person_texts_on_phone: 1.0}, id2: 1009172692757161541, timespan: [{tsr0: [0, 1347]}], src_status: janitor, actors: [{id1: 497011223913504935, timespan: [{tsr0: [0, 1347]}]}] } }
+- { act: { act2: {person_texts_on_phone: 1.0}, id2: 2326936189003474755, timespan: [{tsr0: [95, 4644]}], src_status: janitor, actors: [{id1: 4500842212274741841, timespan: [{tsr0: [95, 4644]}]}] } }
+- { act: { act2: {person_texts_on_phone: 1.0}, id2: 1776101679905841373, timespan: [{tsr0: [3263, 4393]}], src_status: janitor, actors: [{id1: 8777183586099765340, timespan: [{tsr0: [3263, 4393]}]}] } }

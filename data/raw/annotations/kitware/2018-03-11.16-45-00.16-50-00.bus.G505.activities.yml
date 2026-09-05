@@ -1,0 +1,7 @@
+- { meta: "2018-03-11.16-45-00.16-50-00.bus.G505" }
+- { meta: { team: "Kitware" } }
+- { meta: "vehicle_turns_left 1 instances" }
+- { meta: "vehicle_turns_right 2 instances" }
+- { act: { act2: {vehicle_turns_left: 1.0}, id2: 5813975245138764435, timespan: [{tsr0: [1320, 1423]}], src_status: janitor, actors: [{id1: 140054110239827186, timespan: [{tsr0: [1320, 1423]}]}] } }
+- { act: { act2: {vehicle_turns_right: 1.0}, id2: 5827087985359265882, timespan: [{tsr0: [2958, 3083]}], src_status: janitor, actors: [{id1: 3332795580244305043, timespan: [{tsr0: [2958, 3083]}]}] } }
+- { act: { act2: {vehicle_turns_right: 1.0}, id2: 2533838844378391856, timespan: [{tsr0: [3117, 3235]}], src_status: janitor, actors: [{id1: 1866374807921436595, timespan: [{tsr0: [3117, 3235]}]}] } }

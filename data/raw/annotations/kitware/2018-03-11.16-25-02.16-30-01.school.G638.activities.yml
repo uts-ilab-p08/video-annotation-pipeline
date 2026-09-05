@@ -1,0 +1,14 @@
+- { meta: "2018-03-11.16-25-02.16-30-01.school.G638" }
+- { meta: { team: "Kitware" } }
+- { meta: "person_texts_on_phone 2 instances" }
+- { meta: "person_talks_to_person 2 instances" }
+- { meta: "person_exits_scene_through_structure 3 instances" }
+- { meta: "person_closes_facility_door 1 instances" }
+- { act: { act2: {person_texts_on_phone: 1.0}, id2: 4119460028809322689, timespan: [{tsr0: [546, 666]}], src_status: janitor, actors: [{id1: 5261193788855296385, timespan: [{tsr0: [546, 666]}]}] } }
+- { act: { act2: {person_talks_to_person: 1.0}, id2: 3080426278630564186, timespan: [{tsr0: [460, 586]}], src_status: janitor, actors: [{id1: 3304191521119970144, timespan: [{tsr0: [460, 586]}]}, {id1: 2574430012543739820, timespan: [{tsr0: [460, 586]}]}, {id1: 1289957610274201991, timespan: [{tsr0: [475, 586]}]}] } }
+- { act: { act2: {person_exits_scene_through_structure: 1.0}, id2: 1929643037307020809, timespan: [{tsr0: [1284, 1336]}], src_status: janitor, actors: [{id1: 205862478638588462, timespan: [{tsr0: [1284, 1336]}]}] } }
+- { act: { act2: {person_exits_scene_through_structure: 1.0}, id2: 1961735457047355672, timespan: [{tsr0: [1528, 1657]}], src_status: janitor, actors: [{id1: 1186867690082116053, timespan: [{tsr0: [1528, 1657]}]}] } }
+- { act: { act2: {person_exits_scene_through_structure: 1.0}, id2: 3493734887820271628, timespan: [{tsr0: [1219, 1294]}], src_status: janitor, actors: [{id1: 2187231966717812900, timespan: [{tsr0: [1219, 1294]}]}] } }
+- { act: { act2: {person_closes_facility_door: 1.0}, id2: 4023273264763347124, timespan: [{tsr0: [1284, 1394]}], src_status: janitor, actors: [{id1: 314095706890314821, timespan: [{tsr0: [1284, 1394]}]}] } }
+- { act: { act2: {person_talks_to_person: 1.0}, id2: 8475609257474336657, timespan: [{tsr0: [706, 973]}], src_status: janitor, actors: [{id1: 4923621084573376960, timespan: [{tsr0: [716, 973]}]}, {id1: 4888573950727267083, timespan: [{tsr0: [706, 973]}]}, {id1: 77604089544548687, timespan: [{tsr0: [706, 973]}]}] } }
+- { act: { act2: {person_texts_on_phone: 1.0}, id2: 6766934179645760166, timespan: [{tsr0: [822, 970]}], src_status: janitor, actors: [{id1: 4378170013042353296, timespan: [{tsr0: [822, 970]}]}] } }

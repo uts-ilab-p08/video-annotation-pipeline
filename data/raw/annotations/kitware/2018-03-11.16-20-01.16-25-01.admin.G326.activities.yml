@@ -1,0 +1,14 @@
+- { meta: "2018-03-11.16-20-01.16-25-01.admin.G326" }
+- { meta: { team: "Kitware" } }
+- { meta: "person_opens_facility_door 2 instances" }
+- { meta: "person_exits_scene_through_structure 4 instances" }
+- { meta: "person_talks_to_person 1 instances" }
+- { meta: "person_talks_on_phone 1 instances" }
+- { act: { act2: {person_opens_facility_door: 1.0}, id2: 9061419881606750227, timespan: [{tsr0: [606, 696]}], src_status: janitor, actors: [{id1: 3211292722674673313, timespan: [{tsr0: [606, 696]}]}] } }
+- { act: { act2: {person_exits_scene_through_structure: 1.0}, id2: 6349216508003033508, timespan: [{tsr0: [606, 705]}], src_status: janitor, actors: [{id1: 3175608642354521715, timespan: [{tsr0: [606, 705]}]}] } }
+- { act: { act2: {person_exits_scene_through_structure: 1.0}, id2: 89590530260182847, timespan: [{tsr0: [616, 724]}], src_status: janitor, actors: [{id1: 3262426598302295559, timespan: [{tsr0: [616, 724]}]}] } }
+- { act: { act2: {person_exits_scene_through_structure: 1.0}, id2: 6193079337326585421, timespan: [{tsr0: [704, 773]}], src_status: janitor, actors: [{id1: 5017271929463448618, timespan: [{tsr0: [704, 773]}]}] } }
+- { act: { act2: {person_talks_to_person: 1.0}, id2: 4130240272715195795, timespan: [{tsr0: [545, 685]}], src_status: janitor, actors: [{id1: 374899594806141306, timespan: [{tsr0: [545, 685]}]}, {id1: 5933862255485003586, timespan: [{tsr0: [545, 685]}]}] } }
+- { act: { act2: {person_talks_on_phone: 1.0}, id2: 7780208920810956511, timespan: [{tsr0: [6774, 6823]}], src_status: janitor, actors: [{id1: 1840901266106327874, timespan: [{tsr0: [6774, 6823]}]}] } }
+- { act: { act2: {person_opens_facility_door: 1.0}, id2: 4581065333429313901, timespan: [{tsr0: [6796, 6872]}], src_status: janitor, actors: [{id1: 5779510141651886180, timespan: [{tsr0: [6796, 6872]}]}] } }
+- { act: { act2: {person_exits_scene_through_structure: 1.0}, id2: 6285528681000476915, timespan: [{tsr0: [6796, 6895]}], src_status: janitor, actors: [{id1: 1566405380419560585, timespan: [{tsr0: [6796, 6895]}]}] } }

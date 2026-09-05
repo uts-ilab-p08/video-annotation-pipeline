@@ -1,0 +1,18 @@
+- { meta: "2018-03-11.16-40-00.16-45-00.bus.G331" }
+- { meta: { team: "Kitware" } }
+- { types: { id1: 1096220057436694297, cset3: { person: 1.0 } } }
+- { types: { id1: 270523321200420063, cset3: { person: 1.0 } } }
+- { types: { id1: 7534520646695100735, cset3: { person: 1.0 } } }
+- { types: { id1: 6656853124891222670, cset3: { person: 1.0 } } }
+- { types: { id1: 905619627804140334, cset3: { person: 1.0 } } }
+- { types: { id1: 2175341336165164376, cset3: { person: 1.0 } } }
+- { types: { id1: 2891850107192058503, cset3: { person: 1.0 } } }
+- { types: { id1: 7947522776423801376, cset3: { person: 1.0 } } }
+- { types: { id1: 319633281273242731, cset3: { person: 1.0 } } }
+- { types: { id1: 1067978621156926301, cset3: { person: 1.0 } } }
+- { types: { id1: 8974479085223356222, cset3: { person: 1.0 } } }
+- { types: { id1: 7353212898229659033, cset3: { person: 1.0 } } }
+- { types: { id1: 7482050330163519579, cset3: { person: 1.0 } } }
+- { types: { id1: 7500038676506617538, cset3: { bag: 1.0 } } }
+- { types: { id1: 6046260292155385641, cset3: { person: 1.0 } } }
+- { types: { id1: 632307292494766160, cset3: { bag: 1.0 } } }

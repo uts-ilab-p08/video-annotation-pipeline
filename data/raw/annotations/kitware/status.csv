@@ -1,0 +1,46 @@
+activity, total, EO, IR
+empty_37, 45, 36, 9
+hand_interacts_with_person, 906, 906, 0
+person_carries_heavy_object, 1736, 1736, 0
+person_closes_facility_door, 19, 19, 0
+person_closes_trunk, 79, 79, 0
+person_closes_vehicle_door, 701, 701, 0
+person_embraces_person, 187, 187, 0
+person_enters_scene_through_structure, 2993, 2993, 0
+person_enters_vehicle, 416, 416, 0
+person_exits_scene_through_structure, 2912, 2912, 0
+person_exits_vehicle, 438, 438, 0
+person_interacts_with_laptop, 21, 21, 0
+person_loads_vehicle, 41, 41, 0
+person_opens_facility_door, 1454, 1454, 0
+person_opens_trunk, 77, 77, 0
+person_opens_vehicle_door, 746, 746, 0
+person_picks_up_object, 2816, 2816, 0
+person_purchases, 78, 78, 0
+person_puts_down_object, 2589, 2589, 0
+person_reads_document, 111, 111, 0
+person_rides_bicycle, 117, 117, 0
+person_sits_down, 1288, 1288, 0
+person_stands_up, 1160, 1160, 0
+person_steals_object, 2, 2, 0
+person_talks_on_phone, 404, 404, 0
+person_talks_to_person, 3397, 3397, 0
+person_texts_on_phone, 1747, 1747, 0
+person_transfers_object, 546, 546, 0
+person_unloads_vehicle, 67, 67, 0
+vehicle_drops_off_person, 74, 74, 0
+vehicle_makes_u_turn, 100, 100, 0
+vehicle_picks_up_person, 42, 42, 0
+vehicle_reverses, 227, 227, 0
+vehicle_starts, 904, 904, 0
+vehicle_stops, 905, 905, 0
+vehicle_turns_left, 885, 885, 0
+vehicle_turns_right, 817, 817, 0
+
+Total (non-empty),31002,31002,0
+
+Total clips, 769
+EO clips, 760
+IR clips, 9
+
+Git hash, f844579a4fbd763da0c6dc81ab16ef12161f9887

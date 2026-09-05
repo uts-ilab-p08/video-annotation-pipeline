@@ -1,0 +1,24 @@
+- { meta: "2018-03-11.16-15-01.16-20-01.school.G419" }
+- { meta: { team: "Kitware" } }
+- { meta: "person_opens_facility_door 2 instances" }
+- { meta: "person_enters_scene_through_structure 7 instances" }
+- { meta: "person_talks_to_person 4 instances" }
+- { meta: "person_texts_on_phone 1 instances" }
+- { meta: "person_reads_document 1 instances" }
+- { meta: "hand_interacts_with_person 1 instances" }
+- { act: { act2: {person_opens_facility_door: 1.0}, id2: 7557916070909060712, timespan: [{tsr0: [4595, 4633]}], src_status: janitor, actors: [{id1: 5408856076325626235, timespan: [{tsr0: [4595, 4633]}]}] } }
+- { act: { act2: {person_enters_scene_through_structure: 1.0}, id2: 3211806536179982763, timespan: [{tsr0: [4595, 4675]}], src_status: janitor, actors: [{id1: 1334287915660518154, timespan: [{tsr0: [4595, 4675]}]}] } }
+- { act: { act2: {person_enters_scene_through_structure: 1.0}, id2: 5741938650588718290, timespan: [{tsr0: [4700, 4778]}], src_status: janitor, actors: [{id1: 8586459230236419383, timespan: [{tsr0: [4700, 4778]}]}] } }
+- { act: { act2: {person_enters_scene_through_structure: 1.0}, id2: 2839358181263713105, timespan: [{tsr0: [4739, 4808]}], src_status: janitor, actors: [{id1: 157119739281449276, timespan: [{tsr0: [4739, 4808]}]}] } }
+- { act: { act2: {person_talks_to_person: 1.0}, id2: 7937124667343545044, timespan: [{tsr0: [4670, 4898]}], src_status: janitor, actors: [{id1: 7082175050832160736, timespan: [{tsr0: [4670, 4898]}]}, {id1: 2709174960349487309, timespan: [{tsr0: [4670, 4898]}]}] } }
+- { act: { act2: {person_talks_to_person: 1.0}, id2: 6111703922965095891, timespan: [{tsr0: [5480, 5659]}], src_status: janitor, actors: [{id1: 8883907426698700671, timespan: [{tsr0: [5480, 5659]}]}, {id1: 2087575444391666743, timespan: [{tsr0: [5480, 5659]}]}] } }
+- { act: { act2: {person_texts_on_phone: 1.0}, id2: 7329244499942876486, timespan: [{tsr0: [5637, 5733]}], src_status: janitor, actors: [{id1: 2965294866385741573, timespan: [{tsr0: [5637, 5733]}]}] } }
+- { act: { act2: {person_talks_to_person: 1.0}, id2: 2416017850888430534, timespan: [{tsr0: [7147, 7402]}], src_status: janitor, actors: [{id1: 8294460625385955587, timespan: [{tsr0: [7147, 7402]}]}, {id1: 5931383527569172014, timespan: [{tsr0: [7147, 7402]}]}] } }
+- { act: { act2: {person_enters_scene_through_structure: 1.0}, id2: 9222174576882362236, timespan: [{tsr0: [7816, 7865]}], src_status: janitor, actors: [{id1: 738498591205663303, timespan: [{tsr0: [7816, 7865]}]}] } }
+- { act: { act2: {person_enters_scene_through_structure: 1.0}, id2: 7093559084501214236, timespan: [{tsr0: [7902, 7988]}], src_status: janitor, actors: [{id1: 537522361044084515, timespan: [{tsr0: [7902, 7988]}]}] } }
+- { act: { act2: {person_enters_scene_through_structure: 1.0}, id2: 205094772794958316, timespan: [{tsr0: [7945, 8004]}], src_status: janitor, actors: [{id1: 1668355358989852825, timespan: [{tsr0: [7945, 8004]}]}] } }
+- { act: { act2: {person_talks_to_person: 1.0}, id2: 8730271895756415713, timespan: [{tsr0: [8785, 8999]}], src_status: janitor, actors: [{id1: 1207247146809894581, timespan: [{tsr0: [8785, 8999]}]}, {id1: 3913346770268595167, timespan: [{tsr0: [8785, 8999]}]}] } }
+- { act: { act2: {person_opens_facility_door: 1.0}, id2: 8842209128534976154, timespan: [{tsr0: [7725, 7783]}], src_status: janitor, actors: [{id1: 5342486210771789346, timespan: [{tsr0: [7725, 7783]}]}] } }
+- { act: { act2: {person_reads_document: 1.0}, id2: 869928581236991315, timespan: [{tsr0: [8914, 9000]}], src_status: janitor, actors: [{id1: 8401208599381944118, timespan: [{tsr0: [8914, 9000]}]}] } }
+- { act: { act2: {person_enters_scene_through_structure: 1.0}, id2: 4817597105994932470, timespan: [{tsr0: [7768, 7830]}], src_status: gladiator2, actors: [{id1: 4833614968591066899, timespan: [{tsr0: [7768, 7830]}]}] } }
+- { act: { act2: {hand_interacts_with_person: 1.0}, id2: 4465351020025653197, timespan: [{tsr0: [4667, 4731]}], src_status: gladiator2, actors: [{id1: 2853558733065855731, timespan: [{tsr0: [4667, 4731]}]}, {id1: 6834025627587813969, timespan: [{tsr0: [4667, 4731]}]}] } }

@@ -1,0 +1,18 @@
+- { meta: "2018-03-11.11-50-08.11-55-08.hospital.G436" }
+- { meta: { team: "Kitware" } }
+- { meta: "vehicle_turns_right 1 instances" }
+- { meta: "vehicle_turns_left 1 instances" }
+- { meta: "person_talks_to_person 3 instances" }
+- { meta: "person_talks_on_phone 1 instances" }
+- { meta: "person_texts_on_phone 1 instances" }
+- { meta: "vehicle_stops 1 instances" }
+- { meta: "vehicle_starts 1 instances" }
+- { act: { act2: {vehicle_turns_right: 1.0}, id2: 4397027368934056163, timespan: [{tsr0: [2746, 2932]}], src_status: janitor, actors: [{id1: 8210187605769102967, timespan: [{tsr0: [2746, 2932]}]}] } }
+- { act: { act2: {vehicle_turns_left: 1.0}, id2: 937556180403365149, timespan: [{tsr0: [2952, 3089]}], src_status: janitor, actors: [{id1: 7262836027985764702, timespan: [{tsr0: [2952, 3089]}]}] } }
+- { act: { act2: {person_talks_to_person: 1.0}, id2: 7256028587415511611, timespan: [{tsr0: [4908, 6664]}], src_status: janitor, actors: [{id1: 8899155508516431794, timespan: [{tsr0: [4908, 6664]}]}, {id1: 3450247254075220729, timespan: [{tsr0: [4908, 6664]}]}] } }
+- { act: { act2: {person_talks_to_person: 1.0}, id2: 9024486694024783225, timespan: [{tsr0: [7522, 8999]}], src_status: janitor, actors: [{id1: 7951084923354292524, timespan: [{tsr0: [7522, 8999]}]}, {id1: 7455165651040215346, timespan: [{tsr0: [7522, 8999]}]}] } }
+- { act: { act2: {person_talks_on_phone: 1.0}, id2: 6606318132132520820, timespan: [{tsr0: [4777, 8743]}], src_status: janitor, actors: [{id1: 8964698501272675661, timespan: [{tsr0: [4777, 8743]}]}] } }
+- { act: { act2: {person_texts_on_phone: 1.0}, id2: 3903636884366009838, timespan: [{tsr0: [4588, 4767]}], src_status: janitor, actors: [{id1: 7903632839132815763, timespan: [{tsr0: [4588, 4767]}]}] } }
+- { act: { act2: {vehicle_stops: 1.0}, id2: 2069376504840234548, timespan: [{tsr0: [2787, 2843]}], src_status: janitor, actors: [{id1: 3472750347606794597, timespan: [{tsr0: [2787, 2843]}]}] } }
+- { act: { act2: {vehicle_starts: 1.0}, id2: 8027918081863951813, timespan: [{tsr0: [2845, 2906]}], src_status: janitor, actors: [{id1: 4843142801988101565, timespan: [{tsr0: [2845, 2906]}]}] } }
+- { act: { act2: {person_talks_to_person: 1.0}, id2: 3982745391757238890, timespan: [{tsr0: [1915, 2401]}], src_status: gladiator2, actors: [{id1: 2011122315065926234, timespan: [{tsr0: [1915, 2401]}]}, {id1: 6636990945995891957, timespan: [{tsr0: [1915, 2401]}]}] } }

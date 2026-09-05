@@ -1,0 +1,2 @@
+- {'act': {'act2': {'person_picks_up_object': 1.0}, 'actors': [{'id1': 6, 'timespan': [{'tsr0': [5033, 5068]}]}, {'id1': 7, 'timespan': [{'tsr0': [5033, 5068]}]}], 'id2': 2, 'src_status': 'good', 'timespan': [{'tsr0': [5033, 5068]}]}}
+- {'act': {'act2': {'person_talks_to_person': 1.0}, 'actors': [{'id1': 2, 'timespan': [{'tsr0': [3504, 4875]}]}, {'id1': 1, 'timespan': [{'tsr0': [3504, 4199]}]}, {'id1': 3, 'timespan': [{'tsr0': [3540, 4875]}]}], 'id2': 0, 'src_status': 'good', 'timespan': [{'tsr0': [3504, 4875]}]}}

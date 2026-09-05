@@ -1,0 +1,9 @@
+- { meta: "2018-03-11.16-25-08.16-30-08.hospital.G341" }
+- { meta: { team: "Kitware" } }
+- { meta: "person_exits_scene_through_structure 1 instances" }
+- { meta: "person_opens_facility_door 2 instances" }
+- { meta: "person_enters_scene_through_structure 1 instances" }
+- { act: { act2: {person_exits_scene_through_structure: 1.0}, id2: 328748798741094474, timespan: [{tsr0: [5684, 5794]}], src_status: gladiator2, actors: [{id1: 2410274944563192939, timespan: [{tsr0: [5684, 5794]}]}] } }
+- { act: { act2: {person_opens_facility_door: 1.0}, id2: 6577917416101324243, timespan: [{tsr0: [5684, 5759]}], src_status: janitor, actors: [{id1: 5004092353696408972, timespan: [{tsr0: [5684, 5759]}]}] } }
+- { act: { act2: {person_opens_facility_door: 1.0}, id2: 6471147538318500614, timespan: [{tsr0: [7529, 7565]}], src_status: janitor, actors: [{id1: 7784758594556896227, timespan: [{tsr0: [7529, 7565]}]}] } }
+- { act: { act2: {person_enters_scene_through_structure: 1.0}, id2: 5555174862174922079, timespan: [{tsr0: [7529, 7599]}], src_status: janitor, actors: [{id1: 6222357187114346477, timespan: [{tsr0: [7529, 7599]}]}] } }

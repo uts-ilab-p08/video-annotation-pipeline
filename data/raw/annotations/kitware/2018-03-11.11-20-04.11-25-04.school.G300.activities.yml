@@ -1,0 +1,5 @@
+- { meta: "2018-03-11.11-20-04.11-25-04.school.G300" }
+- { meta: { team: "Kitware" } }
+- { meta: "person_talks_to_person 2 instances" }
+- { act: { act2: {person_talks_to_person: 1.0}, id2: 4794021233657652863, timespan: [{tsr0: [3844, 4185]}], src_status: janitor, actors: [{id1: 7238810447012274275, timespan: [{tsr0: [3844, 4185]}]}, {id1: 3350391562266158169, timespan: [{tsr0: [3844, 4185]}]}] } }
+- { act: { act2: {person_talks_to_person: 1.0}, id2: 2961795001712451826, timespan: [{tsr0: [8736, 8999]}], src_status: janitor, actors: [{id1: 2222492029896302990, timespan: [{tsr0: [8736, 8999]}]}, {id1: 5966410062608343896, timespan: [{tsr0: [8736, 8999]}]}] } }

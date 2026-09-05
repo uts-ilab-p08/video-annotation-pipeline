@@ -1,0 +1,7 @@
+- { meta: "2018-03-11.16-40-08.16-45-08.hospital.G301" }
+- { meta: { team: "Kitware" } }
+- { meta: "vehicle_turns_right 2 instances" }
+- { meta: "vehicle_turns_left 1 instances" }
+- { act: { act2: {vehicle_turns_right: 1.0}, id2: 2014488884908302642, timespan: [{tsr0: [8158, 8274]}], src_status: janitor, actors: [{id1: 6188117685848679684, timespan: [{tsr0: [8158, 8274]}]}] } }
+- { act: { act2: {vehicle_turns_left: 1.0}, id2: 7756228140913664544, timespan: [{tsr0: [191, 271]}], src_status: janitor, actors: [{id1: 3253396662969246284, timespan: [{tsr0: [191, 271]}]}] } }
+- { act: { act2: {vehicle_turns_right: 1.0}, id2: 6409469612088304265, timespan: [{tsr0: [5369, 5489]}], src_status: janitor, actors: [{id1: 6008477680720322580, timespan: [{tsr0: [5369, 5489]}]}] } }

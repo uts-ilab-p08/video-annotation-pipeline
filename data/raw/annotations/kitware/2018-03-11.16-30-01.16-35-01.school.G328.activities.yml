@@ -1,0 +1,10 @@
+- { meta: "2018-03-11.16-30-01.16-35-01.school.G328" }
+- { meta: { team: "Kitware" } }
+- { meta: "vehicle_stops 1 instances" }
+- { meta: "vehicle_starts 1 instances" }
+- { meta: "vehicle_turns_right 1 instances" }
+- { meta: "vehicle_turns_left 1 instances" }
+- { act: { act2: {vehicle_stops: 1.0}, id2: 7676419873905648290, timespan: [{tsr0: [3761, 3832]}], src_status: janitor, actors: [{id1: 4456715558068234024, timespan: [{tsr0: [3761, 3832]}]}] } }
+- { act: { act2: {vehicle_starts: 1.0}, id2: 5503291114183566517, timespan: [{tsr0: [3871, 3961]}], src_status: janitor, actors: [{id1: 3793768844547268614, timespan: [{tsr0: [3871, 3961]}]}] } }
+- { act: { act2: {vehicle_turns_right: 1.0}, id2: 4085657285278475448, timespan: [{tsr0: [3986, 4157]}], src_status: janitor, actors: [{id1: 5509437445014135919, timespan: [{tsr0: [3986, 4157]}]}] } }
+- { act: { act2: {vehicle_turns_left: 1.0}, id2: 5264789051679745353, timespan: [{tsr0: [4984, 5129]}], src_status: janitor, actors: [{id1: 3298285247303067101, timespan: [{tsr0: [4984, 5129]}]}] } }

@@ -1,0 +1,32 @@
+- { meta: "2018-03-11.11-20-00.11-25-00.school.G336" }
+- { meta: { team: "Kitware" } }
+- { types: { id1: 6648925020488376777, cset3: { vehicle: 1.0 } } }
+- { types: { id1: 7445762046618543852, cset3: { person: 1.0 } } }
+- { types: { id1: 6259042553945728706, cset3: { person: 1.0 } } }
+- { types: { id1: 6260123380212015795, cset3: { person: 1.0 } } }
+- { types: { id1: 1560575605933711819, cset3: { person: 1.0 } } }
+- { types: { id1: 8437861697292509529, cset3: { vehicle: 1.0 } } }
+- { types: { id1: 2876019200960144526, cset3: { vehicle: 1.0 } } }
+- { types: { id1: 4225359450063546289, cset3: { vehicle: 1.0 } } }
+- { types: { id1: 1348441779224551715, cset3: { person: 1.0 } } }
+- { types: { id1: 8970769907173302787, cset3: { vehicle: 1.0 } } }
+- { types: { id1: 506234822054420869, cset3: { person: 1.0 } } }
+- { types: { id1: 5592565102914741145, cset3: { vehicle: 1.0 } } }
+- { types: { id1: 1009637929813615236, cset3: { vehicle: 1.0 } } }
+- { types: { id1: 4068309104375572332, cset3: { person: 1.0 } } }
+- { types: { id1: 3151292802481071527, cset3: { vehicle: 1.0 } } }
+- { types: { id1: 3831147800408532372, cset3: { person: 1.0 } } }
+- { types: { id1: 2804005200868647393, cset3: { vehicle: 1.0 } } }
+- { types: { id1: 98539695671320737, cset3: { person: 1.0 } } }
+- { types: { id1: 8827304728119781102, cset3: { vehicle: 1.0 } } }
+- { types: { id1: 3288578950183855963, cset3: { person: 1.0 } } }
+- { types: { id1: 5276419104716596464, cset3: { vehicle: 1.0 } } }
+- { types: { id1: 7042393448471209505, cset3: { person: 1.0 } } }
+- { types: { id1: 3017028018170634970, cset3: { vehicle: 1.0 } } }
+- { types: { id1: 3844759873647322034, cset3: { person: 1.0 } } }
+- { types: { id1: 1306687126334284190, cset3: { vehicle: 1.0 } } }
+- { types: { id1: 3893256178480914915, cset3: { vehicle: 1.0 } } }
+- { types: { id1: 8996483637282382016, cset3: { person: 1.0 } } }
+- { types: { id1: 7545271500630697792, cset3: { person: 1.0 } } }
+- { types: { id1: 6140720338999976776, cset3: { person: 1.0 } } }
+- { types: { id1: 1924287347278029671, cset3: { person: 1.0 } } }

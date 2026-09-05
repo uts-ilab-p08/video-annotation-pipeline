@@ -1,0 +1,16 @@
+- { meta: "2018-03-11.16-10-08.16-15-08.hospital.G301" }
+- { meta: { team: "Kitware" } }
+- { meta: "person_talks_to_person 1 instances" }
+- { meta: "person_opens_facility_door 1 instances" }
+- { meta: "person_exits_scene_through_structure 2 instances" }
+- { meta: "vehicle_starts 2 instances" }
+- { meta: "vehicle_stops 1 instances" }
+- { meta: "vehicle_turns_right 1 instances" }
+- { act: { act2: {person_talks_to_person: 1.0}, id2: 8114308231020683986, timespan: [{tsr0: [0, 1898]}], src_status: janitor, actors: [{id1: 4496657382666608974, timespan: [{tsr0: [0, 1898]}]}, {id1: 6325478351390713214, timespan: [{tsr0: [0, 1898]}]}] } }
+- { act: { act2: {person_opens_facility_door: 1.0}, id2: 7203596143327094273, timespan: [{tsr0: [1987, 2082]}], src_status: janitor, actors: [{id1: 3074195461261304823, timespan: [{tsr0: [1987, 2082]}]}] } }
+- { act: { act2: {person_exits_scene_through_structure: 1.0}, id2: 7373661737304106537, timespan: [{tsr0: [2090, 2158]}], src_status: janitor, actors: [{id1: 4533271168801612849, timespan: [{tsr0: [2090, 2158]}]}] } }
+- { act: { act2: {person_exits_scene_through_structure: 1.0}, id2: 6252106786946819005, timespan: [{tsr0: [1986, 2108]}], src_status: janitor, actors: [{id1: 5737279442991096957, timespan: [{tsr0: [1986, 2108]}]}] } }
+- { act: { act2: {vehicle_starts: 1.0}, id2: 1727668417305616480, timespan: [{tsr0: [3364, 3412]}], src_status: janitor, actors: [{id1: 3165557684935827660, timespan: [{tsr0: [3364, 3412]}]}] } }
+- { act: { act2: {vehicle_stops: 1.0}, id2: 8962379302763832579, timespan: [{tsr0: [3413, 3464]}], src_status: janitor, actors: [{id1: 4227918177888937279, timespan: [{tsr0: [3413, 3464]}]}] } }
+- { act: { act2: {vehicle_starts: 1.0}, id2: 5759683984666173654, timespan: [{tsr0: [3469, 3576]}], src_status: janitor, actors: [{id1: 4704544025355461871, timespan: [{tsr0: [3469, 3576]}]}] } }
+- { act: { act2: {vehicle_turns_right: 1.0}, id2: 8811798202960946884, timespan: [{tsr0: [3550, 3858]}], src_status: janitor, actors: [{id1: 4548107435424359895, timespan: [{tsr0: [3550, 3858]}]}] } }
