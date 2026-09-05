@@ -9,8 +9,4 @@
 !raw/
 !raw/**
 raw/**/.DS_Store
-raw/**/*.avi
-raw/**/*.mp4
-raw/**/*.mov
-raw/**/*.mkv
-!raw/videos/.gitkeep
+raw/videos/
