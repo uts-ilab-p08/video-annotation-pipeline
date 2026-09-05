@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="author" content="Juan">
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Bronze schema data dictionary - annotation_pipeline</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../css/brands.min.css" rel="stylesheet">
+        <link href="../css/solid.min.css" rel="stylesheet">
+        <link href="../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">annotation_pipeline</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href=".." class="nav-link">annotation_pipeline documentation!</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="./" class="nav-link active" aria-current="page">Bronze schema data dictionary</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../getting-started/" class="nav-link">Getting started</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href=".." class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../getting-started/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#bronze-schema-data-dictionary" class="nav-link">Bronze schema data dictionary</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#relationships" class="nav-link">Relationships</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#bronzevideos" class="nav-link">bronze.videos</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#bronzeevents" class="nav-link">bronze.events</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#bronzeobjects" class="nav-link">bronze.objects</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#bronzeevent_objects" class="nav-link">bronze.event_objects</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#bronzegeometries" class="nav-link">bronze.geometries</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="bronze-schema-data-dictionary">Bronze schema data dictionary</h1>
+<p>Notebook 07 recreates the <code>bronze</code> schema tables from the local MEVA-style exports. It removes the earlier <code>public</code> tables first, then replaces all Bronze data on every run.</p>
+<h2 id="relationships">Relationships</h2>
+<pre><code class="language-mermaid">erDiagram
+    videos ||--o{ events : contains
+    events ||--o{ event_objects : includes
+    objects ||--o{ event_objects : participates_in
+    objects ||--o{ geometries : has
+
+    videos {
+        text video_id PK
+        text video_name UK
+        text camera_id
+        text scene
+        timestamp capture_start_local
+        timestamp capture_end_local
+        text capture_time_zone
+        float duration_seconds
+        int frame_count
+        float fps
+        int frame_width
+        int frame_height
+        text source_video_path
+        text storage_bucket
+        text storage_path UK
+        text video_url
+        jsonb source_metadata
+        timestamptz created_at
+        timestamptz updated_at
+    }
+    events {
+        text event_id PK
+        text video_id FK
+        text event_name
+        text description
+        int start_frame
+        int end_frame
+        float start_seconds
+        float end_seconds
+        text source_status
+    }
+    objects {
+        text object_id PK
+        text source_object_id
+        int detection_count
+        float first_seen_seconds
+        float last_seen_seconds
+        jsonb label_details
+    }
+    event_objects {
+        text event_id PK_FK
+        text object_id PK_FK
+    }
+    geometries {
+        text geometry_id PK
+        text object_id FK
+        int source_geometry_id
+        int frame_index
+        float timestamp_seconds
+        text label
+        float confidence
+        text spatial_position
+        jsonb bounding_box_pixels
+    }
+</code></pre>
+<p><code>event_objects</code> is the only relationship between events and objects: an event can involve multiple objects, and an object can participate in multiple events. A geometry belongs to an object. There is intentionally no direct foreign-key relationship between <code>videos</code> and <code>objects</code>.</p>
+<h2 id="bronzevideos"><code>bronze.videos</code></h2>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+<th>Nullable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>video_id</code></td>
+<td><code>TEXT</code> PK</td>
+<td>no</td>
+<td>Stable SHA-256 ID derived from the video name.</td>
+</tr>
+<tr>
+<td><code>video_name</code></td>
+<td><code>TEXT</code> unique</td>
+<td>no</td>
+<td>Source MEVA video name.</td>
+</tr>
+<tr>
+<td><code>camera_id</code></td>
+<td><code>TEXT</code></td>
+<td>yes</td>
+<td>Camera identifier embedded in the source name, such as <code>G340</code>.</td>
+</tr>
+<tr>
+<td><code>scene</code></td>
+<td><code>TEXT</code></td>
+<td>yes</td>
+<td>Scene label embedded in the source name, such as <code>bus</code> or <code>school</code>.</td>
+</tr>
+<tr>
+<td><code>capture_start_local</code></td>
+<td><code>TIMESTAMP</code></td>
+<td>yes</td>
+<td>Capture interval start parsed from the source name.</td>
+</tr>
+<tr>
+<td><code>capture_end_local</code></td>
+<td><code>TIMESTAMP</code></td>
+<td>yes</td>
+<td>Capture interval end parsed from the source name.</td>
+</tr>
+<tr>
+<td><code>capture_time_zone</code></td>
+<td><code>TEXT</code></td>
+<td>yes</td>
+<td>Capture time-zone status; currently <code>unknown</code>.</td>
+</tr>
+<tr>
+<td><code>duration_seconds</code></td>
+<td><code>DOUBLE PRECISION</code></td>
+<td>yes</td>
+<td>Original video duration.</td>
+</tr>
+<tr>
+<td><code>frame_count</code></td>
+<td><code>INTEGER</code></td>
+<td>yes</td>
+<td>Number of source frames.</td>
+</tr>
+<tr>
+<td><code>fps</code></td>
+<td><code>DOUBLE PRECISION</code></td>
+<td>yes</td>
+<td>Original video frames per second.</td>
+</tr>
+<tr>
+<td><code>frame_width</code></td>
+<td><code>INTEGER</code></td>
+<td>yes</td>
+<td>Source-frame width in pixels.</td>
+</tr>
+<tr>
+<td><code>frame_height</code></td>
+<td><code>INTEGER</code></td>
+<td>yes</td>
+<td>Source-frame height in pixels.</td>
+</tr>
+<tr>
+<td><code>source_video_path</code></td>
+<td><code>TEXT</code></td>
+<td>yes</td>
+<td>Original local AVI path at export time.</td>
+</tr>
+<tr>
+<td><code>storage_bucket</code></td>
+<td><code>TEXT</code></td>
+<td>yes</td>
+<td>Cloudflare R2 bucket containing the MP4.</td>
+</tr>
+<tr>
+<td><code>storage_path</code></td>
+<td><code>TEXT</code> unique</td>
+<td>yes</td>
+<td>Object key in the R2 bucket.</td>
+</tr>
+<tr>
+<td><code>video_url</code></td>
+<td><code>TEXT</code></td>
+<td>yes</td>
+<td>Public Cloudflare R2 URL for the MP4.</td>
+</tr>
+<tr>
+<td><code>source_metadata</code></td>
+<td><code>JSONB</code></td>
+<td>no</td>
+<td>Original metadata-export object for traceability.</td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td><code>TIMESTAMPTZ</code></td>
+<td>no</td>
+<td>Row insert time; defaults to <code>NOW()</code>.</td>
+</tr>
+<tr>
+<td><code>updated_at</code></td>
+<td><code>TIMESTAMPTZ</code></td>
+<td>no</td>
+<td>Row update time; defaults to <code>NOW()</code>.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="bronzeevents"><code>bronze.events</code></h2>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+<th>Nullable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>event_id</code></td>
+<td><code>TEXT</code> PK</td>
+<td>no</td>
+<td>Stable SHA-256 ID, unique across all videos/cameras.</td>
+</tr>
+<tr>
+<td><code>video_id</code></td>
+<td><code>TEXT</code> FK → <code>bronze.videos.video_id</code></td>
+<td>no</td>
+<td>Parent video.</td>
+</tr>
+<tr>
+<td><code>event_name</code></td>
+<td><code>TEXT</code></td>
+<td>yes</td>
+<td>Model-generated event label.</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td><code>TEXT</code></td>
+<td>yes</td>
+<td>Model-generated event description.</td>
+</tr>
+<tr>
+<td><code>start_frame</code></td>
+<td><code>INTEGER</code></td>
+<td>yes</td>
+<td>Inclusive source-frame start for the selected window.</td>
+</tr>
+<tr>
+<td><code>end_frame</code></td>
+<td><code>INTEGER</code></td>
+<td>yes</td>
+<td>Inclusive source-frame end for the selected window.</td>
+</tr>
+<tr>
+<td><code>start_seconds</code></td>
+<td><code>DOUBLE PRECISION</code></td>
+<td>yes</td>
+<td>Window start timestamp in the original video.</td>
+</tr>
+<tr>
+<td><code>end_seconds</code></td>
+<td><code>DOUBLE PRECISION</code></td>
+<td>yes</td>
+<td>Window end timestamp in the original video.</td>
+</tr>
+<tr>
+<td><code>source_status</code></td>
+<td><code>TEXT</code></td>
+<td>no</td>
+<td>Annotation provenance, currently <code>generated</code>.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="bronzeobjects"><code>bronze.objects</code></h2>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+<th>Nullable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>object_id</code></td>
+<td><code>TEXT</code> PK</td>
+<td>no</td>
+<td>Globally unique SHA-256 ID derived from the source video ID and local tracker ID.</td>
+</tr>
+<tr>
+<td><code>source_object_id</code></td>
+<td><code>TEXT</code></td>
+<td>no</td>
+<td>Local YOLO tracker ID from the source export.</td>
+</tr>
+<tr>
+<td><code>detection_count</code></td>
+<td><code>INTEGER</code></td>
+<td>no</td>
+<td>Number of retained frame detections.</td>
+</tr>
+<tr>
+<td><code>first_seen_seconds</code></td>
+<td><code>DOUBLE PRECISION</code></td>
+<td>yes</td>
+<td>First observation time in the video.</td>
+</tr>
+<tr>
+<td><code>last_seen_seconds</code></td>
+<td><code>DOUBLE PRECISION</code></td>
+<td>yes</td>
+<td>Last observation time in the video.</td>
+</tr>
+<tr>
+<td><code>label_details</code></td>
+<td><code>JSONB</code></td>
+<td>no</td>
+<td>Per-label descriptions, confidence summary, detection count, and spatial positions.</td>
+</tr>
+</tbody>
+</table>
+<p><code>source_object_id</code> is the local YOLO tracker ID and is not globally unique. The relationship to a video is represented only when the object is connected to an event through <code>bronze.event_objects</code>, then to that event's <code>bronze.events.video_id</code>.</p>
+<h2 id="bronzeevent_objects"><code>bronze.event_objects</code></h2>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+<th>Nullable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>event_id</code></td>
+<td><code>TEXT</code> PK/FK → <code>bronze.events.event_id</code></td>
+<td>no</td>
+<td>Referenced event.</td>
+</tr>
+<tr>
+<td><code>object_id</code></td>
+<td><code>TEXT</code> PK/FK → <code>bronze.objects.object_id</code></td>
+<td>no</td>
+<td>Referenced participating object.</td>
+</tr>
+</tbody>
+</table>
+<p>The combined primary key <code>(event_id, object_id)</code> prevents the same object from being linked to the same event more than once.</p>
+<h2 id="bronzegeometries"><code>bronze.geometries</code></h2>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+<th>Nullable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>geometry_id</code></td>
+<td><code>TEXT</code> PK</td>
+<td>no</td>
+<td>Globally unique SHA-256 geometry ID.</td>
+</tr>
+<tr>
+<td><code>object_id</code></td>
+<td><code>TEXT</code> FK → <code>bronze.objects.object_id</code></td>
+<td>no</td>
+<td>Parent tracked object.</td>
+</tr>
+<tr>
+<td><code>source_geometry_id</code></td>
+<td><code>INTEGER</code></td>
+<td>no</td>
+<td>Original per-video geometry record ID.</td>
+</tr>
+<tr>
+<td><code>frame_index</code></td>
+<td><code>INTEGER</code></td>
+<td>no</td>
+<td>Original-video frame index.</td>
+</tr>
+<tr>
+<td><code>timestamp_seconds</code></td>
+<td><code>DOUBLE PRECISION</code></td>
+<td>no</td>
+<td>Time in the original video.</td>
+</tr>
+<tr>
+<td><code>label</code></td>
+<td><code>TEXT</code></td>
+<td>yes</td>
+<td>YOLO detector label for this frame.</td>
+</tr>
+<tr>
+<td><code>confidence</code></td>
+<td><code>DOUBLE PRECISION</code></td>
+<td>yes</td>
+<td>YOLO detection confidence for this frame.</td>
+</tr>
+<tr>
+<td><code>spatial_position</code></td>
+<td><code>TEXT</code></td>
+<td>yes</td>
+<td>Coarse position, such as <code>top-left</code>.</td>
+</tr>
+<tr>
+<td><code>bounding_box_pixels</code></td>
+<td><code>JSONB</code></td>
+<td>no</td>
+<td>Bounding rectangle: <code>x_min</code>, <code>y_min</code>, <code>x_max</code>, and <code>y_max</code> in original-frame pixels.</td>
+</tr>
+</tbody>
+</table>
+<p>The <code>(object_id, source_geometry_id)</code> pair is unique. Geometry labels can vary for a single tracked object because they preserve the per-frame detector result.</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js"></script>
+        <script src="../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

@@ -1,2 +1,5 @@
 # Locally downloaded Ultralytics YOLO weights.
 yolo*.pt
+
+# Local credentials for Supabase and other services.
+.env

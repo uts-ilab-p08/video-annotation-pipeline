@@ -3,7 +3,7 @@
 #################################################################################
 
 PROJECT_NAME = annotation_pipeline
-PYTHON_VERSION = 3.10
+PYTHON_VERSION = 3.14
 PYTHON_INTERPRETER = python
 
 #################################################################################
@@ -14,6 +14,7 @@ PYTHON_INTERPRETER = python
 ## Install Python dependencies
 .PHONY: requirements
 requirements:
+	uv lock --upgrade-package videometa
 	uv sync
 	
 

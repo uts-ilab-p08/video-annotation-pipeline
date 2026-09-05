@@ -16,16 +16,32 @@ classifiers = [
     "License :: OSI Approved :: MIT License"
 ]
 dependencies = [
+    "boto3>=1.43.86",
+    "ipykernel",
     "loguru",
+    "matplotlib",
     "mkdocs",
+    "mlx-vlm",
+    "opencv-python",
     "pip",
+    "psycopg[binary]>=3.3.5",
     "pytest",
     "python-dotenv",
     "ruff",
     "tqdm",
     "typer",
+    "ultralytics",
+    "videometa>=0.0.9",
 ]
-requires-python = "~=3.10.0"
+requires-python = ">=3.14"
+
+[[tool.uv.index]]
+name = "testpypi"
+url = "https://test.pypi.org/simple"
+explicit = true
+
+[tool.uv.sources]
+videometa = { index = "testpypi" }
 
 
 [tool.ruff]

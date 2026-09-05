@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Video Annotation Explorer</title>
+  <style>
+    :root { color-scheme: light dark; font-family: Inter, ui-sans-serif, system-ui, sans-serif; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #f6f7f9; color: #172033; }
+    header { padding: 24px max(24px, calc((100vw - 1280px) / 2)); background: #172033; color: white; }
+    h1 { margin: 0; font-size: 24px; } h2 { margin: 0 0 12px; font-size: 16px; }
+    header p { margin: 7px 0 0; color: #cbd5e1; }
+    main { max-width: 1280px; margin: auto; padding: 20px 24px 40px; }
+    .toolbar, .card { background: white; border: 1px solid #dbe1ea; border-radius: 10px; }
+    .toolbar { display: flex; gap: 16px; align-items: end; flex-wrap: wrap; padding: 16px; }
+    label { display: grid; gap: 6px; font-size: 13px; font-weight: 650; color: #43516b; }
+    input, select { font: inherit; padding: 8px; min-width: 220px; border: 1px solid #b8c3d4; border-radius: 6px; background: white; color: #172033; }
+    .hint { margin: 12px 0 20px; color: #58657b; font-size: 14px; }
+    .grid { display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(320px, .8fr); gap: 18px; }
+    .card { padding: 16px; } video { width: 100%; background: #0f172a; border-radius: 6px; max-height: 520px; }
+    .chunk-meta { display: flex; gap: 16px; flex-wrap: wrap; margin: 10px 0 0; font-size: 13px; color: #58657b; }
+    .events { display: grid; gap: 10px; max-height: 380px; overflow: auto; }
+    .event { padding: 10px; border: 1px solid #dbe1ea; border-left: 4px solid #2164d1; border-radius: 6px; }
+    .event strong { display: block; font-size: 14px; } .event p { margin: 5px 0; font-size: 13px; line-height: 1.35; }
+    .tags { display: flex; gap: 6px; flex-wrap: wrap; }.tag { padding: 3px 6px; font-size: 12px; background: #e8f0ff; color: #124baf; border-radius: 4px; }
+    .spatial { margin-top: 18px; display: grid; grid-template-columns: 180px 1fr; gap: 18px; align-items: start; }
+    .spatial-grid { display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid #b8c3d4; }
+    .cell { min-height: 56px; border: 1px solid #dbe1ea; padding: 4px; font-size: 11px; color: #6a7487; }
+    .cell b { display: block; color: #124baf; font-size: 12px; }
+    .detections { display: grid; gap: 8px; max-height: 260px; overflow: auto; }
+    .detection { display: grid; grid-template-columns: 1fr auto; gap: 4px 12px; padding: 9px; border-bottom: 1px solid #e5e9f0; font-size: 13px; }
+    .detection small { color: #58657b; } .coordinates { grid-column: 1 / -1; font-family: ui-monospace, monospace; font-size: 11px; color: #58657b; }
+    .empty { color: #6a7487; font-size: 14px; padding: 20px 0; }
+    @media (max-width: 800px) { .grid { grid-template-columns: 1fr; } .spatial { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <header><h1>Video Annotation Explorer</h1><p>Explore processed LVLM events and their joined YOLO spatial detections.</p></header>
+  <main>
+    <section class="toolbar">
+      <label>Video <select id="videoSelect" disabled></select></label>
+      <label>Annotated chunk <select id="chunkSelect" disabled></select></label>
+    </section>
+    <p class="hint" id="status">Loading processed annotations from <code>data/</code>…</p>
+    <section class="grid" id="content" hidden>
+      <div class="card">
+        <h2 id="chunkTitle">Annotated video chunk</h2>
+        <video id="player" controls muted></video>
+        <div class="chunk-meta"><span id="duration"></span><span id="frameTime"></span><span id="detectionCount"></span></div>
+        <div class="spatial">
+          <div><h2>Spatial positions at playback time</h2><div class="spatial-grid" id="spatialGrid"></div></div>
+          <div><h2>Joined YOLO detections</h2><div class="detections" id="detections"></div></div>
+        </div>
+      </div>
+      <aside class="card"><h2>LVLM events for this chunk</h2><div class="events" id="events"></div></aside>
+    </section>
+  </main>
+  <script>
+    const $ = id => document.getElementById(id);
+    const DATA_ROOT = "../data";
+    const CAMERA_NAMES = [
+      "2018-03-05.13-15-00.13-20-00.bus.G340",
+      "2018-03-05.13-15-00.13-20-00.bus.G505",
+      "2018-03-05.13-15-00.13-20-00.bus.G506",
+      "2018-03-05.13-15-00.13-20-00.hospital.G341",
+      "2018-03-05.13-15-00.13-20-00.school.G423",
+      "2018-03-05.13-15-00.13-20-00.school.G424",
+      "2018-03-05.13-15-01.13-20-01.school.G328",
+      "2018-03-05.13-20-00.13-25-00.bus.G340",
+      "2018-03-05.13-20-00.13-25-00.school.G336",
+      "2018-03-05.13-20-00.13-25-00.school.G423",
+    ];
+    const videos = new Map();
+    let current = null;
+    const positions = ["top-left","top-center","top-right","middle-left","middle-center","middle-right","bottom-left","bottom-center","bottom-right"];
+    const escapeHtml = value => String(value ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+    const windowKey = item => `${Number(item.start_seconds).toFixed(3)}-${Number(item.end_seconds).toFixed(3)}`;
+    async function loadProcessedData() {
+      const loaded = await Promise.all(CAMERA_NAMES.map(async name => {
+        try {
+          const [eventsResponse, spatialResponse] = await Promise.all([
+            fetch(`${DATA_ROOT}/processed/${name}/window_event_annotations.json`),
+            fetch(`${DATA_ROOT}/processed/${name}/yolo_spatial_coordinates.json`),
+          ]);
+          if (!eventsResponse.ok || !spatialResponse.ok) return null;
+          return [name, { events: await eventsResponse.json(), spatial: await spatialResponse.json() }];
+        } catch {
+          return null;
+        }
+      }));
+      loaded.filter(Boolean).forEach(([name, data]) => videos.set(name, data));
+      $("videoSelect").innerHTML = [...videos.keys()].sort().map(name => `<option>${escapeHtml(name)}</option>`).join("");
+      $("videoSelect").disabled = !videos.size;
+      $("status").textContent = videos.size
+        ? `Loaded ${videos.size} processed video dataset(s) from data/. Select a video and chunk to inspect the event-to-detection join.`
+        : "No processed annotation files could be loaded. Serve annotation_pipeline locally, then open this page through the server.";
+      if (videos.size) loadVideo($("videoSelect").value);
+    }
+    $("videoSelect").addEventListener("change", event => loadVideo(event.target.value));
+    $("chunkSelect").addEventListener("change", event => loadChunk(event.target.value));
+
+    function loadVideo(name) {
+      const data = videos.get(name);
+      const byKey = new Map(data.spatial.map(item => [windowKey(item), item]));
+      current = data.events.map(item => ({ ...item, spatial: byKey.get(windowKey(item)) || { detections: [], event_object_ids: [] } }));
+      $("chunkSelect").innerHTML = current.map((item, index) => `<option value="${index}">${item.start_seconds.toFixed(1)}–${item.end_seconds.toFixed(1)} s · ${item.events.length} event(s)</option>`).join("");
+      $("chunkSelect").disabled = !current.length;
+      loadChunk(0);
+    }
+
+    function loadChunk(index) {
+      const item = current[Number(index)], start = Number(item.start_seconds), end = Number(item.end_seconds);
+      $("content").hidden = false;
+      $("chunkTitle").textContent = `Annotated video chunk · ${start.toFixed(1)}–${end.toFixed(1)} seconds`;
+      $("duration").textContent = `Source interval: ${start.toFixed(1)}–${end.toFixed(1)} s`;
+      $("events").innerHTML = item.events.length ? item.events.map(event => `<article class="event"><strong>${escapeHtml(event.event_name)}</strong><p>${escapeHtml(event.description)}</p><div class="tags">${(event.involved_objects || []).map(object => `<span class="tag">${escapeHtml(object.label)} #${escapeHtml(object.id)} · ${escapeHtml(object.physical_details)}</span>`).join("")}</div></article>`).join("") : `<p class="empty">This chunk has no extracted events.</p>`;
+      const clipPath = `${DATA_ROOT}/interim/${$("videoSelect").value}/window_frames/window_${start.toFixed(3)}s_${end.toFixed(3)}s/annotated_window.mp4`;
+      $("player").src = clipPath;
+      $("status").textContent = "Showing the annotated MP4. The spatial panel follows playback time.";
+      $("player").onloadedmetadata = () => renderDetections(item, start);
+      $("player").ontimeupdate = () => renderDetections(item, start + $("player").currentTime);
+      renderDetections(item, start);
+    }
+
+    function renderDetections(item, time) {
+      const detections = item.spatial.detections || [];
+      const frames = new Map();
+      detections.forEach(detection => {
+        const key = Number(detection.timestamp_seconds).toFixed(2);
+        if (!frames.has(key)) frames.set(key, []);
+        frames.get(key).push(detection);
+      });
+      const timestamps = [...frames.keys()].map(Number);
+      const nearest = timestamps.length
+        ? timestamps.reduce((best, value) => Math.abs(value - time) < Math.abs(best - time) ? value : best)
+        : null;
+      const frameDetections = nearest === null ? [] : frames.get(nearest.toFixed(2));
+      const grouped = Object.fromEntries(positions.map(position => [position, []]));
+      frameDetections.forEach(detection => grouped[detection.spatial_position]?.push(`${detection.label} #${detection.object_id}`));
+      $("spatialGrid").innerHTML = positions.map(position => `<div class="cell">${escapeHtml(position)}${grouped[position].length ? `<b>${grouped[position].map(escapeHtml).join("<br>")}</b>` : ""}</div>`).join("");
+      $("frameTime").textContent = frameDetections.length ? `Detection timestamp: ${nearest.toFixed(2)} s` : "No joined detections at this time";
+      $("detectionCount").textContent = `${frameDetections.length} event-linked detection(s)`;
+      $("detections").innerHTML = frameDetections.length ? frameDetections.map(detection => `<div class="detection"><span><b>${escapeHtml(detection.label)} #${escapeHtml(detection.object_id)}</b><br><small>${escapeHtml(detection.spatial_position)} · confidence ${Number(detection.confidence).toFixed(2)}</small></span><span>${escapeHtml(detection.timestamp_seconds)} s</span><span class="coordinates">box_xyxy: [${detection.box_xyxy.map(value => Number(value).toFixed(1)).join(", ")}]</span></div>`).join("") : `<p class="empty">Only event-linked object tracks are included in processed spatial data.</p>`;
+    }
+    loadProcessedData();
+  </script>
+</body>
+</html>
