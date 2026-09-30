@@ -3,3 +3,4 @@ yolo*.pt
 
 # Local credentials for Supabase and other services.
 .env
+.env
