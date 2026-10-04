@@ -86,3 +86,18 @@ export PRINT_HELP_PYSCRIPT
 
 help:
 	@$(PYTHON_INTERPRETER) -c "${PRINT_HELP_PYSCRIPT}" < $(MAKEFILE_LIST)
+
+
+## Rebuild reports/coverage_explorer_data/ from the bronze schema (run after notebook 08; ~1-2 min)
+.PHONY: coverage-explorer-data
+coverage-explorer-data:
+	.venv/bin/python reports/build_coverage_explorer.py
+
+
+## Serve the coverage explorer at http://localhost:8000/reports/coverage_explorer.html
+## (builds the data first only when it is missing; the server then refreshes a video's data from
+## the database whenever the page opens it, so the page always reflects Supabase)
+.PHONY: coverage-explorer
+coverage-explorer:
+	@test -f reports/coverage_explorer_data/index.json || $(MAKE) coverage-explorer-data
+	.venv/bin/python reports/serve_coverage_explorer.py

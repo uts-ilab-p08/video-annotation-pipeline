@@ -1,0 +1,878 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Coverage Lens</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root {
+    --bg: #F2F4F7; --surface: #FFFFFF; --surface-2: #E9EDF2; --ink: #151C24; --muted: #5F6C7B;
+    --line: #D6DDE5; --accent: #2D5BE3; --accent-soft: #E3EAFB;
+    --meva: #C77D00; --meva-soft: #FBF0DA; --pipe: #0B7F8E; --pipe-soft: #DDF1F3;
+    --ok: #1F8A4C; --ok-soft: #DDF3E5; --miss: #CC3A3A; --miss-soft: #FAE1E1; --none: #8B98A5; --none-soft: #E9EDF2;
+    --shadow: 0 1px 2px rgba(21,28,36,.06), 0 4px 16px rgba(21,28,36,.06);
+    --sans: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0D1117; --surface: #151B23; --surface-2: #1C242E; --ink: #E6EDF3; --muted: #8B98A5;
+      --line: #2A3440; --accent: #6B93FF; --accent-soft: #1B2A4D;
+      --meva: #F0A62B; --meva-soft: #3A2A0E; --pipe: #2FB7C8; --pipe-soft: #0F2F35;
+      --ok: #3FBF74; --ok-soft: #113322; --miss: #F06565; --miss-soft: #3B1616; --none: #6B7683; --none-soft: #222B36;
+      --shadow: 0 1px 2px rgba(0,0,0,.4), 0 6px 20px rgba(0,0,0,.35);
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0D1117; --surface: #151B23; --surface-2: #1C242E; --ink: #E6EDF3; --muted: #8B98A5;
+    --line: #2A3440; --accent: #6B93FF; --accent-soft: #1B2A4D;
+    --meva: #F0A62B; --meva-soft: #3A2A0E; --pipe: #2FB7C8; --pipe-soft: #0F2F35;
+    --ok: #3FBF74; --ok-soft: #113322; --miss: #F06565; --miss-soft: #3B1616; --none: #6B7683; --none-soft: #222B36;
+    --shadow: 0 1px 2px rgba(0,0,0,.4), 0 6px 20px rgba(0,0,0,.35);
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  [hidden] { display: none !important; }
+  html, body { height: 100%; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 14px/1.45 var(--sans); }
+  button, input, select { font: inherit; color: inherit; }
+  button { cursor: pointer; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .mono { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+
+  .app { height: 100%; display: grid; grid-template-rows: auto 1fr; }
+  .topbar { display: flex; align-items: center; gap: 20px; padding: 10px 20px; background: var(--surface); border-bottom: 1px solid var(--line); flex-wrap: wrap; }
+  .brand { display: flex; align-items: baseline; gap: 10px; }
+  .brand h1 { font-size: 17px; font-weight: 700; margin: 0; letter-spacing: -.01em; }
+  .brand span { color: var(--muted); font-size: 12.5px; }
+  .totals { display: flex; gap: 18px; margin-left: auto; flex-wrap: wrap; }
+  .stat { display: flex; flex-direction: column; line-height: 1.15; }
+  .stat b { font-size: 16px; font-weight: 600; font-variant-numeric: tabular-nums; }
+  .stat small { color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: .06em; }
+  .legend { display: flex; gap: 12px; align-items: center; font-size: 12px; color: var(--muted); }
+  .swatch { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 5px; vertical-align: -1px; }
+
+  .main { display: grid; grid-template-columns: 300px minmax(0, 1fr) 400px; min-height: 0; }
+  .sidebar, .detail { background: var(--surface); min-height: 0; display: flex; flex-direction: column; }
+  .sidebar { border-right: 1px solid var(--line); }
+  .detail { border-left: 1px solid var(--line); }
+  .stage-col { min-height: 0; overflow: auto; padding: 16px; display: flex; flex-direction: column; gap: 14px; }
+
+  .sidebar-head { padding: 12px 14px 8px; display: flex; flex-direction: column; gap: 8px; border-bottom: 1px solid var(--line); }
+  .sidebar-head input, .sidebar-head select, .detail-head input { width: 100%; padding: 7px 9px; border: 1px solid var(--line); border-radius: 6px; background: var(--bg); }
+  .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .video-list { overflow: auto; flex: 1; padding: 6px; }
+  .video-item { width: 100%; text-align: left; border: 1px solid transparent; background: transparent; border-radius: 8px; padding: 9px 10px; display: grid; gap: 5px; }
+  .video-item:hover { background: var(--surface-2); }
+  .video-item[aria-current="true"] { background: var(--accent-soft); border-color: var(--accent); }
+  .video-item .line1 { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+  .video-item .cam { font-weight: 600; }
+  .video-item .when { color: var(--muted); font-size: 12px; }
+  .chip { display: inline-block; font-size: 11px; padding: 1px 7px; border-radius: 999px; background: var(--surface-2); color: var(--muted); text-transform: uppercase; letter-spacing: .05em; }
+  .bar { height: 6px; border-radius: 3px; background: var(--miss-soft); overflow: hidden; position: relative; }
+  .bar > i { position: absolute; inset: 0 auto 0 0; background: var(--ok); }
+  .bar.empty { background: var(--none-soft); }
+  .bar.agree { margin-top: 3px; }
+  .bar.agree > i { background: var(--ok); }
+  .video-item .line2 { display: flex; justify-content: space-between; font-size: 10.5px; color: var(--muted); text-transform: uppercase; letter-spacing: .05em; margin: 2px 0 1px; }
+  .ev .verdict { display: flex; justify-content: space-between; gap: 8px; align-items: center; }
+  .ev .ref { font-size: 12px; color: var(--muted); } .ev .ref b { color: var(--ink); font-weight: 500; }
+  .ev.ok { border-left: 3px solid var(--ok); } .ev.miss { border-left: 3px solid var(--miss); } .ev.none { border-left: 3px solid var(--none); }
+  .video-item .line3 { display: flex; justify-content: space-between; font-size: 11.5px; color: var(--muted); }
+
+  .stage-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 12px; flex-wrap: wrap; }
+  .stage-head h2 { margin: 0; font-size: 15px; font-weight: 600; }
+  .stage-head .sub { color: var(--muted); font-size: 12.5px; }
+  .pills { display: flex; gap: 8px; flex-wrap: wrap; }
+  .pill { display: inline-flex; align-items: center; gap: 6px; padding: 3px 10px; border-radius: 999px; font-size: 12px; font-weight: 500; }
+  .pill.ok { background: var(--ok-soft); color: var(--ok); }
+  .pill.miss { background: var(--miss-soft); color: var(--miss); }
+  .pill.none { background: var(--none-soft); color: var(--none); }
+  .pill.meva { background: var(--meva-soft); color: var(--meva); }
+  .pill.pipe { background: var(--pipe-soft); color: var(--pipe); }
+
+  .stage { position: relative; background: #000; border-radius: 10px; overflow: hidden; box-shadow: var(--shadow); aspect-ratio: 16 / 9; max-width: 100%; }
+  .stage video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; background: #000; }
+  .stage canvas { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+  .stage .loading { position: absolute; inset: 0; display: grid; place-items: center; color: #fff; font-size: 13px; background: rgba(0,0,0,.35); pointer-events: none; }
+  .stage .notice { position: absolute; left: 12px; bottom: 12px; background: rgba(0,0,0,.65); color: #fff; padding: 6px 10px; border-radius: 6px; font-size: 12px; }
+  .stage .fragment-tag { position: absolute; top: 12px; left: 12px; background: rgba(0,0,0,.65); color: #fff; padding: 5px 10px; border-radius: 6px; font-size: 12px; display: flex; gap: 8px; align-items: center; }
+  .fragment-tag .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--meva); }
+
+  .controls { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .controls .group { display: flex; gap: 6px; align-items: center; }
+  .btn { padding: 6px 11px; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); }
+  .btn:hover { background: var(--surface-2); }
+  .btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .btn.primary:hover { filter: brightness(1.08); }
+  .btn[aria-pressed="true"] { background: var(--accent-soft); border-color: var(--accent); color: var(--accent); }
+  .btn.layer { gap: 6px; }
+  .btn.layer .swatch { margin: 0; opacity: .35; }
+  .btn.layer[aria-pressed="true"] .swatch { opacity: 1; }
+  .btn.layer-meva[aria-pressed="true"] { background: var(--meva-soft); border-color: var(--meva); color: var(--meva); }
+  .btn.layer-pipe[aria-pressed="true"] { background: var(--pipe-soft); border-color: var(--pipe); color: var(--pipe); }
+  .toggle { display: inline-flex; align-items: center; gap: 6px; font-size: 12.5px; color: var(--muted); padding: 5px 8px; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); }
+  .toggle input { margin: 0; }
+  .time { font-family: var(--mono); font-variant-numeric: tabular-nums; font-size: 12.5px; color: var(--muted); min-width: 150px; }
+
+  .timeline { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px 6px; }
+  .timeline canvas { display: block; width: 100%; height: 130px; cursor: pointer; }
+  .timeline .lanes { display: flex; justify-content: space-between; font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 4px; }
+
+  .compare { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+  .card.meva-card { border-top: 3px solid var(--meva); }
+  .card.pipe-card { border-top: 3px solid var(--pipe); }
+  .card .eyebrow { font-size: 11px; text-transform: uppercase; letter-spacing: .07em; color: var(--muted); display: flex; justify-content: space-between; align-items: center; }
+  .card h3 { margin: 0; font-size: 14.5px; font-weight: 600; text-wrap: balance; }
+  .card p { margin: 0; color: var(--ink); max-width: 68ch; }
+  .card .meta { display: flex; gap: 10px; flex-wrap: wrap; font-size: 12px; color: var(--muted); }
+  .card .reason { font-size: 12.5px; color: var(--muted); border-left: 2px solid var(--line); padding-left: 10px; }
+  .card .empty { color: var(--muted); font-style: italic; }
+  .actions { display: flex; gap: 6px; flex-wrap: wrap; }
+  .action { font-size: 11.5px; padding: 2px 8px; border-radius: 4px; background: var(--pipe-soft); color: var(--pipe); }
+  .action.other { background: var(--surface-2); color: var(--muted); }
+  .objs { display: flex; gap: 6px; flex-wrap: wrap; }
+  .obj { font-size: 11.5px; padding: 2px 7px; border-radius: 4px; border: 1px solid var(--line); color: var(--muted); font-family: var(--mono); }
+  .obj.meva { border-color: var(--meva); color: var(--meva); }
+  .obj.pipe { border-color: var(--pipe); color: var(--pipe); }
+
+  .detail-head { padding: 10px 12px 0; display: flex; flex-direction: column; gap: 8px; }
+  .tabs { display: flex; gap: 2px; border-bottom: 1px solid var(--line); }
+  .tab { padding: 8px 12px; background: none; border: none; border-bottom: 2px solid transparent; color: var(--muted); font-weight: 500; }
+  .tab[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--accent); }
+  .tab .count { font-family: var(--mono); font-size: 11.5px; margin-left: 4px; color: var(--muted); }
+  .filters { display: flex; gap: 6px; flex-wrap: wrap; padding-bottom: 8px; }
+  .filter { padding: 3px 10px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); font-size: 12px; color: var(--muted); }
+  .filter[aria-pressed="true"] { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); }
+  .filter[aria-pressed="true"].f-ok { border-color: var(--ok); color: var(--ok); background: var(--ok-soft); }
+  .filter[aria-pressed="true"].f-miss { border-color: var(--miss); color: var(--miss); background: var(--miss-soft); }
+  .detail-list { overflow: auto; flex: 1; padding: 8px 10px 20px; display: flex; flex-direction: column; gap: 8px; }
+
+  .group-card { border: 1px solid var(--line); border-radius: 8px; background: var(--surface); }
+  .group-head { display: grid; grid-template-columns: 8px 1fr auto; gap: 10px; align-items: center; padding: 9px 10px; cursor: pointer; }
+  .group-head .stripe { width: 4px; height: 100%; min-height: 28px; border-radius: 2px; background: var(--none); }
+  .group-card.ok .stripe { background: var(--ok); }
+  .group-card.miss .stripe { background: var(--miss); }
+  .group-head .title { font-weight: 600; font-size: 13.5px; }
+  .group-head .under { font-size: 11.5px; color: var(--muted); }
+  .group-body { border-top: 1px solid var(--line); padding: 8px 10px 10px; display: flex; flex-direction: column; gap: 6px; }
+  .group-body .reason { font-size: 12.5px; color: var(--muted); }
+  .inst { display: grid; grid-template-columns: 1fr auto; gap: 8px; align-items: center; padding: 6px 8px; border-radius: 6px; border: 1px solid transparent; background: var(--bg); }
+  .inst:hover { border-color: var(--line); }
+  .inst[aria-current="true"] { border-color: var(--meva); background: var(--meva-soft); }
+  .inst .t { font-family: var(--mono); font-size: 12px; }
+  .inst .a { font-size: 11.5px; color: var(--muted); }
+  .inst button { padding: 3px 8px; font-size: 12px; }
+  .credited { font-size: 12px; color: var(--pipe); display: flex; gap: 6px; align-items: center; }
+
+  .ev { border: 1px solid var(--line); border-radius: 8px; background: var(--surface); padding: 9px 10px; display: flex; flex-direction: column; gap: 6px; cursor: pointer; }
+  .ev:hover { border-color: var(--pipe); }
+  .ev[aria-current="true"] { border-color: var(--pipe); background: var(--pipe-soft); }
+  .ev .l1 { display: flex; justify-content: space-between; gap: 8px; align-items: baseline; }
+  .ev .name { font-weight: 600; font-size: 13.5px; }
+  .ev .t { font-family: var(--mono); font-size: 11.5px; color: var(--muted); white-space: nowrap; }
+  .ev .desc { font-size: 12.5px; color: var(--muted); display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+  .ev[aria-current="true"] .desc { -webkit-line-clamp: unset; color: var(--ink); }
+  .badge { font-size: 11px; padding: 1px 7px; border-radius: 999px; background: var(--ok-soft); color: var(--ok); }
+
+  .empty-state { padding: 30px 16px; color: var(--muted); text-align: center; }
+  .kbd { font-family: var(--mono); font-size: 11px; border: 1px solid var(--line); border-bottom-width: 2px; border-radius: 4px; padding: 0 5px; color: var(--muted); }
+  .hint { font-size: 12px; color: var(--muted); }
+
+  @media (max-width: 1180px) {
+    .main { grid-template-columns: 260px minmax(0, 1fr); }
+    .detail { grid-column: 1 / -1; border-left: none; border-top: 1px solid var(--line); max-height: 60vh; }
+  }
+  @media (max-width: 760px) {
+    .main { grid-template-columns: 1fr; }
+    .sidebar { max-height: 38vh; border-right: none; border-bottom: 1px solid var(--line); }
+    .compare { grid-template-columns: 1fr; }
+    .stage-col { padding: 12px 16px; }
+  }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <div class="brand">
+      <h1>Coverage Lens</h1>
+      <span id="judge">MEVA ground truth against the annotation pipeline</span>
+    </div>
+    <div class="legend">
+      <span><i class="swatch" style="background: var(--meva)"></i>MEVA actor box (amber, "vehicle 11")</span>
+      <span><i class="swatch" style="background: var(--pipe)"></i>Pipeline YOLO box (teal, "person #1163")</span>
+      <span><i class="swatch" style="background: var(--ok)"></i>Covered / matched</span>
+      <span><i class="swatch" style="background: var(--miss)"></i>Not covered / not matched</span>
+      <span><i class="swatch" style="background: var(--none)"></i>Not judged / no reference</span>
+    </div>
+    <div class="totals" id="totals"></div>
+  </header>
+
+  <div class="main">
+    <aside class="sidebar">
+      <div class="sidebar-head">
+        <input id="search" type="search" placeholder="Search camera or name" aria-label="Search videos">
+        <button class="btn" id="refreshAll" hidden title="Rebuild every video's data from Supabase (a few minutes)">Refresh all from database</button>
+        <div class="row2">
+          <select id="scene" aria-label="Scene"><option value="">All scenes</option></select>
+          <select id="sort" aria-label="Sort">
+            <option value="agreement-asc">Lowest agreement</option><option value="agreement-desc">Highest agreement</option>
+            <option value="coverage-asc">Lowest coverage first</option>
+            <option value="coverage-desc">Highest coverage first</option>
+            <option value="name">By name</option>
+            <option value="instances">Most MEVA instances</option>
+          </select>
+        </div>
+      </div>
+      <div class="video-list" id="videoList" role="list"></div>
+    </aside>
+
+    <section class="stage-col" id="stageCol">
+      <div class="empty-state" id="welcome">Loading videos…</div>
+      <div id="stageWrap" hidden>
+        <div class="stage-head">
+          <div>
+            <h2 id="videoTitle"></h2>
+            <div class="sub" id="videoSub"></div>
+          </div>
+          <div class="pills" id="videoPills"></div>
+        </div>
+        <div class="stage" id="stage" style="margin-top: 12px">
+          <video id="player" playsinline muted preload="auto"></video>
+          <canvas id="overlay"></canvas>
+          <div class="loading" id="loading">Loading video…</div>
+          <div class="fragment-tag" id="fragmentTag" hidden><span class="dot"></span><span id="fragmentText"></span></div>
+          <div class="notice" id="notice" hidden></div>
+        </div>
+        <div class="controls" style="margin-top: 12px">
+          <div class="group">
+            <button class="btn primary" id="playBtn" title="Space">Play</button>
+            <button class="btn" id="stepBack" title="Comma: one frame back">−1f</button>
+            <button class="btn" id="stepFwd" title="Period: one frame forward">+1f</button>
+            <span class="time" id="timeLabel">0:00.00 · f 0</span>
+          </div>
+          <div class="group">
+            <button class="btn layer layer-meva" id="showMeva" aria-pressed="true" title="M: show or hide MEVA boxes"><i class="swatch" style="background: var(--meva)"></i>MEVA boxes</button>
+            <button class="btn layer layer-pipe" id="showPipe" aria-pressed="true" title="P: show or hide pipeline boxes"><i class="swatch" style="background: var(--pipe)"></i>Pipeline boxes</button>
+            <label class="toggle"><input type="checkbox" id="loopFragment" checked> Loop fragment</label>
+            <label class="toggle">Speed <select id="speed"><option>0.5</option><option selected>1</option><option>2</option></select></label>
+            <label class="toggle">Source <select id="source"><option value="url">R2 stream</option><option value="local">Local MP4</option></select></label>
+          </div>
+        </div>
+        <div class="timeline" style="margin-top: 12px">
+          <div class="lanes">
+            <span>Top lane: MEVA instances · <i class="swatch" style="background: var(--miss)"></i>not covered <i class="swatch" style="background: var(--ok)"></i>covered <i class="swatch" style="background: var(--none)"></i>not evaluated</span>
+            <span>Bottom lane: pipeline events · <i class="swatch" style="background: var(--ok)"></i>matched <i class="swatch" style="background: var(--miss)"></i>not matched <i class="swatch" style="background: var(--pipe)"></i>not judged</span>
+          </div>
+          <canvas id="timeline" aria-label="Timeline"></canvas>
+        </div>
+        <div class="compare" style="margin-top: 14px">
+          <div class="card meva-card" id="mevaCard"><div class="eyebrow">MEVA activity</div><p class="empty">Select an activity on the right to inspect it here.</p></div>
+          <div class="card pipe-card" id="pipeCard"><div class="eyebrow">Pipeline annotation</div><p class="empty">The annotation the judge credited appears here.</p></div>
+        </div>
+        <p class="hint" style="margin: 10px 0 0">
+          <span class="kbd">space</span> play/pause · <span class="kbd">[</span> <span class="kbd">]</span> previous/next MEVA instance · <span class="kbd">,</span> <span class="kbd">.</span> step one frame · <span class="kbd">←</span> <span class="kbd">→</span> seek 2 s
+        </p>
+      </div>
+    </section>
+
+    <aside class="detail">
+      <div class="detail-head">
+        <div class="tabs" role="tablist">
+          <button class="tab" role="tab" id="tabMeva" aria-selected="true">MEVA activities<span class="count" id="countMeva"></span></button>
+          <button class="tab" role="tab" id="tabPipe" aria-selected="false">Pipeline events<span class="count" id="countPipe"></span></button>
+        </div>
+        <div id="mevaFilters">
+          <div class="filters">
+            <button class="filter" data-f="all" aria-pressed="true">All</button>
+            <button class="filter f-ok" data-f="covered" aria-pressed="false">Covered</button>
+            <button class="filter f-miss" data-f="missed" aria-pressed="false">Not covered</button>
+          </div>
+          <input id="typeSearch" type="search" placeholder="Filter activity type, e.g. door" aria-label="Filter activity types">
+        </div>
+        <div id="pipeFilters" hidden>
+          <div class="filters">
+            <button class="filter pf" data-pf="all" aria-pressed="true">All</button>
+            <button class="filter pf f-ok" data-pf="matched" aria-pressed="false">Matched</button>
+            <button class="filter pf f-miss" data-pf="unmatched" aria-pressed="false">Not matched</button>
+            <button class="filter pf" data-pf="noref" aria-pressed="false">No reference</button>
+          </div>
+          <input id="eventSearch" type="search" placeholder="Filter events, e.g. reverses" aria-label="Filter events">
+        </div>
+      </div>
+      <div class="detail-list" id="detailList"></div>
+    </aside>
+  </div>
+</div>
+
+<script>
+(() => {
+  const DATA_ROOT = "coverage_explorer_data";
+  const $ = (id) => document.getElementById(id);
+  const fmtTime = (s) => { const m = Math.floor(s / 60); const r = s - m * 60; return `${m}:${r.toFixed(2).padStart(5, "0")}`; };
+  const humanType = (t) => t.replace(/_/g, " ");
+
+  const state = {
+    index: null, videos: [], current: null, data: null,
+    live: false,              // true when served by reports/serve_coverage_explorer.py, which rebuilds data from the database on demand
+    tab: "meva", filter: "all", pipeFilter: "all", typeQuery: "", eventQuery: "",
+    selectedActivity: null,   // MEVA instance object
+    selectedEvent: null,      // pipeline event object
+    fragment: null,           // {start, end, label}
+    expanded: new Set(),
+  };
+  try { state.tab = localStorage.getItem("cl.tab") || "meva"; } catch (e) {}
+
+  // ---------- index / sidebar ----------
+  const fmtBuilt = (iso) => iso ? new Date(iso).toLocaleString([], { dateStyle: "short", timeStyle: "short" }) : "unknown";
+
+  async function loadIndex() {
+    try { const probe = await fetch("/api/status", { cache: "no-store" }); state.live = probe.ok && (await probe.json()).live === true; } catch (e) { state.live = false; }
+    const res = await fetch(`${DATA_ROOT}/index.json?t=${Date.now()}`, { cache: "no-store" });
+    if (!res.ok) throw new Error(`${res.status} ${res.statusText}`);
+    state.index = await res.json();
+    state.videos = state.index.videos;
+    $("judge").textContent = `Judge ${state.index.judge_model} · agreement ${state.index.agreement_version || "not run"} · ${state.videos.length} videos · data built ${fmtBuilt(state.index.generated_at)}`
+      + (state.live ? " · live: each video is checked against Supabase when opened" : " · static files: run make coverage-explorer-data to refresh");
+    const scenes = [...new Set(state.videos.map(v => v.scene))].sort();
+    for (const s of scenes) { const o = document.createElement("option"); o.value = s; o.textContent = s; $("scene").appendChild(o); }
+    $("refreshAll").hidden = !state.live;
+    renderTotals();
+    renderSidebar();
+    let last = null; try { last = localStorage.getItem("cl.video"); } catch (e) {}
+    const first = state.videos.find(v => v.id === last) || sortedVideos()[0];
+    if (first) selectVideo(first.id);
+  }
+
+  function renderTotals() {
+    const pairs = state.videos.reduce((a, v) => a + v.pairs, 0), covered = state.videos.reduce((a, v) => a + v.covered, 0);
+    const judged = state.videos.reduce((a, v) => a + (v.events_judged || 0), 0), matched = state.videos.reduce((a, v) => a + (v.events_matched || 0), 0);
+    $("totals").innerHTML = `
+      <div class="stat"><b>${covered} / ${pairs}</b><small>A · activity types covered</small></div>
+      <div class="stat"><b>${pairs ? Math.round(100 * covered / pairs) : 0}%</b><small>coverage (recall)</small></div>
+      <div class="stat"><b>${matched} / ${judged}</b><small>B · events matched</small></div>
+      <div class="stat"><b>${judged ? Math.round(100 * matched / judged) : 0}%</b><small>agreement (precision)</small></div>
+      <div class="stat"><b>${state.videos.reduce((a, v) => a + v.instances, 0)}</b><small>MEVA instances</small></div>
+      <div class="stat"><b>${state.videos.reduce((a, v) => a + v.events, 0)}</b><small>pipeline events</small></div>`;
+  }
+
+  // Replace index entries the server just rebuilt, so the sidebar counts match the files on disk.
+  function applyEntries(entries) {
+    for (const entry of entries) {
+      const i = state.videos.findIndex(v => v.id === entry.id);
+      if (i >= 0) state.videos[i] = entry; else state.videos.push(entry);
+    }
+    renderTotals(); renderSidebar();
+  }
+
+  // Ask the live server to rebuild one video's data when Supabase has newer rows (or always, with force).
+  async function refreshFromDatabase(id, force) {
+    const res = await fetch(`/api/rebuild?video=${encodeURIComponent(id)}${force ? "&force=1" : ""}`, { cache: "no-store" });
+    const body = await res.json();
+    if (!res.ok || !body.ok) throw new Error(body.error || `${res.status} ${res.statusText}`);
+    applyEntries(body.videos);
+  }
+
+  function sortedVideos() {
+    const q = $("search").value.trim().toLowerCase(), scene = $("scene").value, sort = $("sort").value;
+    let list = state.videos.filter(v => (!scene || v.scene === scene) && (!q || v.name.toLowerCase().includes(q) || v.camera.toLowerCase().includes(q)));
+    const cov = v => v.pairs ? v.covered / v.pairs : -1, agr = v => v.events_judged ? (v.events_matched || 0) / v.events_judged : -1;
+    if (sort === "coverage-asc") list.sort((a, b) => cov(a) - cov(b) || b.instances - a.instances);
+    else if (sort === "coverage-desc") list.sort((a, b) => cov(b) - cov(a) || b.instances - a.instances);
+    else if (sort === "agreement-asc") list.sort((a, b) => agr(a) - agr(b) || b.events - a.events);
+    else if (sort === "agreement-desc") list.sort((a, b) => agr(b) - agr(a) || b.events - a.events);
+    else if (sort === "instances") list.sort((a, b) => b.instances - a.instances);
+    else list.sort((a, b) => a.name.localeCompare(b.name));
+    return list;
+  }
+
+  function renderSidebar() {
+    const list = $("videoList"); list.innerHTML = "";
+    for (const v of sortedVideos()) {
+      const b = document.createElement("button");
+      b.className = "video-item"; b.setAttribute("role", "listitem"); b.dataset.id = v.id;
+      b.setAttribute("aria-current", v.id === state.current ? "true" : "false");
+      const pct = v.pairs ? Math.round(100 * v.covered / v.pairs) : 0;
+      const judged = v.events_judged || 0, apct = judged ? Math.round(100 * (v.events_matched || 0) / judged) : 0;
+      const when = v.captured ? v.captured.replace("T", " ").slice(0, 16) : "";
+      b.innerHTML = `
+        <div class="line1"><span class="cam">${v.camera}</span><span class="when mono">${when}</span></div>
+        <div class="line2"><span>A coverage ${pct}%</span><span>B agreement ${judged ? apct + "%" : "–"}</span></div>
+        <div class="bar ${v.pairs ? "" : "empty"}" title="A: ${v.covered} of ${v.pairs} activity types covered"><i style="width:${pct}%"></i></div>
+        <div class="bar agree ${judged ? "" : "empty"}" title="B: ${v.events_matched || 0} of ${judged} judged events matched"><i style="width:${apct}%"></i></div>
+        <div class="line3"><span><span class="chip">${v.scene}</span></span><span class="mono">${v.covered}/${v.pairs} types · ${v.events_matched || 0}/${judged} ev matched · ${v.events} ev</span></div>`;
+      b.addEventListener("click", () => selectVideo(v.id));
+      list.appendChild(b);
+    }
+  }
+  ["search", "scene", "sort"].forEach(id => $(id).addEventListener("input", renderSidebar));
+  $("refreshAll").addEventListener("click", async () => {
+    const b = $("refreshAll"); b.disabled = true; b.textContent = "Rebuilding every video from the database…";
+    try { await fetch("/api/rebuild", { cache: "no-store" }); location.reload(); }
+    catch (e) { b.disabled = false; b.textContent = "Refresh all from database"; alert(`Rebuild failed: ${e.message}`); }
+  });
+
+  // ---------- video ----------
+  const player = $("player"), overlay = $("overlay"), tl = $("timeline");
+  let fps = 30, frameCount = 0, duration = 0, triedLocal = false;
+
+  async function selectVideo(id, force = false) {
+    let meta = state.videos.find(v => v.id === id); if (!meta) return;
+    state.current = id; try { localStorage.setItem("cl.video", id); } catch (e) {}
+    renderSidebar();
+    state.selectedActivity = null; state.selectedEvent = null; state.fragment = null; state.expanded = new Set();
+    $("welcome").hidden = true; $("stageWrap").hidden = false; $("notice").hidden = true; $("fragmentTag").hidden = true;
+    // Show what is on disk straight away; the database check runs behind it and swaps in newer data.
+    await loadVideoData(meta, true);
+    if (state.live) checkDatabase(id, force);
+  }
+
+  let checkSeq = 0;
+  async function checkDatabase(id, force) {
+    const token = ++checkSeq;
+    const before = (state.videos.find(v => v.id === id) || {}).built_at;
+    showNotice(force ? "Rebuilding this video's data from Supabase…" : "Checking Supabase for newer data…");
+    try {
+      await refreshFromDatabase(id, force);
+      if (token !== checkSeq || state.current !== id) return;   // the user moved on while we waited
+      const meta = state.videos.find(v => v.id === id);
+      if (meta && meta.built_at !== before) {
+        await loadVideoData(meta, false);
+        showNotice("Updated from Supabase just now.");
+        setTimeout(() => { if (token === checkSeq) $("notice").hidden = true; }, 4000);
+      } else {
+        $("notice").hidden = true;
+      }
+    } catch (e) {
+      if (token === checkSeq && state.current === id) showNotice(`Could not check Supabase (${e.message}); showing the data on disk.`);
+    }
+  }
+
+  async function loadVideoData(meta, initial) {
+    const id = meta.id;
+    const res = await fetch(`${DATA_ROOT}/${meta.file}?t=${Date.now()}`, { cache: "no-store" });
+    state.data = await res.json();
+    if (!initial) { state.selectedActivity = null; state.selectedEvent = null; state.fragment = null; state.expanded = new Set(); $("fragmentTag").hidden = true; }
+    const v = state.data.video; fps = v.fps || 30; duration = v.duration; frameCount = Math.round(duration * fps);
+    for (const a of Object.values(state.data.meva.actors)) a.cursor = 0;
+    for (const o of Object.values(state.data.pipeline.objects)) o.cursor = 0;
+    // link events by id for quick lookup
+    state.data.pipeline.byId = Object.fromEntries(state.data.pipeline.events.map(e => [e.id, e]));
+    $("videoTitle").textContent = `${v.camera} · ${v.scene} · ${(v.captured || "").replace("T", " ")}`;
+    $("videoSub").innerHTML = `<span class="mono">${v.name}</span> · ${v.width}×${v.height} · ${fps} fps · ${fmtTime(duration)}`
+      + ` · data built ${fmtBuilt(state.data.built_at)}`
+      + (state.live ? ` <button class="btn" id="refreshVideo" title="Rebuild this video's data from Supabase now">Refresh</button>` : "");
+    if (state.live) $("refreshVideo").addEventListener("click", () => selectVideo(id, true));
+    const acts = state.data.meva.activities, types = new Set(acts.map(a => a.type));
+    const coveredTypes = new Set(acts.filter(a => a.covered === true).map(a => a.type));
+    const missedTypes = new Set(acts.filter(a => a.covered === false).map(a => a.type));
+    $("videoPills").innerHTML = `
+      <span class="pill ok">${coveredTypes.size} covered</span>
+      <span class="pill miss">${missedTypes.size} not covered</span>
+      ${types.size - coveredTypes.size - missedTypes.size ? `<span class="pill none">${types.size - coveredTypes.size - missedTypes.size} not evaluated</span>` : ""}
+      <span class="pill meva">${acts.length} MEVA instances</span>
+      <span class="pill pipe">${state.data.pipeline.events.length} pipeline events</span>
+      ${(() => { const evs = state.data.pipeline.events, j = evs.filter(e => e.agreement && e.agreement.status === "scored"), m = j.filter(e => e.agreement.match === true);
+                 return j.length ? `<span class="pill ok">${m.length} matched</span><span class="pill miss">${j.length - m.length} not matched</span>` : `<span class="pill none">agreement not judged</span>`; })()}`;
+    if (initial) {
+      triedLocal = false;
+      $("source").disabled = !v.local_url;
+      if (!v.url && v.local_url) $("source").value = "local";
+      setSource($("source").value);
+    }
+    renderDetail(); renderCompare(); drawTimeline(); drawOverlay();
+  }
+
+  function setSource(kind) {
+    const v = state.data && state.data.video; if (!v) return;
+    const src = kind === "local" && v.local_url ? `../${v.local_url}` : v.url;
+    if (!src) { showNotice("This video has no R2 URL and no local MP4."); return; }
+    $("loading").hidden = false; $("notice").hidden = true;
+    player.pause(); player.src = src; player.load();
+  }
+  $("source").addEventListener("change", () => setSource($("source").value));
+
+  let loadTimer = 0;
+  player.addEventListener("error", () => {
+    const v = state.data && state.data.video;
+    const err = player.error ? ` (code ${player.error.code})` : "";
+    if (v && v.local_url && !triedLocal && $("source").value === "url") {
+      triedLocal = true; $("source").value = "local"; showNotice(`R2 stream failed${err}; switched to the local MP4.`); setSource("local");
+    } else { $("loading").hidden = true; showNotice(`The video could not be loaded${err}. Try the other source, or check data/processed/source_mp4/.`); }
+  });
+  function showNotice(t) { $("notice").textContent = t; $("notice").hidden = false; }
+  player.addEventListener("loadedmetadata", () => {
+    if (player.duration && isFinite(player.duration)) duration = player.duration;
+    // Safari paints nothing until a frame is decoded; a tiny seek forces the first one.
+    if (player.currentTime === 0) player.currentTime = 0.04;
+    clearTimeout(loadTimer);
+    loadTimer = setTimeout(() => { if (player.readyState < 2) showNotice("Still waiting for video data. Press Play, or switch the source to the local MP4."); }, 8000);
+    drawTimeline();
+  });
+  player.addEventListener("loadeddata", () => { $("loading").hidden = true; $("notice").hidden = true; drawOverlay(); });
+  player.addEventListener("canplay", () => { $("loading").hidden = true; });
+  player.addEventListener("waiting", () => { if (!player.paused) showNotice("Buffering…"); });
+  player.addEventListener("playing", () => { $("notice").hidden = true; $("loading").hidden = true; });
+  player.addEventListener("play", () => { $("playBtn").textContent = "Pause"; tick(); });
+  player.addEventListener("pause", () => { $("playBtn").textContent = "Play"; });
+  player.addEventListener("seeked", () => { drawOverlay(); drawTimeline(); });
+  $("playBtn").addEventListener("click", () => player.paused ? player.play() : player.pause());
+  $("stepBack").addEventListener("click", () => { player.pause(); player.currentTime = Math.max(0, player.currentTime - 1 / fps); });
+  $("stepFwd").addEventListener("click", () => { player.pause(); player.currentTime = Math.min(duration, player.currentTime + 1 / fps); });
+  $("speed").addEventListener("change", () => player.playbackRate = parseFloat($("speed").value));
+  const layerOn = (id) => $(id).getAttribute("aria-pressed") === "true";
+  const toggleLayer = (id) => { $(id).setAttribute("aria-pressed", String(!layerOn(id))); drawOverlay(); };
+  ["showMeva", "showPipe"].forEach(id => $(id).addEventListener("click", () => toggleLayer(id)));
+
+  let raf = 0;
+  function tick() {
+    cancelAnimationFrame(raf);
+    const step = () => {
+      if (state.fragment && player.currentTime >= state.fragment.end) {
+        if ($("loopFragment").checked) player.currentTime = state.fragment.start; else player.pause();
+      }
+      drawOverlay(); drawTimeline();
+      if (!player.paused && !player.ended) raf = requestAnimationFrame(step);
+    };
+    raf = requestAnimationFrame(step);
+  }
+
+  function playFragment(startFrame, endFrame, label, pad = 1.0) {
+    const start = Math.max(0, startFrame / fps - pad), end = Math.min(duration || Infinity, endFrame / fps + pad);
+    state.fragment = { start, end, label };
+    $("fragmentText").textContent = `${label} · ${fmtTime(start)} – ${fmtTime(end)}`; $("fragmentTag").hidden = false;
+    player.currentTime = start; player.play().catch(() => {});
+  }
+
+  // ---------- overlay ----------
+  function boxAt(track, frame, tolerance) {
+    const boxes = track.boxes; if (!boxes.length) return null;
+    // boxes sorted by frame; keep a moving cursor for sequential playback, fall back to binary search on seeks
+    let i = track.cursor || 0;
+    if (i >= boxes.length || boxes[i][0] > frame || (i > 0 && boxes[i - 1][0] > frame) || frame - boxes[i][0] > 60) {
+      let lo = 0, hi = boxes.length - 1;
+      while (lo < hi) { const mid = (lo + hi + 1) >> 1; if (boxes[mid][0] <= frame) lo = mid; else hi = mid - 1; }
+      i = lo;
+    } else { while (i + 1 < boxes.length && boxes[i + 1][0] <= frame) i++; }
+    track.cursor = i;
+    const b = boxes[i];
+    if (b[0] > frame || frame - b[0] > tolerance) return null;
+    // interpolate towards the next box when one exists within reach
+    const n = boxes[i + 1];
+    if (n && n[0] > frame && n[0] - b[0] <= tolerance + 1) {
+      const k = (frame - b[0]) / (n[0] - b[0]);
+      return [b[1] + (n[1] - b[1]) * k, b[2] + (n[2] - b[2]) * k, b[3] + (n[3] - b[3]) * k, b[4] + (n[4] - b[4]) * k];
+    }
+    return [b[1], b[2], b[3], b[4]];
+  }
+
+  function geometry() {
+    const v = state.data.video, cw = overlay.clientWidth, ch = overlay.clientHeight;
+    const vw = player.videoWidth || v.width, vh = player.videoHeight || v.height;
+    const scale = Math.min(cw / vw, ch / vh), w = vw * scale, h = vh * scale;
+    // pixels are given in the source frame size; the mp4 may differ by a few pixels of padding
+    return { ox: (cw - w) / 2, oy: (ch - h) / 2, sx: w / v.width, sy: h / v.height };
+  }
+
+  function drawOverlay() {
+    if (!state.data) return;
+    const dpr = window.devicePixelRatio || 1;
+    const cw = overlay.clientWidth, ch = overlay.clientHeight;
+    if (overlay.width !== Math.round(cw * dpr) || overlay.height !== Math.round(ch * dpr)) { overlay.width = Math.round(cw * dpr); overlay.height = Math.round(ch * dpr); }
+    const ctx = overlay.getContext("2d"); ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, cw, ch);
+    const frame = Math.round(player.currentTime * fps);
+    $("timeLabel").textContent = `${fmtTime(player.currentTime)} · f ${frame}`;
+    const g = geometry(), css = getComputedStyle(document.documentElement);
+    const mevaColor = css.getPropertyValue("--meva").trim(), pipeColor = css.getPropertyValue("--pipe").trim();
+    ctx.font = "500 12px IBM Plex Mono, monospace"; ctx.textBaseline = "top";
+    const drawBox = (b, color, label, strong) => {
+      const x = g.ox + b[0] * g.sx, y = g.oy + b[1] * g.sy, w = (b[2] - b[0]) * g.sx, h = (b[3] - b[1]) * g.sy;
+      ctx.lineWidth = strong ? 3 : 1.5; ctx.strokeStyle = color; ctx.globalAlpha = strong ? 1 : 0.85;
+      ctx.strokeRect(x, y, w, h);
+      if (label) {
+        const tw = ctx.measureText(label).width + 8, ty = y - 16 < 0 ? y + 2 : y - 16;
+        ctx.fillStyle = color; ctx.fillRect(x, ty, tw, 15); ctx.fillStyle = "#fff"; ctx.fillText(label, x + 4, ty + 1);
+      }
+      ctx.globalAlpha = 1;
+    };
+    if (layerOn("showMeva")) {
+      const sel = state.selectedActivity;
+      // A selected activity shows only the actors involved in it; without a selection, every
+      // activity active around the current frame is drawn.
+      const activeActs = state.data.meva.activities.filter(a => a.start_frame - 15 <= frame && frame <= a.end_frame + 15);
+      const acts = sel ? [sel] : activeActs;
+      const seen = new Set();
+      for (const a of acts) for (const id of a.actors) {
+        if (seen.has(id)) continue; seen.add(id);
+        const track = state.data.meva.actors[id]; if (!track) continue;
+        const b = boxAt(track, frame, 4); if (!b) continue;
+        const strong = sel && sel.actors.includes(id);
+        drawBox(b, mevaColor, strong ? `${track.type} ${id} · ${humanType(a.type)}` : `${track.type} ${id}`, strong);
+      }
+    }
+    if (layerOn("showPipe")) {
+      const sel = state.selectedEvent;
+      const objs = state.data.pipeline.objects;
+      // A selected pipeline event always shows only the objects involved in that event;
+      // without a selection every tracked object is drawn.
+      const wanted = sel ? new Set(sel.objects) : null;
+      for (const [id, o] of Object.entries(objs)) {
+        if (wanted && !wanted.has(id)) continue;
+        const b = boxAt(o, frame, 2); if (!b) continue;
+        const strong = sel && sel.objects.includes(id);
+        drawBox(b, pipeColor, `${o.label} #${id}`, strong);
+      }
+    }
+  }
+  new ResizeObserver(() => { drawOverlay(); drawTimeline(); }).observe($("stage"));
+
+  // ---------- timeline ----------
+  const LANES = { mevaTop: 6, mevaHeight: 60, pipeTop: 72, pipeHeight: 40, ticks: 118 };
+  let mevaRows = new Map();   // activity -> row index, recomputed per video
+  let pipeRows = new Map();   // pipeline event -> row index
+  // Pack items into rows so overlapping items never share a row: each gets its own square on the timeline.
+  function layoutRows(items, startOf, endOf) {
+    const rows = [];          // end time of the last bar in each row
+    const map = new Map();
+    for (const it of [...items].sort((x, y) => startOf(x) - startOf(y))) {
+      const s = startOf(it), e = endOf(it);
+      let r = rows.findIndex(end => end + 0.5 < s);
+      if (r < 0) { r = rows.length; rows.push(e); } else rows[r] = e;
+      map.set(it, r);
+    }
+    return { map, n: Math.max(1, rows.length) };
+  }
+  function layoutMevaRows(acts) { const l = layoutRows(acts, a => a.start_frame / fps, a => a.end_frame / fps); mevaRows = l.map; return l.n; }
+  function layoutPipeRows(events) { const l = layoutRows(events, ev => ev.start_s, ev => ev.end_s); pipeRows = l.map; return l.n; }
+  const laneRowH = (height, n) => Math.min(12, (height - 2) / n);
+  function drawTimeline() {
+    if (!state.data) return;
+    const dpr = window.devicePixelRatio || 1, cw = tl.clientWidth, ch = tl.clientHeight;
+    if (tl.width !== Math.round(cw * dpr) || tl.height !== Math.round(ch * dpr)) { tl.width = Math.round(cw * dpr); tl.height = Math.round(ch * dpr); }
+    const ctx = tl.getContext("2d"); ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, cw, ch);
+    const css = getComputedStyle(document.documentElement), c = (n) => css.getPropertyValue(n).trim();
+    const x = (s) => (s / duration) * cw;
+    const acts = state.data.meva.activities, nRows = layoutMevaRows(acts);
+    const rowH = laneRowH(LANES.mevaHeight, nRows), rowGap = rowH > 5 ? 1 : 0;
+    const events = state.data.pipeline.events, nPipeRows = layoutPipeRows(events);
+    const pipeRowH = laneRowH(LANES.pipeHeight, nPipeRows), pipeGap = pipeRowH > 5 ? 1 : 0;
+    ctx.fillStyle = c("--surface-2"); ctx.fillRect(0, LANES.mevaTop, cw, LANES.mevaHeight); ctx.fillRect(0, LANES.pipeTop, cw, LANES.pipeHeight);
+    // One square per MEVA instance: at least as wide as it is tall, outlined so neighbours stay distinct.
+    const mevaSqH = rowH - rowGap;
+    for (const a of acts) {
+      const s = a.start_frame / fps, e = a.end_frame / fps, y = LANES.mevaTop + 1 + mevaRows.get(a) * rowH, w = Math.max(mevaSqH, x(e) - x(s));
+      ctx.fillStyle = a.covered === true ? c("--ok") : a.covered === false ? c("--miss") : c("--none");
+      ctx.globalAlpha = state.selectedActivity && state.selectedActivity !== a ? 0.4 : 0.9;
+      ctx.fillRect(x(s), y, w, mevaSqH);
+      ctx.globalAlpha = 1; ctx.strokeStyle = c("--surface"); ctx.lineWidth = 1; ctx.strokeRect(x(s) + 0.5, y + 0.5, w - 1, mevaSqH - 1);
+      if (state.selectedActivity === a) { ctx.strokeStyle = c("--meva"); ctx.lineWidth = 2; ctx.strokeRect(x(s) - 1, y - 1, w + 2, mevaSqH + 2); }
+    }
+    // One square per pipeline event: at least rowH wide so short events stay visible, outlined so
+    // adjacent events in the same row read as separate blocks.
+    const sqH = pipeRowH - pipeGap;
+    for (const ev of events) {
+      const y = LANES.pipeTop + 1 + pipeRows.get(ev) * pipeRowH, w = Math.max(sqH, x(ev.end_s) - x(ev.start_s));
+      const kind = agreeKind(ev);
+      ctx.fillStyle = kind === "ok" ? c("--ok") : kind === "miss" ? c("--miss") : c("--pipe"); ctx.globalAlpha = state.selectedEvent && state.selectedEvent !== ev ? 0.35 : 0.8;
+      ctx.fillRect(x(ev.start_s), y, w, sqH);
+      ctx.globalAlpha = 1; ctx.strokeStyle = c("--surface"); ctx.lineWidth = 1; ctx.strokeRect(x(ev.start_s) + 0.5, y + 0.5, w - 1, sqH - 1);
+      if (state.selectedEvent === ev) { ctx.strokeStyle = c("--ink"); ctx.lineWidth = 2; ctx.strokeRect(x(ev.start_s) - 1, y - 1, w + 2, sqH + 2); }
+    }
+    ctx.globalAlpha = 1;
+    if (state.fragment) { ctx.fillStyle = c("--meva"); ctx.globalAlpha = .18; ctx.fillRect(x(state.fragment.start), 0, x(state.fragment.end) - x(state.fragment.start), ch); ctx.globalAlpha = 1; }
+    ctx.fillStyle = c("--accent"); ctx.fillRect(x(player.currentTime) - 1, 0, 2, ch);
+    ctx.fillStyle = c("--muted"); ctx.font = "11px IBM Plex Mono, monospace";
+    for (let s = 0; s <= duration; s += 30) { ctx.fillRect(x(s), LANES.ticks, 1, 4); ctx.fillText(fmtTime(s).replace(/\.\d+$/, ""), x(s) + 3, LANES.ticks + 1 - 12); }
+  }
+  tl.addEventListener("click", (e) => {
+    const r = tl.getBoundingClientRect(), t = ((e.clientX - r.left) / r.width) * duration, y = e.clientY - r.top;
+    // clicking on a bar selects it; anywhere else just seeks
+    if (y >= LANES.mevaTop && y <= LANES.mevaTop + LANES.mevaHeight) {
+      const nRows = Math.max(1, ...[...mevaRows.values()].map(r => r + 1)), rowH = laneRowH(LANES.mevaHeight, nRows);
+      const row = Math.floor((y - LANES.mevaTop - 1) / rowH);
+      const minW = (rowH / tl.clientWidth) * duration;
+      const hits = state.data.meva.activities.filter(a => a.start_frame / fps <= t && t <= Math.max(a.end_frame / fps, a.start_frame / fps + minW));
+      const hit = hits.find(a => mevaRows.get(a) === row) || hits[0];
+      if (hit) selectActivity(hit, false);
+    } else if (y >= LANES.pipeTop && y <= LANES.pipeTop + LANES.pipeHeight) {
+      const nRows = Math.max(1, ...[...pipeRows.values()].map(r => r + 1)), rowH = laneRowH(LANES.pipeHeight, nRows);
+      const row = Math.floor((y - LANES.pipeTop - 1) / rowH);
+      // a short event is drawn at least rowH wide, so accept clicks over that minimum width too
+      const minW = (rowH / tl.clientWidth) * duration;
+      const hits = state.data.pipeline.events.filter(ev => ev.start_s <= t && t <= Math.max(ev.end_s, ev.start_s + minW));
+      const hit = hits.find(ev => pipeRows.get(ev) === row) || hits[0];
+      if (hit) selectEvent(hit, false);
+    }
+    state.fragment = null; $("fragmentTag").hidden = true;
+    player.currentTime = Math.max(0, Math.min(duration, t));
+  });
+
+  // ---------- selection ----------
+  function selectActivity(a, play = true) {
+    state.selectedActivity = a;
+    const credited = a.covering_event_id ? state.data.pipeline.byId[a.covering_event_id] : null;
+    state.selectedEvent = credited || null;
+    if (play) playFragment(a.start_frame, a.end_frame, humanType(a.type)); else { drawOverlay(); drawTimeline(); }
+    renderDetail(); renderCompare();
+    const el = document.querySelector(`.inst[data-gt="${a.gt_id}"]`); if (el) el.scrollIntoView({ block: "nearest" });
+  }
+  function selectEvent(ev, play = true) {
+    state.selectedEvent = ev;
+    if (play) { state.fragment = { start: ev.start_s, end: ev.end_s, label: ev.name }; $("fragmentText").textContent = `${ev.name} · ${fmtTime(ev.start_s)} – ${fmtTime(ev.end_s)}`; $("fragmentTag").hidden = false; player.currentTime = ev.start_s; player.play().catch(() => {}); }
+    else { drawOverlay(); drawTimeline(); }
+    renderDetail(); renderCompare();
+  }
+
+  // ---------- detail panel ----------
+  $("tabMeva").addEventListener("click", () => setTab("meva"));
+  $("tabPipe").addEventListener("click", () => setTab("pipe"));
+  function setTab(t) { state.tab = t; try { localStorage.setItem("cl.tab", t); } catch (e) {} renderDetail(); }
+  document.querySelectorAll(".filter:not(.pf)").forEach(b => b.addEventListener("click", () => { state.filter = b.dataset.f; renderDetail(); }));
+  document.querySelectorAll(".filter.pf").forEach(b => b.addEventListener("click", () => { state.pipeFilter = b.dataset.pf; renderDetail(); }));
+  $("typeSearch").addEventListener("input", () => { state.typeQuery = $("typeSearch").value.trim().toLowerCase(); renderDetail(); });
+  $("eventSearch").addEventListener("input", () => { state.eventQuery = $("eventSearch").value.trim().toLowerCase(); renderDetail(); });
+
+  function renderDetail() {
+    if (!state.data) return;
+    $("tabMeva").setAttribute("aria-selected", state.tab === "meva"); $("tabPipe").setAttribute("aria-selected", state.tab === "pipe");
+    $("mevaFilters").hidden = state.tab !== "meva"; $("pipeFilters").hidden = state.tab !== "pipe";
+    document.querySelectorAll(".filter:not(.pf)").forEach(b => b.setAttribute("aria-pressed", b.dataset.f === state.filter));
+    document.querySelectorAll(".filter.pf").forEach(b => b.setAttribute("aria-pressed", b.dataset.pf === state.pipeFilter));
+    const acts = state.data.meva.activities, events = state.data.pipeline.events;
+    $("countMeva").textContent = new Set(acts.map(a => a.type)).size; $("countPipe").textContent = events.length;
+    const list = $("detailList"); list.innerHTML = "";
+    if (state.tab === "meva") renderMevaList(list, acts); else renderPipeList(list, events);
+  }
+
+  function renderMevaList(list, acts) {
+    const groups = new Map();
+    for (const a of acts) { if (!groups.has(a.type)) groups.set(a.type, []); groups.get(a.type).push(a); }
+    let rows = [...groups.entries()].map(([type, items]) => ({ type, items, covered: items[0].covered, score: items[0].score, reason: items[0].reason, credited: items[0].covering_event_id }));
+    rows = rows.filter(r => state.filter === "all" || (state.filter === "covered" ? r.covered === true : r.covered !== true));
+    if (state.typeQuery) rows = rows.filter(r => r.type.includes(state.typeQuery));
+    rows.sort((a, b) => (a.covered === true) - (b.covered === true) || b.items.length - a.items.length || a.type.localeCompare(b.type));
+    if (!rows.length) { list.innerHTML = `<div class="empty-state">No activity types match.</div>`; return; }
+    for (const r of rows) {
+      const card = document.createElement("div");
+      card.className = `group-card ${r.covered === true ? "ok" : r.covered === false ? "miss" : "none"}`;
+      const open = state.expanded.has(r.type) || (state.selectedActivity && state.selectedActivity.type === r.type);
+      const credited = r.credited && state.data.pipeline.byId[r.credited];
+      const verdict = r.covered === true ? `<span class="pill ok">covered ${r.score ?? ""}</span>` : r.covered === false ? `<span class="pill miss">not covered ${r.score ?? ""}</span>` : `<span class="pill none">not evaluated</span>`;
+      card.innerHTML = `
+        <div class="group-head" role="button" tabindex="0" aria-expanded="${open}">
+          <div class="stripe"></div>
+          <div><div class="title">${humanType(r.type)}</div><div class="under">${r.items.length} instance${r.items.length > 1 ? "s" : ""}${credited ? ` · credited: ${credited.name}` : ""}</div></div>
+          ${verdict}
+        </div>
+        <div class="group-body" ${open ? "" : "hidden"}>
+          ${r.reason ? `<div class="reason">${r.reason}</div>` : ""}
+          ${r.items.map(a => `
+            <div class="inst" data-gt="${a.gt_id}" aria-current="${state.selectedActivity === a}">
+              <div><div class="t">${fmtTime(a.start_frame / fps)} – ${fmtTime(a.end_frame / fps)} <span style="color:var(--muted)">· f ${a.start_frame}–${a.end_frame}</span></div>
+                   <div class="a">${a.actors.map(id => { const t = state.data.meva.actors[id]; return `${t ? t.type : "actor"} ${id}`; }).join(", ") || "no actor boxes"}</div></div>
+              <button class="btn" data-play="${a.gt_id}">Play</button>
+            </div>`).join("")}
+        </div>`;
+      const head = card.querySelector(".group-head");
+      const toggle = () => { if (state.expanded.has(r.type)) state.expanded.delete(r.type); else state.expanded.add(r.type); renderDetail(); };
+      head.addEventListener("click", toggle); head.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); toggle(); } });
+      card.querySelectorAll(".inst").forEach(el => el.addEventListener("click", (e) => { const a = r.items.find(i => String(i.gt_id) === el.dataset.gt); selectActivity(a, e.target.matches("button")); }));
+      list.appendChild(card);
+    }
+  }
+
+  // Part B verdict of a pipeline event: "ok" matched, "miss" judged and not matched, "none" no reference or not judged.
+  const agreeKind = (ev) => !ev.agreement ? "none" : ev.agreement.status !== "scored" ? "none" : ev.agreement.match ? "ok" : "miss";
+  const agreePill = (ev) => {
+    const g = ev.agreement;
+    if (!g) return `<span class="pill none">not judged</span>`;
+    if (g.status !== "scored") return `<span class="pill none">no MEVA reference</span>`;
+    return g.match ? `<span class="pill ok">matched ${g.score}</span>` : `<span class="pill miss">not matched ${g.score}</span>`;
+  };
+  const agreeDetail = (ev) => {
+    const g = ev.agreement; if (!g || g.status !== "scored") return "";
+    return `<div class="ref"><b>vs MEVA at this time:</b> ${g.reference || ""}</div>${g.reason ? `<div class="reason">${g.reason}</div>` : ""}`;
+  };
+
+  function renderPipeList(list, events) {
+    let rows = events;
+    if (state.pipeFilter !== "all") rows = rows.filter(ev => ({ matched: "ok", unmatched: "miss", noref: "none" })[state.pipeFilter] === agreeKind(ev));
+    if (state.eventQuery) rows = rows.filter(ev => `${ev.name} ${ev.description} ${ev.actions.join(" ")} ${ev.other_actions.join(" ")} ${ev.agreement && ev.agreement.reference || ""}`.toLowerCase().includes(state.eventQuery));
+    if (!rows.length) { list.innerHTML = `<div class="empty-state">${events.length ? "No events match." : "The pipeline produced no events for this video."}</div>`; return; }
+    const creditedIds = new Map();
+    for (const a of state.data.meva.activities) if (a.covering_event_id) { if (!creditedIds.has(a.covering_event_id)) creditedIds.set(a.covering_event_id, new Set()); creditedIds.get(a.covering_event_id).add(a.type); }
+    for (const ev of rows) {
+      const el = document.createElement("div"); el.className = `ev ${agreeKind(ev)}`; el.setAttribute("aria-current", state.selectedEvent === ev);
+      const credits = creditedIds.get(ev.id);
+      el.innerHTML = `
+        <div class="l1"><span class="name">${ev.name || "(unnamed event)"}</span><span class="t">${fmtTime(ev.start_s)} – ${fmtTime(ev.end_s)}</span></div>
+        <div class="verdict">${agreePill(ev)}${credits ? `<span class="credited">✓ A: credited for ${[...credits].map(humanType).join(", ")}</span>` : "<span></span>"}</div>
+        ${agreeDetail(ev)}
+        <div class="actions">${ev.actions.map(a => `<span class="action">${a}</span>`).join("")}${ev.other_actions.map(a => `<span class="action other">${a}</span>`).join("")}</div>
+        <div class="desc">${ev.description || ""}</div>
+        <div class="objs">${ev.objects.map(id => { const o = state.data.pipeline.objects[id]; return `<span class="obj pipe">${o ? o.label : "object"} #${id}</span>`; }).join("")}</div>`;
+      el.addEventListener("click", () => selectEvent(ev, true));
+      list.appendChild(el);
+    }
+  }
+
+  function renderCompare() {
+    const a = state.selectedActivity, ev = state.selectedEvent, mc = $("mevaCard"), pc = $("pipeCard");
+    if (!a) mc.innerHTML = `<div class="eyebrow">MEVA activity</div><p class="empty">Select an activity on the right to inspect it here.</p>`;
+    else {
+      const verdict = a.covered === true ? `<span class="pill ok">covered ${a.score ?? ""}</span>` : a.covered === false ? `<span class="pill miss">not covered ${a.score ?? ""}</span>` : `<span class="pill none">not evaluated</span>`;
+      mc.innerHTML = `
+        <div class="eyebrow"><span>MEVA activity</span>${verdict}</div>
+        <h3>${humanType(a.type)}</h3>
+        <div class="meta"><span class="mono">${fmtTime(a.start_frame / fps)} – ${fmtTime(a.end_frame / fps)}</span><span class="mono">f ${a.start_frame}–${a.end_frame}</span><span>MEVA event ${a.meva_event_id ?? "?"}</span></div>
+        <div class="objs">${a.actors.map(id => { const t = state.data.meva.actors[id]; return `<span class="obj meva">${t ? t.type : "actor"} ${id}</span>`; }).join("") || "<span class='empty'>no actor geometry</span>"}</div>
+        ${a.reason ? `<div class="reason">${a.reason}</div>` : ""}
+        <div class="actions"><button class="btn" id="playMeva">Play fragment</button></div>`;
+      $("playMeva").addEventListener("click", () => playFragment(a.start_frame, a.end_frame, humanType(a.type)));
+    }
+    if (!ev) pc.innerHTML = `<div class="eyebrow">Pipeline annotation</div><p class="empty">${a ? (a.covered === false ? "No annotation was credited for this activity." : "No annotation credited.") : "The annotation the judge credited appears here."}</p>`;
+    else {
+      const isCredit = a && a.covering_event_id === ev.id;
+      pc.innerHTML = `
+        <div class="eyebrow"><span>Pipeline annotation</span><span>${isCredit ? `<span class="badge">A: credited</span> ` : ""}${agreePill(ev)}</span></div>
+        <h3>${ev.name || "(unnamed event)"}</h3>
+        <div class="meta"><span class="mono">${fmtTime(ev.start_s)} – ${fmtTime(ev.end_s)}</span><span class="mono">f ${ev.start_frame ?? "?"}–${ev.end_frame ?? "?"}</span></div>
+        ${agreeDetail(ev)}
+        <div class="actions">${ev.actions.map(x => `<span class="action">${x}</span>`).join("")}${ev.other_actions.map(x => `<span class="action other">${x}</span>`).join("")}</div>
+        <p>${ev.description || ""}</p>
+        <div class="objs">${ev.objects.map(id => { const o = state.data.pipeline.objects[id]; return `<span class="obj pipe" title="${o && o.descriptions ? o.descriptions.join(" / ") : ""}">${o ? o.label : "object"} #${id}</span>`; }).join("")}</div>
+        <div class="actions"><button class="btn" id="playPipe">Play window</button></div>`;
+      $("playPipe").addEventListener("click", () => selectEvent(ev, true));
+    }
+  }
+
+  // ---------- keyboard ----------
+  document.addEventListener("keydown", (e) => {
+    if (e.target.matches("input, select, textarea")) return;
+    if (!state.data) return;
+    const acts = state.data.meva.activities;
+    if (e.key === " ") { e.preventDefault(); player.paused ? player.play() : player.pause(); }
+    else if (e.key === ",") { player.pause(); player.currentTime = Math.max(0, player.currentTime - 1 / fps); }
+    else if (e.key === ".") { player.pause(); player.currentTime = Math.min(duration, player.currentTime + 1 / fps); }
+    else if (e.key === "m" || e.key === "M") toggleLayer("showMeva");
+    else if (e.key === "p" || e.key === "P") toggleLayer("showPipe");
+    else if (e.key === "ArrowLeft") { player.currentTime = Math.max(0, player.currentTime - 2); }
+    else if (e.key === "ArrowRight") { player.currentTime = Math.min(duration, player.currentTime + 2); }
+    else if (e.key === "]" || e.key === "[") {
+      const i = acts.indexOf(state.selectedActivity);
+      const next = e.key === "]" ? acts[i + 1] || acts[0] : acts[i - 1] || acts[acts.length - 1];
+      if (next) selectActivity(next, true);
+    }
+  });
+
+  loadIndex().catch(err => { $("welcome").textContent = `Could not read ${DATA_ROOT}/index.json (${err.message}). Run "make coverage-explorer" to build the data and serve the project over HTTP, then open this page at http://localhost:8000/reports/coverage_explorer.html.`; });
+})();
+</script>
+</body>
+</html>

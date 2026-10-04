@@ -8,16 +8,17 @@
     :root { color-scheme: light dark; font-family: Inter, ui-sans-serif, system-ui, sans-serif; }
     * { box-sizing: border-box; }
     body { margin: 0; background: #f6f7f9; color: #172033; }
-    header { padding: 24px max(24px, calc((100vw - 1280px) / 2)); background: #172033; color: white; }
+    header { padding: 24px max(24px, calc((100vw - 1560px) / 2)); background: #172033; color: white; }
     h1 { margin: 0; font-size: 24px; } h2 { margin: 0 0 12px; font-size: 16px; }
     header p { margin: 7px 0 0; color: #cbd5e1; }
-    main { max-width: 1280px; margin: auto; padding: 20px 24px 40px; }
+    main { max-width: 1560px; margin: auto; padding: 20px 24px 40px; }
     .toolbar, .card { background: white; border: 1px solid #dbe1ea; border-radius: 10px; }
     .toolbar { display: flex; gap: 16px; align-items: end; flex-wrap: wrap; padding: 16px; }
     label { display: grid; gap: 6px; font-size: 13px; font-weight: 650; color: #43516b; }
     input, select { font: inherit; padding: 8px; min-width: 220px; border: 1px solid #b8c3d4; border-radius: 6px; background: white; color: #172033; }
     .hint { margin: 12px 0 20px; color: #58657b; font-size: 14px; }
-    .grid { display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(320px, .8fr); gap: 18px; }
+    .layout { display: grid; grid-template-columns: minmax(230px, .5fr) minmax(0, 2fr); gap: 18px; align-items: start; }
+    .grid { display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(300px, .8fr); gap: 18px; }
     .card { padding: 16px; } video { width: 100%; background: #0f172a; border-radius: 6px; max-height: 520px; }
     .chunk-meta { display: flex; gap: 16px; flex-wrap: wrap; margin: 10px 0 0; font-size: 13px; color: #58657b; }
     .events { display: grid; gap: 10px; max-height: 380px; overflow: auto; }
@@ -32,93 +33,190 @@
     .detection { display: grid; grid-template-columns: 1fr auto; gap: 4px 12px; padding: 9px; border-bottom: 1px solid #e5e9f0; font-size: 13px; }
     .detection small { color: #58657b; } .coordinates { grid-column: 1 / -1; font-family: ui-monospace, monospace; font-size: 11px; color: #58657b; }
     .empty { color: #6a7487; font-size: 14px; padding: 20px 0; }
-    @media (max-width: 800px) { .grid { grid-template-columns: 1fr; } .spatial { grid-template-columns: 1fr; } }
+    .catalogue { display: grid; gap: 6px; max-height: 70vh; overflow: auto; }
+    .catalogue button { font: inherit; text-align: left; display: grid; gap: 3px; padding: 9px 10px; border: 1px solid #dbe1ea; border-radius: 6px; background: white; color: #172033; cursor: pointer; }
+    .catalogue button:hover { border-color: #2164d1; }
+    .catalogue button[aria-current="true"] { background: #e8f0ff; border-color: #2164d1; }
+    .catalogue .name { font-size: 12.5px; font-weight: 650; line-height: 1.3; word-break: break-word; }
+    .catalogue .counts { font-size: 11.5px; color: #58657b; }
+    .chunks { display: flex; gap: 6px; flex-wrap: wrap; margin: 12px 0 0; max-height: 132px; overflow: auto; }
+    .chunks button { font: inherit; font-size: 12px; padding: 5px 8px; border: 1px solid #dbe1ea; border-radius: 6px; background: white; color: #43516b; cursor: pointer; }
+    .chunks button:hover { border-color: #2164d1; }
+    .chunks button[aria-current="true"] { background: #2164d1; border-color: #2164d1; color: white; }
+    .notice { margin: 10px 0 0; padding: 9px 10px; border-radius: 6px; font-size: 13px; background: #fdecec; color: #8c1d1d; border: 1px solid #f3c2c2; }
+    .notice code { font-size: 11.5px; word-break: break-all; }
+    @media (max-width: 1080px) { .layout, .grid, .spatial { grid-template-columns: 1fr; } .catalogue { max-height: 260px; } }
   </style>
 </head>
 <body>
   <header><h1>Video Annotation Explorer</h1><p>Explore processed LVLM events and their joined YOLO spatial detections.</p></header>
   <main>
     <section class="toolbar">
+      <label>Filter videos <input id="videoFilter" type="search" placeholder="scene, camera or time…" autocomplete="off"></label>
       <label>Video <select id="videoSelect" disabled></select></label>
       <label>Annotated chunk <select id="chunkSelect" disabled></select></label>
     </section>
     <p class="hint" id="status">Loading processed annotations from <code>data/</code>…</p>
-    <section class="grid" id="content" hidden>
-      <div class="card">
-        <h2 id="chunkTitle">Annotated video chunk</h2>
-        <video id="player" controls muted></video>
-        <div class="chunk-meta"><span id="duration"></span><span id="frameTime"></span><span id="detectionCount"></span></div>
-        <div class="spatial">
-          <div><h2>Spatial positions at playback time</h2><div class="spatial-grid" id="spatialGrid"></div></div>
-          <div><h2>Joined YOLO detections</h2><div class="detections" id="detections"></div></div>
+    <section class="layout">
+      <aside class="card">
+        <h2>Videos <span id="videoCount" class="counts"></span></h2>
+        <div class="catalogue" id="catalogue"></div>
+      </aside>
+      <div class="grid" id="content" hidden>
+        <div class="card">
+          <h2 id="chunkTitle">Annotated video chunk</h2>
+          <video id="player" controls muted preload="metadata"></video>
+          <p class="notice" id="playerError" hidden></p>
+          <div class="chunk-meta"><span id="duration"></span><span id="frameTime"></span><span id="detectionCount"></span></div>
+          <div class="chunks" id="chunks"></div>
+          <div class="spatial">
+            <div><h2>Spatial positions at playback time</h2><div class="spatial-grid" id="spatialGrid"></div></div>
+            <div><h2>Joined YOLO detections</h2><div class="detections" id="detections"></div></div>
+          </div>
         </div>
+        <aside class="card"><h2>LVLM events for this chunk</h2><div class="events" id="events"></div></aside>
       </div>
-      <aside class="card"><h2>LVLM events for this chunk</h2><div class="events" id="events"></div></aside>
     </section>
   </main>
   <script>
     const $ = id => document.getElementById(id);
     const DATA_ROOT = "../data";
-    const CAMERA_NAMES = [
-      "2018-03-05.13-15-00.13-20-00.bus.G340",
-      "2018-03-05.13-15-00.13-20-00.bus.G505",
-      "2018-03-05.13-15-00.13-20-00.bus.G506",
-      "2018-03-05.13-15-00.13-20-00.hospital.G341",
-      "2018-03-05.13-15-00.13-20-00.school.G423",
-      "2018-03-05.13-15-00.13-20-00.school.G424",
-      "2018-03-05.13-15-01.13-20-01.school.G328",
-      "2018-03-05.13-20-00.13-25-00.bus.G340",
-      "2018-03-05.13-20-00.13-25-00.school.G336",
-      "2018-03-05.13-20-00.13-25-00.school.G423",
-    ];
+    const PROCESSED_ROOT = `${DATA_ROOT}/processed`;
+
+    // Every video the explorer knows about, and the annotations/detections already
+    // fetched for it. Event files are small and loaded up front so the catalogue can
+    // show counts for all videos; the much larger coordinate files load on demand.
     const videos = new Map();
     let current = null;
+    let currentName = null;
+    let currentIndex = 0;
     const positions = ["top-left","top-center","top-right","middle-left","middle-center","middle-right","bottom-left","bottom-center","bottom-right"];
     const escapeHtml = value => String(value ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
     const windowKey = item => `${Number(item.start_seconds).toFixed(3)}-${Number(item.end_seconds).toFixed(3)}`;
+    const videoPath = name => `${PROCESSED_ROOT}/${encodeURIComponent(name)}`;
+
+    async function fetchJson(url) {
+      const response = await fetch(url);
+      if (!response.ok) throw new Error(`${response.status} ${response.statusText}`);
+      return response.json();
+    }
+
+    /** Names of every stored video, from the catalogue stage 5 writes next to them. */
+    async function readCatalogue() {
+      const index = await fetchJson(`${PROCESSED_ROOT}/index.json`);
+      const names = Array.isArray(index) ? index : index.videos;
+      if (!Array.isArray(names) || !names.length) throw new Error("index.json lists no videos");
+      return names;
+    }
+
     async function loadProcessedData() {
-      const loaded = await Promise.all(CAMERA_NAMES.map(async name => {
+      let names;
+      try {
+        names = await readCatalogue();
+      } catch (error) {
+        $("status").textContent = `Could not read ${PROCESSED_ROOT}/index.json (${error.message}). Rerun notebook 05 to regenerate it, and serve the project over HTTP (python3 -m http.server) rather than opening this file directly.`;
+        return;
+      }
+      // Load every video's events; a video whose files went missing is reported, not dropped silently.
+      const failures = [];
+      await Promise.all(names.map(async name => {
         try {
-          const [eventsResponse, spatialResponse] = await Promise.all([
-            fetch(`${DATA_ROOT}/processed/${name}/window_event_annotations.json`),
-            fetch(`${DATA_ROOT}/processed/${name}/yolo_spatial_coordinates.json`),
-          ]);
-          if (!eventsResponse.ok || !spatialResponse.ok) return null;
-          return [name, { events: await eventsResponse.json(), spatial: await spatialResponse.json() }];
-        } catch {
-          return null;
+          videos.set(name, { events: await fetchJson(`${videoPath(name)}/window_event_annotations.json`), spatial: null });
+        } catch (error) {
+          failures.push(`${name} (${error.message})`);
         }
       }));
-      loaded.filter(Boolean).forEach(([name, data]) => videos.set(name, data));
-      $("videoSelect").innerHTML = [...videos.keys()].sort().map(name => `<option>${escapeHtml(name)}</option>`).join("");
-      $("videoSelect").disabled = !videos.size;
-      $("status").textContent = videos.size
-        ? `Loaded ${videos.size} processed video dataset(s) from data/. Select a video and chunk to inspect the event-to-detection join.`
-        : "No processed annotation files could be loaded. Serve annotation_pipeline locally, then open this page through the server.";
-      if (videos.size) loadVideo($("videoSelect").value);
-    }
-    $("videoSelect").addEventListener("change", event => loadVideo(event.target.value));
-    $("chunkSelect").addEventListener("change", event => loadChunk(event.target.value));
 
-    function loadVideo(name) {
+      const loadedNames = [...videos.keys()].sort();
+      $("videoSelect").innerHTML = loadedNames.map(name => `<option value="${escapeHtml(name)}">${escapeHtml(name)}</option>`).join("");
+      $("videoSelect").disabled = !loadedNames.length;
+      $("videoCount").textContent = loadedNames.length ? `(${loadedNames.length})` : "";
+      renderCatalogue();
+      $("status").textContent = loadedNames.length
+        ? `Loaded ${loadedNames.length} of ${names.length} processed video(s). Pick any video to inspect its event-to-detection join.`
+        : "No processed annotation files could be loaded. Serve annotation_pipeline locally, then open this page through the server.";
+      if (failures.length) $("status").textContent += ` Unreadable: ${failures.join(", ")}.`;
+      if (loadedNames.length) selectVideo(loadedNames[0]);
+    }
+
+    function renderCatalogue() {
+      const term = $("videoFilter").value.trim().toLowerCase();
+      const names = [...videos.keys()].sort().filter(name => name.toLowerCase().includes(term));
+      $("catalogue").innerHTML = names.length ? names.map(name => {
+        const events = videos.get(name).events;
+        const eventCount = events.reduce((total, item) => total + (item.events || []).length, 0);
+        return `<button type="button" data-video="${escapeHtml(name)}" aria-current="${name === currentName}">
+          <span class="name">${escapeHtml(name)}</span>
+          <span class="counts">${events.length} chunk(s) · ${eventCount} event(s)</span></button>`;
+      }).join("") : `<p class="empty">No video matches “${escapeHtml($("videoFilter").value)}”.</p>`;
+    }
+
+    /** Fetch the coordinate file for a video once, then join it onto that video's windows. */
+    async function selectVideo(name) {
       const data = videos.get(name);
+      if (!data) return;
+      currentName = name;
+      if ($("videoSelect").value !== name) $("videoSelect").value = name;
+      renderCatalogue();
+      if (data.spatial === null) {
+        $("status").textContent = `Loading spatial coordinates for ${name}…`;
+        try {
+          data.spatial = await fetchJson(`${videoPath(name)}/yolo_spatial_coordinates.json`);
+        } catch (error) {
+          data.spatial = [];
+          $("status").textContent = `No spatial coordinates for ${name} (${error.message}); showing events only.`;
+        }
+      }
+      if (currentName !== name) return;  // A different video was picked while this one loaded.
       const byKey = new Map(data.spatial.map(item => [windowKey(item), item]));
       current = data.events.map(item => ({ ...item, spatial: byKey.get(windowKey(item)) || { detections: [], event_object_ids: [] } }));
       $("chunkSelect").innerHTML = current.map((item, index) => `<option value="${index}">${item.start_seconds.toFixed(1)}–${item.end_seconds.toFixed(1)} s · ${item.events.length} event(s)</option>`).join("");
       $("chunkSelect").disabled = !current.length;
+      if (!current.length) {
+        $("content").hidden = true;
+        $("status").textContent = `${name} has no annotated chunks.`;
+        return;
+      }
       loadChunk(0);
     }
 
+    $("videoFilter").addEventListener("input", renderCatalogue);
+    $("catalogue").addEventListener("click", event => {
+      const button = event.target.closest("button[data-video]");
+      if (button) selectVideo(button.dataset.video);
+    });
+    $("videoSelect").addEventListener("change", event => selectVideo(event.target.value));
+    $("chunkSelect").addEventListener("change", event => loadChunk(event.target.value));
+    $("chunks").addEventListener("click", event => {
+      const button = event.target.closest("button[data-chunk]");
+      if (button) loadChunk(button.dataset.chunk);
+    });
+
+    function renderChunkStrip() {
+      $("chunks").innerHTML = current.map((item, index) =>
+        `<button type="button" data-chunk="${index}" aria-current="${index === currentIndex}">${item.start_seconds.toFixed(0)}–${item.end_seconds.toFixed(0)} s</button>`
+      ).join("");
+    }
+
     function loadChunk(index) {
-      const item = current[Number(index)], start = Number(item.start_seconds), end = Number(item.end_seconds);
+      currentIndex = Number(index);
+      const item = current[currentIndex], start = Number(item.start_seconds), end = Number(item.end_seconds);
       $("content").hidden = false;
-      $("chunkTitle").textContent = `Annotated video chunk · ${start.toFixed(1)}–${end.toFixed(1)} seconds`;
+      $("chunkTitle").textContent = `${currentName} · ${start.toFixed(1)}–${end.toFixed(1)} seconds`;
       $("duration").textContent = `Source interval: ${start.toFixed(1)}–${end.toFixed(1)} s`;
+      if ($("chunkSelect").value !== String(currentIndex)) $("chunkSelect").value = String(currentIndex);
+      renderChunkStrip();
       $("events").innerHTML = item.events.length ? item.events.map(event => `<article class="event"><strong>${escapeHtml(event.event_name)}</strong><p>${escapeHtml(event.description)}</p><div class="tags">${(event.involved_objects || []).map(object => `<span class="tag">${escapeHtml(object.label)} #${escapeHtml(object.id)} · ${escapeHtml(object.physical_details)}</span>`).join("")}</div></article>`).join("") : `<p class="empty">This chunk has no extracted events.</p>`;
-      const clipPath = `${DATA_ROOT}/interim/${$("videoSelect").value}/window_frames/window_${start.toFixed(3)}s_${end.toFixed(3)}s/annotated_window.mp4`;
+      const clipPath = `${DATA_ROOT}/interim/${encodeURIComponent(currentName)}/window_frames/window_${start.toFixed(3)}s_${end.toFixed(3)}s/annotated_window.mp4`;
+      $("playerError").hidden = true;
       $("player").src = clipPath;
+      $("player").load();
       $("status").textContent = "Showing the annotated MP4. The spatial panel follows playback time.";
-      $("player").onloadedmetadata = () => renderDetections(item, start);
+      $("player").onerror = () => {
+        $("playerError").hidden = false;
+        $("playerError").innerHTML = `This chunk's annotated clip could not be played. Expected it at <code>${escapeHtml(clipPath)}</code> — rerun notebook 04 for this video if the file is missing.`;
+      };
+      $("player").onloadedmetadata = () => { $("playerError").hidden = true; renderDetections(item, start); };
       $("player").ontimeupdate = () => renderDetections(item, start + $("player").currentTime);
       renderDetections(item, start);
     }
