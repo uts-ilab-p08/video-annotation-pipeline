@@ -218,7 +218,6 @@
     <aside class="sidebar">
       <div class="sidebar-head">
         <input id="search" type="search" placeholder="Search camera or name" aria-label="Search videos">
-        <button class="btn" id="refreshAll" hidden title="Rebuild every video's data from Supabase (a few minutes)">Refresh all from database</button>
         <div class="row2">
           <select id="scene" aria-label="Scene"><option value="">All scenes</option></select>
           <select id="sort" aria-label="Sort">
@@ -342,7 +341,6 @@
       + (state.live ? " · live: each video is checked against Supabase when opened" : " · static files: run make coverage-explorer-data to refresh");
     const scenes = [...new Set(state.videos.map(v => v.scene))].sort();
     for (const s of scenes) { const o = document.createElement("option"); o.value = s; o.textContent = s; $("scene").appendChild(o); }
-    $("refreshAll").hidden = !state.live;
     renderTotals();
     renderSidebar();
     let last = null; try { last = localStorage.getItem("cl.video"); } catch (e) {}
@@ -412,11 +410,6 @@
     }
   }
   ["search", "scene", "sort"].forEach(id => $(id).addEventListener("input", renderSidebar));
-  $("refreshAll").addEventListener("click", async () => {
-    const b = $("refreshAll"); b.disabled = true; b.textContent = "Rebuilding every video from the database…";
-    try { await fetch("/api/rebuild", { cache: "no-store" }); location.reload(); }
-    catch (e) { b.disabled = false; b.textContent = "Refresh all from database"; alert(`Rebuild failed: ${e.message}`); }
-  });
 
   // ---------- video ----------
   const player = $("player"), overlay = $("overlay"), tl = $("timeline");

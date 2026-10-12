@@ -5,7 +5,6 @@ Serves the project root like `python -m http.server`, with two extra endpoints t
 * GET /api/status                      -> {"live": true}
 * GET /api/rebuild?video=<id>[&force=1] -> rebuilds that video's explorer file when the database
                                            has changed since it was built (always with force=1)
-* GET /api/rebuild                     -> rebuilds every video (a few minutes)
 
 Static files are served with Cache-Control: no-store so a rebuilt JSON file is never stale in
 the browser. Run with `make coverage-explorer`.
@@ -43,10 +42,12 @@ class Handler(SimpleHTTPRequestHandler):
         if url.path == "/api/rebuild":
             query = parse_qs(url.query)
             video = query.get("video", [None])[0]
+            if not video:
+                return self._json({"ok": False, "error": "video is required"}, 400)
             force = query.get("force", ["0"])[0] == "1"
             try:
                 with _build_lock:
-                    entries = build(video, only_if_stale=bool(video) and not force)
+                    entries = build(video, only_if_stale=not force)
             except SystemExit as error:  # build() reports a bad filter this way
                 return self._json({"ok": False, "error": str(error)}, 404)
             except Exception as error:  # noqa: BLE001 - report any failure to the page
